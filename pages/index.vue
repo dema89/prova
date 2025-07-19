@@ -79,13 +79,13 @@
           <picture>
             <source srcset="/img/webp/dog_red.webp" type="image/webp">
             <source srcset="/img/dog_red.png" type="image/png">
-            <img class="dog-red element_filter" src="/img/dog_red.png" alt="Cane rosso" loading="lazy" decoding="async" />
+            <img class="dog-red element_filter" src="/img/dog_red.png" alt="Cane rosso" width="906" height="1086" loading="lazy" decoding="async" />
           </picture>
 
           <picture>
             <source srcset="/img/webp/dog_ciano.webp" type="image/webp">
             <source srcset="/img/dog_ciano.png" type="image/png">
-            <img class="dog-cyan element_filter" src="/img/dog_ciano.png" alt="Cane ciano" loading="lazy" decoding="async" />
+            <img class="dog-cyan element_filter" src="/img/dog_ciano.png" alt="Cane ciano" width="906" height="1086" loading="lazy" decoding="async" />
           </picture>
 
         </div>
