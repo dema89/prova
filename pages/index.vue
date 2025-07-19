@@ -126,8 +126,7 @@
        
           <div class="story-block" data-index="2">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-              <NuxtImg src="/img/dracula_red.jpg" alt="Dracula" width="644" height="435" format="webp" quality="80" lazy /> 
-              <NuxtImg src="/img/dracula_cyan.jpg" alt="Dracula" width="644" height="435" format="webp" quality="80" lazy class="box_img_blend" /> 
+              
             </div>
 
             <div class="story-inner">
@@ -864,7 +863,7 @@ function initHomePostersSection() {
 
 onMounted(async () => {
   if (!process.client) return; 
-  
+
   const config = useRuntimeConfig();
   const base = config.app.baseURL || '/';
 
