@@ -112,7 +112,7 @@ useHead({
     {
       rel: 'preload',
       as: 'image',
-      href: '/img/video/poster.jpg',
+      href: '/img/preview.jpg',
       type: 'image/jpeg'
     },
     // Preload del file video
