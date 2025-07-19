@@ -155,13 +155,13 @@
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
               <picture>
                 <source srcset="/img/webp/dracula_red.webp" type="image/webp">
-                <source srcset="/img/dracula_red.jpgg" type="image/jpeg">
+                <source srcset="/img/dracula_red.jpg" type="image/jpeg">
                 <img src="/img/dracula_red.jpg" alt="Dracula" loading="lazy" decoding="async" />
               </picture>
 
               <picture>
                 <source srcset="/img/webp/dracula_cyan.webp" type="image/webp">
-                <source srcset="/img/dracula_cyan.jpgg" type="image/jpeg">
+                <source srcset="/img/dracula_cyan.jpg" type="image/jpeg">
                 <img class="box_img_blend" src="/img/dracula_cyan.jpg" alt="Dracula" loading="lazy" decoding="async" />
               </picture>
 
