@@ -448,7 +448,7 @@ to   { opacity:0;  }
 	z-index: 9999;
 	pointer-events:none;
 	user-select:none;
-	background-image: url('/img/grain.png');
+	background-image: url('/img/webp/grain.webp');
 	animation: noise 10s steps(10) infinite;
 	
 	left:-50%;

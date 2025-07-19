@@ -41,8 +41,8 @@ dimmed:
               <span>VIEW POSTER</span>
             </NuxtLink>
             <div class="immagine_film" data-color-good="yellow" data-color-evil="magenta" :class="{ good: good, evil: evil, neutral:neutral }">
-              <img loading="lazy" :src="movie.prev" />
-              <img loading="lazy" :src="movie.prev2" class="poster_sovrapposto" />
+                 <img loading="lazy" decoding="async"  :alt="movie.nome" :src="movie.prev" />
+                <img loading="lazy" decoding="async"  :alt="movie.nome" :src="movie.prev2" class="poster_sovrapposto" />
             </div>
           </div>
 
