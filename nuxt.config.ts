@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 
 const jsonPath = path.resolve('./public/data/data.json')
-let filmData: any[] = []
+let filmData: { nome: string }[] = []
 
 try {
   filmData = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'))
@@ -29,8 +29,9 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'static',
     prerender: {
+      failOnError: false,
       routes: [
-        '/index',       // Home page
+        '/',        // Home page
         ...filmRoutes
       ]
     }
