@@ -10,7 +10,7 @@ import { useHead } from '#imports'
  * @param {String} options.type - OpenGraph type (website, article, etc.)
  * @param {Object} options.jsonLd - Schema.org JSON-LD (optional)
  */
-export function useSeoMeta({
+export function useCustomSeoMeta({
   title = 'Light in the Darkness - A Visual Exploration of Horror Cinema',
   description = 'Light in the Darkness explores the thin line between good and evil through 10 unique posters inspired by horror cinema.',
   url = 'https://yourwebsite.com',
