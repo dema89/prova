@@ -122,13 +122,13 @@
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
 
               <picture>
-                <source srcset="/img/wepb/film_red.webp" type="image/webp">
+                <source srcset="/img/webp/film_red.webp" type="image/webp">
                 <source srcset="/img/film_red.jpg" type="image/jpeg">
                 <img src="/img/film_red.jpg" alt="Le Manoir du Diable" loading="lazy" decoding="async" />
               </picture>
 
               <picture>
-                <source srcset="/img/wepb/film_cyan.webp" type="image/webp">
+                <source srcset="/img/webp/film_cyan.webp" type="image/webp">
                 <source srcset="/img/film_cyan.jpg" type="image/jpeg">
                 <img class="box_img_blend" src="/img/film_cyan.jpg" alt="Le Manoir du Diable" loading="lazy" decoding="async" />
               </picture>
@@ -154,13 +154,13 @@
           <div class="story-block" data-index="2">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
               <picture>
-                <source srcset="/img/wepb/dracula_red.webp" type="image/webp">
+                <source srcset="/img/webp/dracula_red.webp" type="image/webp">
                 <source srcset="/img/dracula_red.jpgg" type="image/jpeg">
                 <img src="/img/dracula_red.jpg" alt="Dracula" loading="lazy" decoding="async" />
               </picture>
 
               <picture>
-                <source srcset="/img/wepb/dracula_cyan.webp" type="image/webp">
+                <source srcset="/img/webp/dracula_cyan.webp" type="image/webp">
                 <source srcset="/img/dracula_cyan.jpgg" type="image/jpeg">
                 <img class="box_img_blend" src="/img/dracula_cyan.jpg" alt="Dracula" loading="lazy" decoding="async" />
               </picture>
@@ -193,13 +193,13 @@
 
 
               <picture>
-                <source srcset="/img/wepb/twin_red.webp" type="image/webp">
+                <source srcset="/img/webp/twin_red.webp" type="image/webp">
                 <source srcset="/img/twin_red.jpg" type="image/jpeg">
                 <img src="/img/twin_red.jpg" alt="11 September 2001" loading="lazy" decoding="async" />
               </picture>
 
               <picture>
-                <source srcset="/img/wepb/twin_cyan.webp" type="image/webp">
+                <source srcset="/img/webp/twin_cyan.webp" type="image/webp">
                 <source srcset="/img/twin_cyan.jpg" type="image/jpeg">
                 <img class="box_img_blend" src="/img/twin_cyan.jpg" alt="11 September 2001" loading="lazy" decoding="async" />
               </picture>
@@ -233,13 +233,13 @@ The genre shifted away from monsters and the supernatural, embracing more realis
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
 
               <picture>
-                <source srcset="/img/wepb/tv_red.webp" type="image/webp">
+                <source srcset="/img/webp/tv_red.webp" type="image/webp">
                 <source srcset="/img/tv_red.jpg" type="image/jpeg">
                 <img src="/img/tv_red.jpg" alt="Future of horror film" loading="lazy" decoding="async" />
               </picture>
 
               <picture>
-                <source srcset="/img/wepb/tv_cyan.webp" type="image/webp">
+                <source srcset="/img/webp/tv_cyan.webp" type="image/webp">
                 <source srcset="/img/tv_cyan.jpg" type="image/jpeg">
                 <img class="box_img_blend" src="/img/tv_cyan.jpg" alt="Future of horror film" loading="lazy" decoding="async" />
               </picture>
@@ -284,7 +284,7 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
 
           
            <picture>
-                <source srcset="/img/wepb/bg-photo.webp" type="image/webp">
+                <source srcset="/img/webp/bg-photo.webp" type="image/webp">
                 <source srcset="/img/bg-photo.jpg" type="image/jpeg">
                 <img ref="bgRef" class="bg" src="/img/bg-photo.jpg" alt="fondo" loading="lazy" decoding="async" />
           </picture>
@@ -292,7 +292,7 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
           <h2 ref="insTextRef" class="ispiration-text">INSPIRATION</h2>
 
           <picture>
-              <source srcset="/img/wepb/saul.webp" type="image/webp">
+              <source srcset="/img/webp/saul.webp" type="image/webp">
               <source srcset="/img/saul.png" type="image/jpeg">
               <img ref="saulRef" class="saul" src="/img/saul.png" alt="Saul Bass" loading="lazy" decoding="async" />
           </picture>
@@ -315,7 +315,7 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
 
         <div class="image">
           <picture>
-                <source srcset="/img/wepb/stefan.webp" type="image/webp">
+                <source srcset="/img/webp/stefan.webp" type="image/webp">
                 <source srcset="/img/stefan.jpg" type="image/jpeg">
                 <img alt="Stefan Segmanster" src="/img/stefan.jpg" loading="lazy" decoding="async" />
           </picture>
@@ -326,13 +326,13 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
       <div class="book-container">
 
         <picture>
-          <source srcset="/img/wepb/cane.webp" type="image/webp">
+          <source srcset="/img/webp/cane.webp" type="image/webp">
           <source srcset="/img/cane.png" type="image/png">
           <img ref="bookBlackRef"  alt="cover of Made You Look" class="book book-black" src="/img/cane.png" loading="lazy" decoding="async" />
         </picture>
 
         <picture>
-          <source srcset="/img/wepb/cane_rosso.webp" type="image/webp">
+          <source srcset="/img/webp/cane_rosso.webp" type="image/webp">
           <source srcset="/img/cane_rosso.png" type="image/jpeg">
           <img ref="bookRedRef" alt="cover of Made You Look" class="book book-red" src="/img/cane_rosso.png" loading="lazy" decoding="async" />
         </picture>
