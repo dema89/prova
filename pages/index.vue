@@ -18,7 +18,7 @@
     </div>
 
     <div id="cont_tv">
-      <NuxtImg id="tv" src="/img/tv.png" alt="TV horror" width="920" height="540" format="webp" quality="80" lazy />
+      <NuxtImg id="tv" src="/img/tv.png" alt="TV horror" width="920" height="540" format="webp" quality="80" lazy provider="ipx" />
       <video autoplay muted loop playsinline preload="metadata" loading="lazy">
         <source src="/img/video/red.mp4" type="video/mp4" />
       </video>
