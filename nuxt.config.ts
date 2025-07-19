@@ -41,6 +41,11 @@ export default defineNuxtConfig({
     }
   },
 
+  image: {
+  provider: 'static',
+  format: ['webp', 'avif']
+},
+
   app: {
     baseURL: '/',
     head: {

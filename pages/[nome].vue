@@ -86,7 +86,7 @@ const stripHtml = (htmlString) => {
   return tempDiv.textContent || tempDiv.innerText || ''
 }
 
-import { useSeoMeta } from '~/composables/useSeoMeta'
+import { useSeoMeta } from '~/composables/useCustomSeoMeta'
 
 watchEffect(() => {
   if (movieDetails.value?.titolo) {

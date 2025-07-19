@@ -68,9 +68,9 @@
 
       <!-- --- DOG SECTION --- -->
       <div id="dog_section">
-        <div class="dog-image" ref="dogRef"> 
-            <img src="/img/dog_red.png" alt="Cane rosso" class="dog-red element_filter" />
-            <img src="/img/dog_ciano.png" alt="Cane ciano" class="dog-cyan element_filter" />  
+        <div class="dog-image" ref="dogRef">  
+            <NuxtImg class="dog-red element_filter" src="/img/dog_red.png" alt="Cane rosso" width="906" height="1086" format="webp" quality="80" lazy />  
+            <NuxtImg class="dog-cyan element_filter" src="/img/dog_ciano.png" alt="Cane ciano" width="906" height="1086" format="webp" quality="80" lazy /> 
         </div>
 
         <div
@@ -103,8 +103,8 @@
           
           <div class="story-block" data-index="1">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-              <img src="/img/film_red.jpg" alt="Le Manoir du Diable" />
-              <img class="box_img_blend" src="/img/film_cyan.jpg" alt="Le Manoir du Diable" />
+              <NuxtImg src="/img/film_red.jpg" alt="Le Manoir du Diable" width="644" height="435" format="webp" quality="80" lazy /> 
+              <NuxtImg src="/img/film_cyan.jpg" alt="Le Manoir du Diable" width="644" height="435" format="webp" quality="80" lazy class="box_img_blend" /> 
             </div>
 
             <div class="story-inner">
@@ -126,8 +126,8 @@
        
           <div class="story-block" data-index="2">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-              <img src="/img/dracula_red.jpg" alt="Dracula" />
-              <img class="box_img_blend" src="/img/dracula_cyan.jpg" alt="Dracula" />
+              <NuxtImg src="/img/dracula_red.jpg" alt="Dracula" width="644" height="435" format="webp" quality="80" lazy /> 
+              <NuxtImg src="/img/dracula_cyan.jpg" alt="Dracula" width="644" height="435" format="webp" quality="80" lazy class="box_img_blend" /> 
             </div>
 
             <div class="story-inner">
@@ -376,7 +376,7 @@ const bookBlackRef = ref(null);
 const bookRedRef = ref(null);
 
 
-import { useSeoMeta } from '~/composables/useSeoMeta'
+import { useSeoMeta } from '~/composables/useCustomSeoMeta'
 
 useSeoMeta({
   title: 'Light in the Darkness - A Visual Exploration of Horror Cinema',
