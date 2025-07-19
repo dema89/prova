@@ -26,8 +26,8 @@
   <div class="filters" :ref="registerPulseRef" :class="[{ header_blend: headerBlend }]">
     <div :class="{ disabled: neutral }">
       <div class="choseText" :class="{ good: good }">Good</div>
-      <label class="switch">
-        <input type="checkbox" v-model="status" name="goodevilfilter" @change="goodevil" />
+      <label for="filter_an_goo" class="switch">
+        <input type="checkbox" v-model="status" name="goodevilfilter" id="filter_an_goo" @change="goodevil" />
         <span class="slider round"></span>
       </label>
       <div class="choseText" :class="{ evil: evil }">Evil</div>
@@ -35,8 +35,8 @@
 
     <div :class="{ disabled: good || evil }">
       <div class="choseText" :class="{ neutral: neutral }">Neutral</div>
-      <label class="switch">
-        <input type="checkbox" name="neutralfilter" v-model="neutral" @change="neutralchose" />
+      <label for="filter_an_neu" class="switch">
+        <input type="checkbox" name="neutralfilter" id="filter_an_neu" v-model="neutral" @change="neutralchose" />
         <span class="slider round"></span>
       </label>
     </div>
