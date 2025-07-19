@@ -2,18 +2,25 @@ import { defineNuxtConfig } from 'nuxt/config'
 import fs from 'fs'
 import path from 'path'
 
+// Caricamento rotte dinamiche dal JSON
 const jsonPath = path.resolve('./public/data/data.json')
-let filmData: { nome: string }[] = []
+let filmRoutes: string[] = []
 
 try {
-  filmData = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'))
-} catch (e) {
-  console.warn('⚠️ Impossibile leggere data.json', e)
+  const json = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'))
+
+  // Assicurati che ogni voce abbia un campo 'nome'
+  if (Array.isArray(json)) {
+    filmRoutes = json
+      .filter((item): item is { nome: string } => typeof item.nome === 'string')
+      .map((film) => `/${film.nome}`)
+  }
+} catch (error) {
+  console.warn('⚠️ Impossibile leggere public/data/data.json. Nessuna route dinamica generata.')
 }
 
-const filmRoutes = (filmData || [])
-  .filter((item) => typeof item.nome === 'string')
-  .map((film) => `/${film.nome}`)
+// Aggiunge manualmente la homepage `/`
+filmRoutes = ['/', ...filmRoutes]
 
 export default defineNuxtConfig({
   css: ['~/assets/styles/main.css'],
@@ -24,21 +31,8 @@ export default defineNuxtConfig({
     }
   },
 
-  ssr: true,
-
-  nitro: {
-    preset: 'static',
-    prerender: {
-     
-      routes: [
-        '/index',        // Home page
-        ...filmRoutes
-      ]
-    }
-  },
-
   app: {
-    baseURL: '/',
+    baseURL: '/prova/',
     head: {
       title: 'Light in the Darkness - A project by Studio K95',
       meta: [
@@ -47,6 +41,15 @@ export default defineNuxtConfig({
     }
   },
 
-  compatibilityDate: '2024-11-22',
-  modules: ['@nuxt/image']
+  ssr: true,
+
+  nitro: {
+    prerender: {
+      routes: filmRoutes
+    }
+  },
+
+  modules: ['@nuxt/image'],
+
+  compatibilityDate: '2024-11-22'
 })
