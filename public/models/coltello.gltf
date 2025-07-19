@@ -1,0 +1,257 @@
+{
+    "asset": {
+        "copyright": "2024 (c) Adobe Inc.",
+        "generator": "Adobe Substance 3D Stager - 3b65cae5d66550310f3fa94441098965a88f7a29",
+        "version": "2.0"
+    },
+    "accessors": [
+        {
+            "bufferView": 0,
+            "componentType": 5126,
+            "count": 828,
+            "type": "VEC3",
+            "max": [
+                0.00022403598995879292,
+                0.00019670100300572813,
+                0.0016466000815853477
+            ],
+            "min": [
+                -0.0002259640023112297,
+                -0.000004701009856944438,
+                -0.0017033998155966402
+            ]
+        },
+        {
+            "bufferView": 1,
+            "componentType": 5126,
+            "count": 828,
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "componentType": 5126,
+            "count": 828,
+            "type": "VEC4"
+        },
+        {
+            "bufferView": 3,
+            "componentType": 5126,
+            "count": 828,
+            "type": "VEC2"
+        },
+        {
+            "bufferView": 4,
+            "componentType": 5125,
+            "count": 4104,
+            "type": "SCALAR",
+            "max": [
+                827.0
+            ],
+            "min": [
+                0.0
+            ]
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteOffset": 0,
+            "byteLength": 9936,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 9936,
+            "byteLength": 9936,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 19872,
+            "byteLength": 13248,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 33120,
+            "byteLength": 6624,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 39744,
+            "byteLength": 16416,
+            "target": 34963
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 56160,
+            "uri": "coltello_binary.bin"
+        }
+    ],
+    "cameras": [
+        {
+            "perspective": {
+                "znear": 0.00001746170710248407,
+                "yfov": 0.3995896875858307,
+                "zfar": 2.0,
+                "aspectRatio": 1.7777777910232545
+            },
+            "type": "perspective",
+            "name": "render_camera"
+        },
+        {
+            "perspective": {
+                "znear": 0.00001746170710248407,
+                "yfov": 0.3995896875858307,
+                "zfar": 2.0,
+                "aspectRatio": 1.7777777910232545
+            },
+            "type": "perspective",
+            "name": "render_camera2"
+        }
+    ],
+    "materials": [
+        {
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "metallicFactor": 0.0,
+                "roughnessFactor": 0.30000001192092898
+            },
+            "name": "Materiale predefinito",
+            "doubleSided": true
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Default",
+            "primitives": [
+                {
+                    "attributes": {
+                        "POSITION": 0,
+                        "NORMAL": 1,
+                        "TANGENT": 2,
+                        "TEXCOORD_0": 3
+                    },
+                    "indices": 4,
+                    "material": 0
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "name": "working_cam_n3d"
+        },
+        {
+            "children": [
+                2
+            ],
+            "translation": [
+                0.0,
+                0.13983117043972016,
+                -1.19209286886246e-9
+            ],
+            "scale": [
+                1.0000001192092896,
+                1.0,
+                1.0
+            ],
+            "name": "coltello"
+        },
+        {
+            "children": [
+                3
+            ],
+            "translation": [
+                0.004828387405723333,
+                -0.14994147419929505,
+                -0.0018740777159109712
+            ],
+            "rotation": [
+                0.0,
+                0.333261102437973,
+                0.0,
+                0.9428345561027527
+            ],
+            "name": "coltello"
+        },
+        {
+            "translation": [
+                0.00032433599699288607,
+                0.19183377921581269,
+                0.00025131067377515137
+            ],
+            "rotation": [
+                -0.6960428357124329,
+                0.08457531034946442,
+                0.0706874430179596,
+                0.7094889879226685
+            ],
+            "scale": [
+                99.99991607666016,
+                99.99986267089844,
+                99.99988555908203
+            ],
+            "mesh": 0,
+            "name": "Default"
+        },
+        {
+            "translation": [
+                0.550000011920929,
+                0.3199999928474426,
+                0.550000011920929
+            ],
+            "rotation": [
+                -0.12059047073125839,
+                0.379409521818161,
+                0.04995020851492882,
+                0.9159756302833557
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                0.9999999403953552
+            ],
+            "camera": 0,
+            "name": "Videocamera"
+        },
+        {
+            "translation": [
+                0.550000011920929,
+                0.3199999928474426,
+                0.550000011920929
+            ],
+            "rotation": [
+                -0.12059047073125839,
+                0.379409521818161,
+                0.04995020851492882,
+                0.9159756302833557
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                0.9999999403953552
+            ],
+            "camera": 1,
+            "name": "Videocamera 2"
+        }
+    ],
+    "scenes": [
+        {
+            "nodes": [
+                1,
+                4,
+                5
+            ],
+            "name": "scene"
+        }
+    ],
+    "scene": 0
+}
