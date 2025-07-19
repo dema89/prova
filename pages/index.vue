@@ -153,10 +153,8 @@
 
           <div class="story-block" data-index="3">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-            
-              <img src="/img/twin_red.jpg" alt="11 September 2001" />
-              <img class="box_img_blend" src="/img/twin_cyan.jpg" alt="11 September 2001" />
-
+              <NuxtImg src="/img/twin_red.jpg" alt="11 September 2001" width="644" height="435" format="webp" quality="80" lazy /> 
+              <NuxtImg src="/img/twin_cyan.jpg" alt="11 September 2001" width="644" height="435" format="webp" quality="80" lazy class="box_img_blend" />
             </div>
 
             <div class="story-inner">
@@ -184,10 +182,8 @@ The genre shifted away from monsters and the supernatural, embracing more realis
         
           <div class="story-block" data-index="4">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-              
-              <img src="/img/tv_red.jpg" alt="Future of horror film" />
-              <img class="box_img_blend" src="/img/tv_cyan.jpg" alt="Future of horror film" />
-           
+              <NuxtImg src="/img/tv_red.jpg" alt="Future of horror film" width="644" height="435" format="webp" quality="80" lazy /> 
+              <NuxtImg src="/img/tv_cyan.jpg" alt="Future of horror film" width="644" height="435" format="webp" quality="80" lazy class="box_img_blend" />
             </div>
 
             <div class="story-inner">
@@ -225,9 +221,15 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
         </div>
 
         <div class="final-content">
-          <img ref="bgRef" src="/img/bg-photo.jpg" class="bg" alto="fondo" />
+
+          <img ref="bgRef" class="bg" alt="fondo" src="/img/bg-photo.jpg" loading="lazy" /> 
+
           <h2 ref="insTextRef" class="ispiration-text">INSPIRATION</h2>
-          <img ref="saulRef" src="/img/saul.png" class="saul" alt="Saul Bass" />
+
+   
+
+          <img ref="saulRef" class="saul" alt="Saul Bass" src="/img/saul.png" loading="lazy" /> 
+
           <div ref="saulTextRef" class="saul_text">
             <h3>Saul Bass</h3>
             <p>Saul Bass’s approach to cinematic intros inspired my project, guiding me in the creation of a visual language that merges graphic design and film. His ability to distill a film’s essence into just a few elements deeply influenced me, pushing me to use shapes and colors to evoke powerful atmospheres and to turn simplicity into a compelling storytelling tool.</p>
@@ -245,13 +247,13 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
         </div>    
 
         <div class="image">
-          <img alt="Stefan Segmanster" src="/public/img/stefan.jpg">
+          <NuxtImg alt="Stefan Segmanster" src="/img/stefan.jpg" width="287" height="388" format="webp" quality="80" lazy /> 
         </div>
       </div>
 
       <div class="book-container">
-        <img ref="bookBlackRef" src="/img/cane.png" alt="cover of Made You Look" class="book book-black" />
-        <img ref="bookRedRef" src="/img/cane_rosso.png" alt="cover of Made You Look" class="book book-red" />
+        <img ref="bookBlackRef" alt="cover of Made You Look" class="book book-black" src="/img/cane.png"  loading="lazy"/> 
+        <img ref="bookRedRef" alt="cover of Made You Look" class="book book-red" src="/img/cane_rosso.png"  loading="lazy"/> 
       </div>
     </section>
 
@@ -275,8 +277,9 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
           <NuxtLink :href="`/${movie.nome}`" class="link_poster click_poster" @click="clickmenu(index)" :ref="addlink"><span>VIEW POSTER</span></NuxtLink>
           <div>
             <div class="immagine_film" data-color-good="yellow" data-color-evil="magenta" :class="{ good: good, evil: evil, neutral:neutral }">
-              <img :src="movie.cover" :alt="movie.nome" :ref="el => addImageRef(index, el)">
-              <img :src="movie.cover2" :alt="movie.nome" :ref="el => addImageRef(index, el)">
+
+              <img :alt="movie.nome" :src="movie.cover" :ref="el => addImageRef(index, el)"  loading="lazy"/> 
+              <img :alt="movie.nome" :src="movie.cover2" :ref="el => addImageRef(index, el)" loading="lazy"/> 
             </div>
 
             <div class="data_film">
