@@ -1,3 +1,4 @@
+
 import { defineNuxtConfig } from 'nuxt/config'
 import fs from 'fs'
 import path from 'path'
@@ -28,10 +29,16 @@ export default defineNuxtConfig({
     }
   },
 
-  ssr:true,
+  ssr: true,
 
   nitro: {
-    preset: 'static' 
+    preset: 'static',
+    prerender: {
+      routes: [
+        '/',       // Home page
+        ...filmRoutes // Pagine dinamiche dal JSON
+      ]
+    }
   },
 
   app: {
