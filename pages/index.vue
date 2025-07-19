@@ -376,9 +376,9 @@ const bookBlackRef = ref(null);
 const bookRedRef = ref(null);
 
 
-import { useSeoMeta } from '~/composables/useSeoMeta'
+import { useCustomSeoMeta } from '~/composables/useCustomSeoMeta'
 
-useSeoMeta({
+useCustomSeoMeta({
   title: 'Light in the Darkness - A Visual Exploration of Horror Cinema',
   description: 'An immersive visual project exploring the eternal conflict between good and evil in horror cinema through ten unique posters.',
   url: 'https://yourwebsite.com',
