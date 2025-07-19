@@ -30,7 +30,7 @@ export default defineNuxtConfig({
     preset: 'static',
     prerender: {
       routes: [
-        '/',       // Home page
+        '/index',       // Home page
         ...filmRoutes
       ]
     }
