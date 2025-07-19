@@ -19,9 +19,6 @@ try {
   console.warn('⚠️ Impossibile leggere public/data/data.json. Nessuna route dinamica generata.')
 }
 
-// Aggiunge manualmente la homepage `/`
-filmRoutes = ['/', ...filmRoutes]
-
 export default defineNuxtConfig({
   css: ['~/assets/styles/main.css'],
 
@@ -41,15 +38,11 @@ export default defineNuxtConfig({
     }
   },
 
-  ssr: true,
-
   nitro: {
     prerender: {
       routes: filmRoutes
     }
   },
-
-  modules: ['@nuxt/image'],
 
   compatibilityDate: '2024-11-22'
 })
