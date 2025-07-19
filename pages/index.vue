@@ -75,8 +75,19 @@
       <!-- --- DOG SECTION --- -->
       <div id="dog_section">
         <div class="dog-image" ref="dogRef"> 
-            <img src="/img/dog_red.png" alt="Cane rosso" class="dog-red element_filter" />
-            <img src="/img/dog_ciano.png" alt="Cane ciano" class="dog-cyan element_filter" />  
+
+          <picture>
+            <source srcset="/img/webp/dog_red.png" type="image/webp">
+            <source srcset="/img/dog_red.png" type="image/jpeg">
+            <img class="dog-red element_filter" src="/img/dog_red.png" alt="Cane rosso" loading="lazy" decoding="async" />
+          </picture>
+
+          <picture>
+            <source srcset="/img/webp/dog_red.png" type="image/webp">
+            <source srcset="/img/dog_red.png" type="image/jpeg">
+            <img class="dog-cyan element_filter" src="/img/dog_ciano.png" alt="Cane ciano" loading="lazy" decoding="async" />
+          </picture>
+
         </div>
 
         <div
