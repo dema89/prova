@@ -2,275 +2,191 @@
   <div id="page">
     <section id="cont_schede" class="schede_page" ref="heroRef">
       <div class="scheda fix page">
-        <div class="immagine_film_page"  :class="{ good: good, evil: evil, neutral:neutral }">
-           <h1 id="titolo_p_film" v-html="movieDetails.titolo"  class="split-text" :ref="addHeroSplitRef"></h1>
-          
-           <a href="#" id="scroll_down" ref="scrollDownRef">
+        <div class="immagine_film_page">
+          <img id="cover_img" fetchpriority="high" :src="movieDetails.cover" />
+           <img id="cover_img_blend" fetchpriority="high" :src="movieDetails.cover2" />
+          <h1 id="titolo_p_film" v-html="movieDetails.titolo" class="split"></h1>
+          <a href="#" id="scroll_down">
             <svg width="10" height="27" viewBox="0 0 10 27" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M3.92449 -4.83788e-08L3.86728 19.3292L-1.14844e-06 19.3732L4.81693 27L10 19.3181L5.85812 19.3402L5.91533 0.0110229L3.92449 -4.83788e-08Z"
                 fill="white" />
             </svg>
           </a>
-          <img id="cover_img" fetchpriority="high" :src="movieDetails.cover" />
-           <img id="cover_img_blend" fetchpriority="high" :src="movieDetails.cover2" />
-         
         </div>
       </div>
     </section>
 
-    <section class="text_film" ref="textFilmRef">
+    <section class="text_film">
       <div id="data_poster">
         <div>
-          <div>
-            <h2 :ref="addSplitRef">{{ movieDetails.sottotitolo }}</h2>
-            <div v-html="movieDetails.descrizione_1"></div>
-          </div>
-          
+          <h2 :ref="setRef('sottotitolo')">{{ movieDetails.sottotitolo }}</h2>
           <ul>
             <li><label>Director</label> {{ movieDetails.regista }}</li>
             <li><label>Year</label> {{ movieDetails.anno }}</li>
             <li><label>Product house</label> {{ movieDetails.casa }}</li>
+            <li>
+              <NuxtLink href="/">Home</NuxtLink>
+            </li>
           </ul>
         </div>
+        <div v-html="movieDetails.descrizione_1"></div>
       </div>
 
-     <div id="cont_poster" class="element_filter" ref="container" @mouseenter="onMouseEnterHandler" @mouseleave="onMouseLeaveHandler" @mousemove="onMouseMoveHandler">
-        <div id="cont_poster_full" ref="posterWrapper" class="immagine_film" data-color-good="yellow" data-color-evil="magenta">
-          <img :alt="movieDetails.titolo" loading="lazy" :src="movieDetails.poster" />
-          <img :alt="movieDetails.titolo" loading="lazy" :src="movieDetails.poster2" />
-        </div>
+      <div id="cont_poster" ref="container" @mouseenter="onMouseEnterHandler" @mouseleave="onMouseLeaveHandler" @mousemove="onMouseMoveHandler">
+        <img width="512" height="725" :alt="movieDetails.titolo" loading="lazy" ref="inner" :src="movieDetails.poster" />
         <div id="light-spot" ref="lightSpot"></div>
       </div>
     </section>
-  
 
     <Carosellofilm />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick, watch, onUnmounted, inject, computed } from 'vue'
-import { useRoute, useHead } from '#app'
+import { ref, onMounted, nextTick } from "vue";
+import SplitType from "split-type";
 
-const { $gsap, $movies, $splitTextAnimation, $splitTextAnimationImmediate, $lenis } = useNuxtApp()
-const { params } = useRoute()
+const { $gsap, $splitTextAnimation, $movies } = useNuxtApp();
+const { params } = useRoute();
 
-const preloadCompleted = useState('preload-completed')
-const transitionActive = useState('transition-active')
-const showScrollDown = ref(false)
+const movies = ref([]);
+const movieDetails = ref({});
+const movieRefs = ref({});
 
-const movies = ref([])
-const movieDetails = ref({})
-const nome = params.nome
+const container = ref();
+const inner = ref();
+const lightSpot = ref();
 
-const good = inject('good')
-const evil = inject('evil')
-const neutral = inject('neutral')
+const nome = params.nome;
 
-const container = ref()
-const lightSpot = ref()
-const posterWrapper = ref()
-const scrollDownRef = ref(null)
-const textFilmRef = ref(null)
-const splitRefs = ref([])
-const heroRefs = ref([])
+// Raccolta dinamica degli elementi da animare
+const setRef = (key) => {
+  return (el) => {
+    if (el) {
+      movieRefs.value[key] = el;
+    }
+  };
+};
 
-
-const addSplitRef = (el) => el && !splitRefs.value.includes(el) && splitRefs.value.push(el)
-const addHeroSplitRef = (el) => el && !heroRefs.value.includes(el) && heroRefs.value.push(el)
-
-const stripHtml = (htmlString) => {
-  const tempDiv = document.createElement('div')
-  tempDiv.innerHTML = htmlString || ''
-  return tempDiv.textContent || tempDiv.innerText || ''
-}
-
-import { useCustomSeoMeta } from '~/composables/useCustomSeoMeta'
-
-watchEffect(() => {
-  if (movieDetails.value?.titolo) {
-    useCustomSeoMeta({
-      title: `${stripHtml(movieDetails.value.titolo)} - Light in the Darkness`,
-      description: movieDetails.value.descrizione_short || 'A tribute poster inspired by horror cinema.',
-      url: `https://yourwebsite.com/${movieDetails.value.nome}`,
-      image: movieDetails.value.poster || 'https://yourwebsite.com/img/share-image-default.jpg',
-      type: 'article',
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "VisualArtwork",
-        "name": stripHtml(movieDetails.value.titolo),
-        "creator": {
-          "@type": "Organization",
-          "name": "Studio K95"
-        },
-        "genre": "Horror",
-        "image": movieDetails.value.poster || '',
-        "url": `https://yourwebsite.com/${movieDetails.value.nome}`,
-        "description": movieDetails.value.descrizione_short || 'A tribute poster inspired by horror cinema.'
-      }
-    })
-  }
-})
-
-const mouse = {
+// Mouse effect per effetto 3D sul poster
+const mouse = ref({
   _x: 0,
   _y: 0,
   x: 0,
   y: 0,
   updatePosition(event) {
-    this.x = event.clientX - this._x
-    this.y = (event.clientY - this._y) * -1
+    const e = event || window.event;
+    this.x = e.clientX - this._x;
+    this.y = (e.clientY - this._y) * -1;
   },
   setOrigin(el) {
-    const rect = el.getBoundingClientRect()
-    this._x = rect.left + rect.width / 2
-    this._y = rect.top + rect.height / 2
-  }
-}
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    this._x = rect.left + rect.width / 2;
+    this._y = rect.top + rect.height / 2;
+  },
+});
 
-let counter = 0
-const updateRate = 10
-const isTimeToUpdate = () => counter++ % updateRate === 0
+let counter = 0;
+const updateRate = 10;
+const isTimeToUpdate = () => counter++ % updateRate === 0;
 
 const updateTransformStyle = (x, y) => {
-  if (!posterWrapper.value || !lightSpot.value) return
+  if (!inner.value || !lightSpot.value) return;
 
-  posterWrapper.value.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`
-  posterWrapper.value.style.boxShadow = `${-y * 20}px ${-x * 20}px 80px 5px rgba(255, 0, 0, 0.3)`
+  const style = `rotateX(${x}deg) rotateY(${y}deg)`;
+  inner.value.style.transform = style;
 
-  const lightX = Math.min(Math.max(50 + y * 50, 10), 90)
-  const lightY = Math.min(Math.max(50 - x * 50, 10), 90)
-  lightSpot.value.style.left = `${lightX}%`
-  lightSpot.value.style.top = `${lightY}%`
-  lightSpot.value.style.opacity = 1
-}
+  const lightX = Math.min(Math.max(50 + y * 50, 10), 90);
+  const lightY = Math.min(Math.max(50 - x * 50, 10), 90);
+
+  lightSpot.value.style.left = `${lightX}%`;
+  lightSpot.value.style.top = `${lightY}%`;
+  lightSpot.value.style.opacity = 1;
+
+  inner.value.style.boxShadow = `${-y * 20}px ${-x * 20}px 80px 5px rgba(255, 0, 0, 0.3)`;
+};
 
 const update = (event) => {
-  mouse.updatePosition(event)
-  const x = (mouse.y / container.value.offsetHeight / 2).toFixed(2)
-  const y = (mouse.x / container.value.offsetWidth / 2).toFixed(2)
-  updateTransformStyle(x, y)
-}
+  mouse.value.updatePosition(event);
+  const x = (mouse.value.y / inner.value.offsetHeight / 2).toFixed(2);
+  const y = (mouse.value.x / inner.value.offsetWidth / 2).toFixed(2);
+  updateTransformStyle(x, y);
+};
 
 const onMouseEnterHandler = (event) => {
-  mouse.setOrigin(container.value)
-  update(event)
-}
+  mouse.value.setOrigin(container.value);
+  update(event);
+};
 
 const onMouseLeaveHandler = () => {
-  if (posterWrapper.value) {
-    posterWrapper.value.style.transform = ''
-    posterWrapper.value.style.boxShadow = ''
+  if (inner.value && lightSpot.value) {
+    inner.value.style.transform = "";
+    lightSpot.value.style.opacity = 0;
   }
-  if (lightSpot.value) lightSpot.value.style.opacity = 0
-}
+};
 
 const onMouseMoveHandler = (event) => {
-  if (isTimeToUpdate()) update(event)
-}
-
-const scrollToTextFilm = () => {
-  if (textFilmRef.value && $lenis) {
-    $lenis.scrollTo(textFilmRef.value, {
-      duration: 1.4,
-      easing: (t) => 1 - Math.pow(1 - t, 3),
-    })
+  if (isTimeToUpdate()) {
+    update(event);
   }
-}
+};
 
-let scrollTriggers = []
+// OnMounted
+onMounted(async () => {
+  mouse.value.setOrigin(container.value);
+  movies.value = $movies;
 
-const initScrollAnimations = () => {
-  if (!$gsap) return
+  // Trova dettagli film
+  const movie = movies.value.find((movie) => movie.nome === nome);
+  movieDetails.value = movie;
 
-  scrollTriggers.push(
-    $gsap.ScrollTrigger.create({
+  // Scroll animazioni
+  $gsap.to("#scroll_down", {
+    opacity: 0,
+    scrollTrigger: {
       trigger: "#page",
-      scroller: "#main",
-      start: "10% top",
-      end: "bottom top",
-      scrub: true,
-      onEnter: () => $gsap.to(scrollDownRef.value, { opacity: 0, duration: 1, filter: "blur(10px)" }),
-      onLeaveBack: () => $gsap.to(scrollDownRef.value, { opacity: 1, duration: 1, filter: "blur(0px)" })
-    }),
+      start: "top top",
+      end: "20% top",
+      scrub: 1,
+    },
+  });
 
-    $gsap.to(".immagine_film_page img", {
-      y: "100px",
+  $gsap.to(".immagine_film_page img", {
+    y: "100px",
+    scrollTrigger: {
+      trigger: "#page",
+      start: "top top",
+      end: "40% top",
+      scrub: 1,
+    },
+  });
+
+  nextTick(() => {
+    // H1 con SplitType (manuale, non incluso nel plugin)
+    new SplitType("#titolo_p_film", { types: "words, chars" });
+
+    $gsap.to("#titolo_p_film .char", {
+      y: 0,
+      duration: 0.5,
+      stagger: { amount: 0.5 },
+    });
+
+    $gsap.to("#titolo_p_film .char", {
+      opacity: 0,
+      filter: "blur(10px)",
+      stagger: { amount: 0.5 },
       scrollTrigger: {
         trigger: "#page",
-        start: "top top",
-        end: "40% top",
-        scroller: '#main',
+        start: "5% top",
+        end: "30% top",
         scrub: 1,
       },
-    }),
+    });
 
-    $gsap.fromTo("#titolo_p_film",
-      { opacity: 1, filter: "blur(0px)" },
-      {
-        opacity: 0,
-        filter: "blur(100px)",
-        scrollTrigger: {
-          trigger: "#page",
-          start: "10% top",
-          end: "bottom top",
-          scroller: '#main',
-          scrub: 1,
-        },
-      }
-    )
-  )
-}
-
-const tryShowScrollDown = () => {
-  if (preloadCompleted.value && !transitionActive.value) showScrollDown.value = true
-}
-
-watch([preloadCompleted, transitionActive], tryShowScrollDown, { immediate: true })
-
-watch([preloadCompleted, transitionActive], async ([preload, transizione]) => {
-  if (preload && !transizione && heroRefs.value.length) {
-    await nextTick()
-
-    const scrollTop = Math.round(window.scrollY || window.pageYOffset || document.documentElement.scrollTop)
-    if (scrollTop > 100 && $lenis) {
-      await $lenis.scrollTo(0, { immediate: true })
-      await nextTick()
-    }
-
-    if ($gsap && $gsap.ScrollTrigger) {
-      $gsap.ScrollTrigger.refresh()
-    }
-
-    $splitTextAnimationImmediate([...heroRefs.value])
-  }
-}, { immediate: true })
-
-
-onMounted(() => {
-  if (process.client) {
-    movies.value = $movies
-    movieDetails.value = movies.value.find((m) => m.nome === nome) || {}
-
-    mouse.setOrigin(container.value)
-
-    watch(showScrollDown, (val) => {
-      if (val && scrollDownRef.value) {
-        $gsap.to(scrollDownRef.value, { opacity: 1, duration: 0.5, ease: "power2.out" })
-      }
-    })
-
-    initScrollAnimations()
-
-    nextTick(() => {
-      $splitTextAnimation(splitRefs.value)
-    })
-  }
-})
-
-onUnmounted(() => {
-  scrollTriggers.forEach(t => t.scrollTrigger?.kill())
-  scrollTriggers = []
-})
+    /* Split text */
+    $splitTextAnimation(Object.values(movieRefs.value));
+  });
+});
 </script>
