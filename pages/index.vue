@@ -18,7 +18,7 @@
     </div>
 
     <div id="cont_tv">
-      <NuxtImg id="tv" src="/img/tv.png" alt="TV horror" width="920" height="540" format="webp" quality="80" lazy provider="ipx" />
+      <img id="tv" src="/img/tv.png" alt="TV horror" loading="lazy" decoding="async" />
       <video autoplay muted loop playsinline preload="metadata" loading="lazy">
         <source src="/img/video/red.mp4" type="video/mp4" />
       </video>
@@ -68,9 +68,9 @@
 
       <!-- --- DOG SECTION --- -->
       <div id="dog_section">
-        <div class="dog-image" ref="dogRef">  
-            <NuxtImg class="dog-red element_filter" src="/img/dog_red.png" alt="Cane rosso" width="906" height="1086" format="webp" quality="80" lazy />  
-            <NuxtImg class="dog-cyan element_filter" src="/img/dog_ciano.png" alt="Cane ciano" width="906" height="1086" format="webp" quality="80" lazy /> 
+        <div class="dog-image" ref="dogRef"> 
+            <img src="/img/dog_red.png" alt="Cane rosso" class="dog-red element_filter" />
+            <img src="/img/dog_ciano.png" alt="Cane ciano" class="dog-cyan element_filter" />  
         </div>
 
         <div
@@ -103,8 +103,8 @@
           
           <div class="story-block" data-index="1">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-              <NuxtImg src="/img/film_red.jpg" alt="Le Manoir du Diable" width="644" height="435" format="webp" quality="80" lazy /> 
-              <NuxtImg src="/img/film_cyan.jpg" alt="Le Manoir du Diable" width="644" height="435" format="webp" quality="80" lazy class="box_img_blend" /> 
+              <img src="/img/film_red.jpg" alt="Le Manoir du Diable" />
+              <img class="box_img_blend" src="/img/film_cyan.jpg" alt="Le Manoir du Diable" />
             </div>
 
             <div class="story-inner">
@@ -126,7 +126,8 @@
        
           <div class="story-block" data-index="2">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-              
+              <img src="/img/dracula_red.jpg" alt="Dracula" />
+              <img class="box_img_blend" src="/img/dracula_cyan.jpg" alt="Dracula" />
             </div>
 
             <div class="story-inner">
@@ -152,8 +153,10 @@
 
           <div class="story-block" data-index="3">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-              <NuxtImg src="/img/twin_red.jpg" alt="11 September 2001" width="644" height="435" format="webp" quality="80" lazy /> 
-              <NuxtImg src="/img/twin_cyan.jpg" alt="11 September 2001" width="644" height="435" format="webp" quality="80" lazy class="box_img_blend" />
+            
+              <img src="/img/twin_red.jpg" alt="11 September 2001" />
+              <img class="box_img_blend" src="/img/twin_cyan.jpg" alt="11 September 2001" />
+
             </div>
 
             <div class="story-inner">
@@ -181,8 +184,10 @@ The genre shifted away from monsters and the supernatural, embracing more realis
         
           <div class="story-block" data-index="4">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-              <NuxtImg src="/img/tv_red.jpg" alt="Future of horror film" width="644" height="435" format="webp" quality="80" lazy /> 
-              <NuxtImg src="/img/tv_cyan.jpg" alt="Future of horror film" width="644" height="435" format="webp" quality="80" lazy class="box_img_blend" />
+              
+              <img src="/img/tv_red.jpg" alt="Future of horror film" />
+              <img class="box_img_blend" src="/img/tv_cyan.jpg" alt="Future of horror film" />
+           
             </div>
 
             <div class="story-inner">
@@ -220,15 +225,9 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
         </div>
 
         <div class="final-content">
-
-          <img ref="bgRef" class="bg" alt="fondo" src="/img/bg-photo.jpg" loading="lazy" /> 
-
+          <img ref="bgRef" src="/img/bg-photo.jpg" class="bg" alto="fondo" />
           <h2 ref="insTextRef" class="ispiration-text">INSPIRATION</h2>
-
-   
-
-          <img ref="saulRef" class="saul" alt="Saul Bass" src="/img/saul.png" loading="lazy" /> 
-
+          <img ref="saulRef" src="/img/saul.png" class="saul" alt="Saul Bass" />
           <div ref="saulTextRef" class="saul_text">
             <h3>Saul Bass</h3>
             <p>Saul Bass’s approach to cinematic intros inspired my project, guiding me in the creation of a visual language that merges graphic design and film. His ability to distill a film’s essence into just a few elements deeply influenced me, pushing me to use shapes and colors to evoke powerful atmospheres and to turn simplicity into a compelling storytelling tool.</p>
@@ -246,13 +245,13 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
         </div>    
 
         <div class="image">
-          <NuxtImg alt="Stefan Segmanster" src="/img/stefan.jpg" width="287" height="388" format="webp" quality="80" lazy /> 
+          <img alt="Stefan Segmanster" src="/public/img/stefan.jpg">
         </div>
       </div>
 
       <div class="book-container">
-        <img ref="bookBlackRef" alt="cover of Made You Look" class="book book-black" src="/img/cane.png"  loading="lazy"/> 
-        <img ref="bookRedRef" alt="cover of Made You Look" class="book book-red" src="/img/cane_rosso.png"  loading="lazy"/> 
+        <img ref="bookBlackRef" src="/img/cane.png" alt="cover of Made You Look" class="book book-black" />
+        <img ref="bookRedRef" src="/img/cane_rosso.png" alt="cover of Made You Look" class="book book-red" />
       </div>
     </section>
 
@@ -276,9 +275,8 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
           <NuxtLink :href="`/${movie.nome}`" class="link_poster click_poster" @click="clickmenu(index)" :ref="addlink"><span>VIEW POSTER</span></NuxtLink>
           <div>
             <div class="immagine_film" data-color-good="yellow" data-color-evil="magenta" :class="{ good: good, evil: evil, neutral:neutral }">
-
-              <img :alt="movie.nome" :src="movie.cover" :ref="el => addImageRef(index, el)"  loading="lazy"/> 
-              <img :alt="movie.nome" :src="movie.cover2" :ref="el => addImageRef(index, el)" loading="lazy"/> 
+              <img :src="movie.cover" :alt="movie.nome" :ref="el => addImageRef(index, el)">
+              <img :src="movie.cover2" :alt="movie.nome" :ref="el => addImageRef(index, el)">
             </div>
 
             <div class="data_film">
@@ -378,9 +376,9 @@ const bookBlackRef = ref(null);
 const bookRedRef = ref(null);
 
 
-import { useCustomSeoMeta } from '~/composables/useCustomSeoMeta'
+import { useSeoMeta } from '~/composables/useSeoMeta'
 
-useCustomSeoMeta({
+useSeoMeta({
   title: 'Light in the Darkness - A Visual Exploration of Horror Cinema',
   description: 'An immersive visual project exploring the eternal conflict between good and evil in horror cinema through ten unique posters.',
   url: 'https://yourwebsite.com',
@@ -461,7 +459,7 @@ function pinKnifeScroll() {
   });
 }
 
-function initKnifeScene(canvas, base) {
+function initKnifeScene(canvas) {
   if (!canvas) return;
 
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
@@ -474,7 +472,11 @@ function initKnifeScene(canvas, base) {
   light.position.set(0, 1, 2);
   scene.add(light);
 
+  const config = useRuntimeConfig();
+  const base = config.app.baseURL || '/';
+
   let knifeModel = null;
+
   const loader = new GLTFLoader();
   loader.load(`${base}models/coltello.gltf`, (gltf) => {
     knifeModel = gltf.scene;
@@ -502,13 +504,35 @@ function initKnifeScene(canvas, base) {
       end: 'bottom top',
       scrub: true,
       onUpdate: (self) => {
-        if (knifeModel) knifeModel.rotation.y = self.progress * Math.PI * 2;
+        if (knifeModel) {
+          knifeModel.rotation.y = self.progress * Math.PI * 2;
+        }
       }
     }
   });
-}
 
-function initSnakeShaderEffect(base, canvasId = 'image-canvas') {
+  const resizeRenderer = () => {
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+  };
+
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(resizeRenderer, 2000);
+  });
+}
+/******** END - coltello 3D *********/
+
+/******** 02 - Immagine intro ondulata *********/
+function initSnakeShaderEffect(canvasId = 'image-canvas') {
+  const { $lenis } = useNuxtApp();
+  const config = useRuntimeConfig();
+  const base = config.app.baseURL || '/';
+
   const canvas = document.getElementById(canvasId);
   if (!canvas) throw new Error(`Canvas not found: #${canvasId}`);
 
@@ -537,7 +561,10 @@ function initSnakeShaderEffect(base, canvasId = 'image-canvas') {
     }
   `;
 
-  const uniforms = { u_texture: { value: null }, u_scroll: { value: 0.0 } };
+  const uniforms = {
+    u_texture: { value: null },
+    u_scroll: { value: 0.0 }
+  };
 
   const material = new THREE.ShaderMaterial({
     vertexShader,
@@ -567,6 +594,17 @@ function initSnakeShaderEffect(base, canvasId = 'image-canvas') {
     mesh.geometry = newGeometry;
 
     renderLoop();
+  });
+
+  window.addEventListener('resize', () => 
+  {
+    const rect = canvas.getBoundingClientRect();
+    renderer.setSize(rect.width, rect.height, false);
+    camera.left = -1;
+    camera.right = 1;
+    camera.top = 1;
+    camera.bottom = -1;
+    camera.updateProjectionMatrix();
   });
 
   let lastScroll = $lenis.scroll;
@@ -646,6 +684,8 @@ function animateDogScroll() {
     });
 
 }
+
+
 /******** END - DOG SECTION *********/
 
 /******** 04 - STORY SECTION *********/
@@ -683,7 +723,7 @@ function initStorySection()
 }
 /******** END - STORY SECTION *********/
 
-/******** 05 - INSPIRATION + OMINO Seciton *********/
+/******** 04 - INSPIRATION + OMINO Seciton *********/
 
 function initInspirationSection() {
   const timeline = $gsap.timeline({
@@ -760,7 +800,7 @@ function initInspirationSection() {
 
 /******** END - INSPIRATION + OMINO Seciton *********/
 
-/******** 06 - Stefan *********/
+/******** 05 - Stefan *********/
 
 function initStefanSection() {
 
@@ -788,7 +828,7 @@ function initStefanSection() {
   }, 0);
 }
 
-/******** 07 - Poster schede section *********/
+/******** 06 - Poster schede section *********/
 
 function initHomePostersSection() {
 
@@ -861,26 +901,31 @@ function initHomePostersSection() {
 
 /******** END - Poster schede section *********/
 
-onMounted(async () => {
-
-
-  const config = useRuntimeConfig();
-  const base = config.app.baseURL || '/';
-
+onMounted(async () => 
+{
   blurHero([".hero_title", "#firma"]);
   initHeroSplitOnPreload();
   await loadMovies();
 
-  nextTick(() => {
+  nextTick(() => 
+  {
     $splitTextAnimation(splitRefs.value);
+
     pinKnifeScroll();
-    initKnifeScene(knifeCanvas.value, base);
-    initSnakeShaderEffect(base);
-    animateDogScroll();
-    initDogSectionDrag({ dragEl: dragBallRef.value, labelEl: dragLabelRef.value });
+
+    initKnifeScene(knifeCanvas.value);
+
+    initSnakeShaderEffect();
+
+    animateDogScroll(); 
+    initDogSectionDrag({dragEl: dragBallRef.value, labelEl: dragLabelRef.value});
+
     initStorySection();
+
     initInspirationSection();
+
     initStefanSection();
+
     initHomePostersSection();
   });
 });
