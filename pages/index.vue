@@ -21,11 +21,11 @@
       <picture>
         <source srcset="/img/webp/tv.webp" type="image/webp">
         <source srcset="/img/tv.png" type="image/jpeg">
-        <img id="tv" src="/img/tv.png" alt="TV horror" loading="lazy" decoding="async" />
+        <img id="tv" src="/img/tv.png" alt="TV horror" fetchpriority="high" decoding="async" />
       </picture>
 
       
-      <video autoplay muted loop playsinline preload="metadata" loading="lazy">
+      <video poster="/img/preview.jpg" autoplay muted loop playsinline preload="metadata">
         <source src="/img/video/red.mp4" type="video/mp4" />
       </video>
       <video autoplay muted loop playsinline preload="metadata" loading="lazy">
