@@ -78,13 +78,13 @@
 
           <picture>
             <source srcset="/img/webp/dog_red.webp" type="image/webp">
-            <source srcset="/img/dog_red.png" type="image/jpeg">
+            <source srcset="/img/dog_red.png" type="image/png">
             <img class="dog-red element_filter" src="/img/dog_red.png" alt="Cane rosso" loading="lazy" decoding="async" />
           </picture>
 
           <picture>
             <source srcset="/img/webp/dog_ciano.webp" type="image/webp">
-            <source srcset="/img/dog_ciano.png" type="image/jpeg">
+            <source srcset="/img/dog_ciano.png" type="image/png">
             <img class="dog-cyan element_filter" src="/img/dog_ciano.png" alt="Cane ciano" loading="lazy" decoding="async" />
           </picture>
 
@@ -120,8 +120,19 @@
           
           <div class="story-block" data-index="1">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-              <img src="/img/film_red.jpg" alt="Le Manoir du Diable" />
-              <img class="box_img_blend" src="/img/film_cyan.jpg" alt="Le Manoir du Diable" />
+
+              <picture>
+                <source srcset="/img/wepb/film_red.webp" type="image/webp">
+                <source srcset="/img/film_red.jpg" type="image/jpeg">
+                <img src="/img/film_red.jpg" alt="Le Manoir du Diable" loading="lazy" decoding="async" />
+              </picture>
+
+              <picture>
+                <source srcset="/img/wepb/film_cyan.webp" type="image/webp">
+                <source srcset="/img/film_cyan.jpg" type="image/jpeg">
+                <img class="box_img_blend" src="/img/film_cyan.jpg" alt="Le Manoir du Diable" loading="lazy" decoding="async" />
+              </picture>
+
             </div>
 
             <div class="story-inner">
@@ -140,11 +151,20 @@
             </div>
           </div>
 
-       
           <div class="story-block" data-index="2">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-              <img src="/img/dracula_red.jpg" alt="Dracula" />
-              <img class="box_img_blend" src="/img/dracula_cyan.jpg" alt="Dracula" />
+              <picture>
+                <source srcset="/img/wepb/dracula_red.webp" type="image/webp">
+                <source srcset="/img/dracula_red.jpgg" type="image/jpeg">
+                <img src="/img/dracula_red.jpg" alt="Dracula" loading="lazy" decoding="async" />
+              </picture>
+
+              <picture>
+                <source srcset="/img/wepb/dracula_cyan.webp" type="image/webp">
+                <source srcset="/img/dracula_cyan.jpgg" type="image/jpeg">
+                <img class="box_img_blend" src="/img/dracula_cyan.jpg" alt="Dracula" loading="lazy" decoding="async" />
+              </picture>
+
             </div>
 
             <div class="story-inner">
@@ -170,9 +190,19 @@
 
           <div class="story-block" data-index="3">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-            
-              <img src="/img/twin_red.jpg" alt="11 September 2001" />
-              <img class="box_img_blend" src="/img/twin_cyan.jpg" alt="11 September 2001" />
+
+
+              <picture>
+                <source srcset="/img/wepb/twin_red.webp" type="image/webp">
+                <source srcset="/img/twin_red.jpg" type="image/jpeg">
+                <img src="/img/twin_red.jpg" alt="11 September 2001" loading="lazy" decoding="async" />
+              </picture>
+
+              <picture>
+                <source srcset="/img/wepb/twin_cyan.webp" type="image/webp">
+                <source srcset="/img/twin_cyan.jpg" type="image/jpeg">
+                <img class="box_img_blend" src="/img/twin_cyan.jpg" alt="11 September 2001" loading="lazy" decoding="async" />
+              </picture>
 
             </div>
 
@@ -201,9 +231,18 @@ The genre shifted away from monsters and the supernatural, embracing more realis
         
           <div class="story-block" data-index="4">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-              
-              <img src="/img/tv_red.jpg" alt="Future of horror film" />
-              <img class="box_img_blend" src="/img/tv_cyan.jpg" alt="Future of horror film" />
+
+              <picture>
+                <source srcset="/img/wepb/tv_red.webp" type="image/webp">
+                <source srcset="/img/tv_red.jpg" type="image/jpeg">
+                <img src="/img/tv_red.jpg" alt="Future of horror film" loading="lazy" decoding="async" />
+              </picture>
+
+              <picture>
+                <source srcset="/img/wepb/tv_cyan.webp" type="image/webp">
+                <source srcset="/img/tv_cyan.jpg" type="image/jpeg">
+                <img class="box_img_blend" src="/img/tv_cyan.jpg" alt="Future of horror film" loading="lazy" decoding="async" />
+              </picture>
            
             </div>
 
@@ -242,9 +281,22 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
         </div>
 
         <div class="final-content">
-          <img ref="bgRef" src="/img/bg-photo.jpg" class="bg" alto="fondo" />
+
+          
+           <picture>
+                <source srcset="/img/wepb/bg-photo.webp" type="image/webp">
+                <source srcset="/img/bg-photo.jpg" type="image/jpeg">
+                <img ref="bgRef" class="bg" src="/img/bg-photo.jpg" alt="fondo" loading="lazy" decoding="async" />
+          </picture>
+
           <h2 ref="insTextRef" class="ispiration-text">INSPIRATION</h2>
-          <img ref="saulRef" src="/img/saul.png" class="saul" alt="Saul Bass" />
+
+          <picture>
+              <source srcset="/img/wepb/saul.webp" type="image/webp">
+              <source srcset="/img/saul.png" type="image/jpeg">
+              <img ref="saulRef" class="saul" src="/img/saul.png" alt="Saul Bass" loading="lazy" decoding="async" />
+          </picture>
+          
           <div ref="saulTextRef" class="saul_text">
             <h3>Saul Bass</h3>
             <p>Saul Bass’s approach to cinematic intros inspired my project, guiding me in the creation of a visual language that merges graphic design and film. His ability to distill a film’s essence into just a few elements deeply influenced me, pushing me to use shapes and colors to evoke powerful atmospheres and to turn simplicity into a compelling storytelling tool.</p>
@@ -262,13 +314,29 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
         </div>    
 
         <div class="image">
-          <img alt="Stefan Segmanster" src="/public/img/stefan.jpg">
+          <picture>
+                <source srcset="/img/wepb/stefan.webp" type="image/webp">
+                <source srcset="/img/stefan.jpg" type="image/jpeg">
+                <img alt="Stefan Segmanster" src="/img/stefan.jpg" loading="lazy" decoding="async" />
+          </picture>
+
         </div>
       </div>
 
       <div class="book-container">
-        <img ref="bookBlackRef" src="/img/cane.png" alt="cover of Made You Look" class="book book-black" />
-        <img ref="bookRedRef" src="/img/cane_rosso.png" alt="cover of Made You Look" class="book book-red" />
+
+        <picture>
+          <source srcset="/img/wepb/cane.webp" type="image/webp">
+          <source srcset="/img/cane.png" type="image/png">
+          <img ref="bookBlackRef"  alt="cover of Made You Look" class="book book-black" src="/img/cane.png" loading="lazy" decoding="async" />
+        </picture>
+
+        <picture>
+          <source srcset="/img/wepb/cane_rosso.webp" type="image/webp">
+          <source srcset="/img/cane_rosso.png" type="image/jpeg">
+          <img ref="bookRedRef" alt="cover of Made You Look" class="book book-red" src="/img/cane_rosso.png" loading="lazy" decoding="async" />
+        </picture>
+
       </div>
     </section>
 
@@ -292,6 +360,7 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
           <NuxtLink :href="`/${movie.nome}`" class="link_poster click_poster" @click="clickmenu(index)" :ref="addlink"><span>VIEW POSTER</span></NuxtLink>
           <div>
             <div class="immagine_film" data-color-good="yellow" data-color-evil="magenta" :class="{ good: good, evil: evil, neutral:neutral }">
+              
               <img :src="movie.cover" :alt="movie.nome" :ref="el => addImageRef(index, el)">
               <img :src="movie.cover2" :alt="movie.nome" :ref="el => addImageRef(index, el)">
             </div>
