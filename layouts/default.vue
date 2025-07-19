@@ -121,9 +121,26 @@ useHead({
       as: 'video',
       href: '/img/video/red.mp4',
       type: 'video/mp4'
+    },
+    // Preload font drukbold
+    {
+      rel: 'preload',
+      as: 'font',
+      href: '/fonts/drukbold.woff',
+      type: 'font/woff',
+      crossorigin: ''
+    },
+    // Preload font adaptive
+    {
+      rel: 'preload',
+      as: 'font',
+      href: '/fonts/adaptive.woff2',
+      type: 'font/woff2',
+      crossorigin: ''
     }
   ]
 })
+
 
 const { $gsap, $lenis } = useNuxtApp()
 
