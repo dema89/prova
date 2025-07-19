@@ -945,27 +945,27 @@ function initHomePostersSection() {
 
 /******** END - Poster schede section *********/
 
-onMounted(async () => {
-  if (!process.client) return; 
+onMounted(() => {
+  requestIdleCallback(async () => {
+    const config = useRuntimeConfig();
+    const base = config.app.baseURL || '/';
 
-  const config = useRuntimeConfig();
-  const base = config.app.baseURL || '/';
+    blurHero([".hero_title", "#firma"]);
+    initHeroSplitOnPreload();
+    await loadMovies();
 
-  blurHero([".hero_title", "#firma"]);
-  initHeroSplitOnPreload();
-  await loadMovies();
-
-  nextTick(() => {
-    $splitTextAnimation(splitRefs.value);
-    pinKnifeScroll();
-    initKnifeScene(knifeCanvas.value, base);
-    initSnakeShaderEffect(base);
-    animateDogScroll();
-    initDogSectionDrag({ dragEl: dragBallRef.value, labelEl: dragLabelRef.value });
-    initStorySection();
-    initInspirationSection();
-    initStefanSection();
-    initHomePostersSection();
+    nextTick(() => {
+      $splitTextAnimation(splitRefs.value);
+      pinKnifeScroll();
+      initKnifeScene(knifeCanvas.value, base);
+      initSnakeShaderEffect(base);
+      animateDogScroll();
+      initDogSectionDrag({ dragEl: dragBallRef.value, labelEl: dragLabelRef.value });
+      initStorySection();
+      initInspirationSection();
+      initStefanSection();
+      initHomePostersSection();
+    });
   });
 });
 
