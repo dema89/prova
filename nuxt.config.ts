@@ -8,6 +8,8 @@ let filmRoutes: string[] = []
 
 try {
   const json = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'))
+
+  // Assicurati che ogni voce abbia un campo 'nome'
   if (Array.isArray(json)) {
     filmRoutes = json
       .filter((item): item is { nome: string } => typeof item.nome === 'string')
@@ -18,17 +20,7 @@ try {
 }
 
 export default defineNuxtConfig({
-  ssr: true, // Attiva la generazione SSR (necessaria per SSG)
-
   css: ['~/assets/styles/main.css'],
-
-    modules: ['@nuxt/image'],
-  image: {
-    provider: 'ipx',
-    format: ['webp'], // genera automaticamente la versione webp
-    domains: [],
-    staticFilename: '[name]-[width].[ext]' // nome statico
-  },
 
   vite: {
     build: {
@@ -37,9 +29,7 @@ export default defineNuxtConfig({
   },
 
   app: {
-    // Se pubblichi nella root del dominio, usa '/'
-    // Se pubblichi in una sottocartella (es. dominio.com/prova/), usa '/prova/'
-    baseURL: '/',
+    baseURL: '/prova/',
     head: {
       title: 'Light in the Darkness - A project by Studio K95',
       meta: [
@@ -48,12 +38,11 @@ export default defineNuxtConfig({
     }
   },
 
-
   nitro: {
     prerender: {
-      crawlLinks: true,
       routes: filmRoutes
     }
-  }
+  },
 
+  compatibilityDate: '2024-11-22'
 })
