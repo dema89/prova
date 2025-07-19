@@ -126,8 +126,7 @@
        
           <div class="story-block" data-index="2">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-              <NuxtImg src="/img/dracula_red.jpg" alt="Dracula" width="644" height="435" format="webp" quality="80" lazy /> 
-              <NuxtImg src="/img/dracula_cyan.jpg" alt="Dracula" width="644" height="435" format="webp" quality="80" lazy class="box_img_blend" /> 
+              
             </div>
 
             <div class="story-inner">
@@ -379,9 +378,9 @@ const bookBlackRef = ref(null);
 const bookRedRef = ref(null);
 
 
-import { useSeoMeta } from '~/composables/useCustomSeoMeta'
+import { useCustomSeoMeta } from '~/composables/useCustomSeoMeta'
 
-useSeoMeta({
+useCustomSeoMeta({
   title: 'Light in the Darkness - A Visual Exploration of Horror Cinema',
   description: 'An immersive visual project exploring the eternal conflict between good and evil in horror cinema through ten unique posters.',
   url: 'https://yourwebsite.com',
@@ -863,6 +862,8 @@ function initHomePostersSection() {
 /******** END - Poster schede section *********/
 
 onMounted(async () => {
+  if (!process.client) return; 
+
   const config = useRuntimeConfig();
   const base = config.app.baseURL || '/';
 
