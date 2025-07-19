@@ -376,9 +376,9 @@ const bookBlackRef = ref(null);
 const bookRedRef = ref(null);
 
 
-import { useSeoMeta } from '~/composables/useSeoMeta'
+import { useCustomSeoMeta } from '~/composables/useCustomSeoMeta'
 
-useSeoMeta({
+useCustomSeoMeta({
   title: 'Light in the Darkness - A Visual Exploration of Horror Cinema',
   description: 'An immersive visual project exploring the eternal conflict between good and evil in horror cinema through ten unique posters.',
   url: 'https://yourwebsite.com',
@@ -459,7 +459,7 @@ function pinKnifeScroll() {
   });
 }
 
-function initKnifeScene(canvas) {
+function initKnifeScene(canvas, base) {
   if (!canvas) return;
 
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
@@ -472,11 +472,7 @@ function initKnifeScene(canvas) {
   light.position.set(0, 1, 2);
   scene.add(light);
 
-  const config = useRuntimeConfig();
-  const base = config.app.baseURL || '/';
-
   let knifeModel = null;
-
   const loader = new GLTFLoader();
   loader.load(`${base}models/coltello.gltf`, (gltf) => {
     knifeModel = gltf.scene;
@@ -504,35 +500,13 @@ function initKnifeScene(canvas) {
       end: 'bottom top',
       scrub: true,
       onUpdate: (self) => {
-        if (knifeModel) {
-          knifeModel.rotation.y = self.progress * Math.PI * 2;
-        }
+        if (knifeModel) knifeModel.rotation.y = self.progress * Math.PI * 2;
       }
     }
   });
-
-  const resizeRenderer = () => {
-    const width = canvas.clientWidth;
-    const height = canvas.clientHeight;
-    renderer.setSize(width, height, false);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-  };
-
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(resizeRenderer, 2000);
-  });
 }
-/******** END - coltello 3D *********/
 
-/******** 02 - Immagine intro ondulata *********/
-function initSnakeShaderEffect(canvasId = 'image-canvas') {
-  const { $lenis } = useNuxtApp();
-  const config = useRuntimeConfig();
-  const base = config.app.baseURL || '/';
-
+function initSnakeShaderEffect(base, canvasId = 'image-canvas') {
   const canvas = document.getElementById(canvasId);
   if (!canvas) throw new Error(`Canvas not found: #${canvasId}`);
 
@@ -561,10 +535,7 @@ function initSnakeShaderEffect(canvasId = 'image-canvas') {
     }
   `;
 
-  const uniforms = {
-    u_texture: { value: null },
-    u_scroll: { value: 0.0 }
-  };
+  const uniforms = { u_texture: { value: null }, u_scroll: { value: 0.0 } };
 
   const material = new THREE.ShaderMaterial({
     vertexShader,
@@ -594,17 +565,6 @@ function initSnakeShaderEffect(canvasId = 'image-canvas') {
     mesh.geometry = newGeometry;
 
     renderLoop();
-  });
-
-  window.addEventListener('resize', () => 
-  {
-    const rect = canvas.getBoundingClientRect();
-    renderer.setSize(rect.width, rect.height, false);
-    camera.left = -1;
-    camera.right = 1;
-    camera.top = 1;
-    camera.bottom = -1;
-    camera.updateProjectionMatrix();
   });
 
   let lastScroll = $lenis.scroll;
@@ -684,8 +644,6 @@ function animateDogScroll() {
     });
 
 }
-
-
 /******** END - DOG SECTION *********/
 
 /******** 04 - STORY SECTION *********/
@@ -723,7 +681,7 @@ function initStorySection()
 }
 /******** END - STORY SECTION *********/
 
-/******** 04 - INSPIRATION + OMINO Seciton *********/
+/******** 05 - INSPIRATION + OMINO Seciton *********/
 
 function initInspirationSection() {
   const timeline = $gsap.timeline({
@@ -800,7 +758,7 @@ function initInspirationSection() {
 
 /******** END - INSPIRATION + OMINO Seciton *********/
 
-/******** 05 - Stefan *********/
+/******** 06 - Stefan *********/
 
 function initStefanSection() {
 
@@ -828,7 +786,7 @@ function initStefanSection() {
   }, 0);
 }
 
-/******** 06 - Poster schede section *********/
+/******** 07 - Poster schede section *********/
 
 function initHomePostersSection() {
 
@@ -901,31 +859,26 @@ function initHomePostersSection() {
 
 /******** END - Poster schede section *********/
 
-onMounted(async () => 
-{
+onMounted(async () => {
+  if (!process.client) return; 
+
+  const config = useRuntimeConfig();
+  const base = config.app.baseURL || '/';
+
   blurHero([".hero_title", "#firma"]);
   initHeroSplitOnPreload();
   await loadMovies();
 
-  nextTick(() => 
-  {
+  nextTick(() => {
     $splitTextAnimation(splitRefs.value);
-
     pinKnifeScroll();
-
-    initKnifeScene(knifeCanvas.value);
-
-    initSnakeShaderEffect();
-
-    animateDogScroll(); 
-    initDogSectionDrag({dragEl: dragBallRef.value, labelEl: dragLabelRef.value});
-
+    initKnifeScene(knifeCanvas.value, base);
+    initSnakeShaderEffect(base);
+    animateDogScroll();
+    initDogSectionDrag({ dragEl: dragBallRef.value, labelEl: dragLabelRef.value });
     initStorySection();
-
     initInspirationSection();
-
     initStefanSection();
-
     initHomePostersSection();
   });
 });

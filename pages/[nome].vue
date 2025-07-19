@@ -86,11 +86,11 @@ const stripHtml = (htmlString) => {
   return tempDiv.textContent || tempDiv.innerText || ''
 }
 
-import { useSeoMeta } from '~/composables/useSeoMeta'
+import { useCustomSeoMeta } from '~/composables/useCustomSeoMeta'
 
 watchEffect(() => {
   if (movieDetails.value?.titolo) {
-    useSeoMeta({
+    useCustomSeoMeta({
       title: `${stripHtml(movieDetails.value.titolo)} - Light in the Darkness`,
       description: movieDetails.value.descrizione_short || 'A tribute poster inspired by horror cinema.',
       url: `https://yourwebsite.com/${movieDetails.value.nome}`,
