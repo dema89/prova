@@ -29,9 +29,9 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'static',
     prerender: {
-      failOnError: false,
+     
       routes: [
-        '/',        // Home page
+        '/index',        // Home page
         ...filmRoutes
       ]
     }
