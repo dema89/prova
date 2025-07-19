@@ -1,24 +1,10 @@
-
 import { defineNuxtConfig } from 'nuxt/config'
-import fs from 'fs'
-import path from 'path'
+import filmData from './public/data/data.json'
 
-// Caricamento rotte dinamiche dal JSON
-const jsonPath = path.resolve('./public/data/data.json')
-let filmRoutes: string[] = []
-
-try {
-  const json = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'))
-
-  // Assicurati che ogni voce abbia un campo 'nome'
-  if (Array.isArray(json)) {
-    filmRoutes = json
-      .filter((item): item is { nome: string } => typeof item.nome === 'string')
-      .map((film) => `/${film.nome}`)
-  }
-} catch (error) {
-  console.warn('⚠️ Impossibile leggere public/data/data.json. Nessuna route dinamica generata.')
-}
+// Generazione delle rotte dinamiche dai dati JSON
+const filmRoutes = (filmData || [])
+  .filter((item: any) => typeof item.nome === 'string')
+  .map((film: any) => `/${film.nome}`)
 
 export default defineNuxtConfig({
   css: ['~/assets/styles/main.css'],
@@ -35,13 +21,11 @@ export default defineNuxtConfig({
     preset: 'static',
     prerender: {
       routes: [
-        '/',       // Home page
-        ...filmRoutes // Pagine dinamiche dal JSON
+        '/',        // Home page
+        ...filmRoutes // Pagine dinamiche dai dati JSON
       ]
     }
   },
-
-
 
   app: {
     baseURL: '/',
