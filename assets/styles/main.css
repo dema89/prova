@@ -2045,9 +2045,17 @@ padding-right:var(--col-2);
 	margin-top: 20px;
 	height: 100%;
   }
+
+    .dog-image picture 
+	{
+position: absolute;
+height: 90%;
+width:40vw;
+	}
+  
   
   .dog-image img {
-	height: 90%;
+	height: 100%;
 	object-fit: contain;
 	position: absolute;
 	bottom: 0;
