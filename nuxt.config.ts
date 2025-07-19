@@ -22,7 +22,13 @@ export default defineNuxtConfig({
 
   css: ['~/assets/styles/main.css'],
 
-   modules: ['@nuxt/image'],
+    modules: ['@nuxt/image'],
+  image: {
+    provider: 'ipx',
+    format: ['webp'], // genera automaticamente la versione webp
+    domains: [],
+    staticFilename: '[name]-[width].[ext]' // nome statico
+  },
 
   vite: {
     build: {
