@@ -945,27 +945,27 @@ function initHomePostersSection() {
 
 /******** END - Poster schede section *********/
 
-onMounted(() => {
-  requestIdleCallback(async () => {
-    const config = useRuntimeConfig();
-    const base = config.app.baseURL || '/';
+onMounted(async () => {
+  
 
-    blurHero([".hero_title", "#firma"]);
-    initHeroSplitOnPreload();
-    await loadMovies();
+  const config = useRuntimeConfig();
+  const base = config.app.baseURL || '/';
 
-    nextTick(() => {
-      $splitTextAnimation(splitRefs.value);
-      pinKnifeScroll();
-      initKnifeScene(knifeCanvas.value, base);
-      initSnakeShaderEffect(base);
-      animateDogScroll();
-      initDogSectionDrag({ dragEl: dragBallRef.value, labelEl: dragLabelRef.value });
-      initStorySection();
-      initInspirationSection();
-      initStefanSection();
-      initHomePostersSection();
-    });
+  blurHero([".hero_title", "#firma"]);
+  initHeroSplitOnPreload();
+  await loadMovies();
+
+  nextTick(() => {
+    $splitTextAnimation(splitRefs.value);
+    pinKnifeScroll();
+    initKnifeScene(knifeCanvas.value, base);
+    initSnakeShaderEffect(base);
+    animateDogScroll();
+    initDogSectionDrag({ dragEl: dragBallRef.value, labelEl: dragLabelRef.value });
+    initStorySection();
+    initInspirationSection();
+    initStefanSection();
+    initHomePostersSection();
   });
 });
 
