@@ -863,6 +863,8 @@ function initHomePostersSection() {
 /******** END - Poster schede section *********/
 
 onMounted(async () => {
+  if (!process.client) return; 
+  
   const config = useRuntimeConfig();
   const base = config.app.baseURL || '/';
 
