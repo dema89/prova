@@ -21,8 +21,6 @@
 
   <transizione />
 
-
-
   <div class="filters" :ref="registerPulseRef" :class="[{ header_blend: headerBlend }]">
     <div :class="{ disabled: neutral }">
       <div class="choseText" :class="{ good: good }">Good</div>
@@ -101,10 +99,28 @@
 
 <script setup>
 useHead({
-  meta: [
+  link: [
+    // Preload immagine LCP (TV)
     {
-      name: 'viewport',
-      content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+      rel: 'preload',
+      as: 'image',
+      href: '/img/webp/tv.webp',
+      imagesrcset: '/img/webp/tv.webp',
+      type: 'image/webp'
+    },
+    // Preload poster video (opzionale se vuoi il poster come LCP)
+    {
+      rel: 'preload',
+      as: 'image',
+      href: '/img/video/poster.jpg',
+      type: 'image/jpeg'
+    },
+    // Preload del file video
+    {
+      rel: 'preload',
+      as: 'video',
+      href: '/img/video/red.mp4',
+      type: 'video/mp4'
     }
   ]
 })
