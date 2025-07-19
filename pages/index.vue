@@ -77,14 +77,14 @@
         <div class="dog-image" ref="dogRef"> 
 
           <picture>
-            <source srcset="/img/webp/dog_red.png" type="image/webp">
+            <source srcset="/img/webp/dog_red.webp" type="image/webp">
             <source srcset="/img/dog_red.png" type="image/jpeg">
             <img class="dog-red element_filter" src="/img/dog_red.png" alt="Cane rosso" loading="lazy" decoding="async" />
           </picture>
 
           <picture>
-            <source srcset="/img/webp/dog_red.png" type="image/webp">
-            <source srcset="/img/dog_red.png" type="image/jpeg">
+            <source srcset="/img/webp/dog_ciano.webp" type="image/webp">
+            <source srcset="/img/dog_ciano.png" type="image/jpeg">
             <img class="dog-cyan element_filter" src="/img/dog_ciano.png" alt="Cane ciano" loading="lazy" decoding="async" />
           </picture>
 
