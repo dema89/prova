@@ -2021,7 +2021,6 @@ padding-right:var(--col-2);
   height: calc(var(--vh) * 100);
   width: 100%;
   overflow: hidden;
-  
   background-color: var(--white);
   overflow: hidden;
   }
@@ -2031,7 +2030,6 @@ padding-right:var(--col-2);
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
-	margin-top: 20px;
 	height: 100%;
   }
 
@@ -2039,7 +2037,7 @@ padding-right:var(--col-2);
 	{
 position: absolute;
 height: 90%;
-width:40vw;
+width:clamp(800px, 40vw, 9999px)
 	}
   
   
@@ -2049,7 +2047,7 @@ width:40vw;
 	position: absolute;
 	bottom: 0;
 	mix-blend-mode: multiply;
-
+	height:auto;
   }
 
   
@@ -3560,10 +3558,11 @@ and (-webkit-min-device-pixel-ratio: 1)
 	text-align: center;
 	}
 
-	.dog-image img
+	
+	 .dog-image picture 
 	{
-	height: auto;
-	width: 140%;
+	height: 100%;
+	width:130%;
 	}
 
 	.drag-ball 
