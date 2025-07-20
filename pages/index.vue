@@ -733,8 +733,8 @@ function animateDogScroll() {
 /******** END - DOG SECTION *********/
 
 /******** 04 - STORY SECTION *********/
-function initStorySection() {
-  // Usa batch per ridurre i trigger separati
+function initStorySection() 
+{
   $gsap.utils.toArray('.story-block').forEach((block) => {
     $gsap.fromTo(
       block,
@@ -749,22 +749,19 @@ function initStorySection() {
           start: 'top bottom',
           end: 'bottom center',
           scrub: true,
-          // Aggiorna solo quando necessario
-          fastScrollEnd: true
         }
       }
     );
   });
 
-  // Pin dei label
   $gsap.to('#used-filter-labels>div', {
     scrollTrigger: {
       trigger: '#about_cont',
       scroller: '#main',
       start: 'top top',
       end: 'bottom top',
-      pin: true,
-      scrub: true
+      pin: '#used-filter-labels',
+      scrub: true,
     }
   });
 }
