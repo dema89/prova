@@ -945,18 +945,14 @@ function initHomePostersSection() {
 
 /******** END - Poster schede section *********/
 
-onMounted(async () => {
- 
-   const config = useRuntimeConfig();
+onMounted(() => {
+  requestIdleCallback(async () => {
+    const config = useRuntimeConfig();
     const base = config.app.baseURL || '/';
 
-     await loadMovies();
-
-    setTimeout(() => {
-
-      blurHero([".hero_title", "#firma"]);
+    blurHero([".hero_title", "#firma"]);
     initHeroSplitOnPreload();
-   
+    await loadMovies();
 
     nextTick(() => {
       $splitTextAnimation(splitRefs.value);
@@ -970,11 +966,6 @@ onMounted(async () => {
       initStefanSection();
       initHomePostersSection();
     });
-
-
-    }, 3000)
-
-    
-
+  });
 });
 </script>
