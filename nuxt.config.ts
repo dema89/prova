@@ -22,8 +22,6 @@ export default defineNuxtConfig({
 
   css: ['~/assets/styles/main.css'],
 
-
-
   vite: {
     build: {
       cssCodeSplit: false
@@ -34,10 +32,11 @@ export default defineNuxtConfig({
   
     baseURL: '/',
     head: {
+      htmlAttrs: {
+        lang: 'en'
+      },
       title: 'Light in the Darkness - A project by Studio K95',
-      meta: [
-        { name: 'description', content: 'Animazioni immersive per un progetto horror' }
-      ]
+      
     }
   },
 
