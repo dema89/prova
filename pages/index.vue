@@ -97,7 +97,7 @@
         </div>
       </div>
     </section>
-
+    
     <!-- STORY SECTION -->
     <section id="story-section">
       <div>
@@ -120,8 +120,7 @@
           
           <div class="story-block" data-index="1">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-
-              <picture>
+               <picture>
                 <source srcset="/img/webp/film_red.webp" type="image/webp">
                 <source srcset="/img/film_red.jpg" type="image/jpeg">
                 <img src="/img/film_red.jpg" alt="Le Manoir du Diable" loading="lazy" decoding="async" />
@@ -151,20 +150,20 @@
             </div>
           </div>
 
+       
           <div class="story-block" data-index="2">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
               <picture>
                 <source srcset="/img/webp/dracula_red.webp" type="image/webp">
                 <source srcset="/img/dracula_red.jpg" type="image/jpeg">
-                <img src="/img/dracula_red.jpg" alt="Dracula" loading="lazy" decoding="async" />
+                <img src="/img/dracula_red.jpg" alt="Dracula" decoding="async" />
               </picture>
 
               <picture>
                 <source srcset="/img/webp/dracula_cyan.webp" type="image/webp">
                 <source srcset="/img/dracula_cyan.jpg" type="image/jpeg">
-                <img class="box_img_blend" src="/img/dracula_cyan.jpg" alt="Dracula" loading="lazy" decoding="async" />
+                <img class="box_img_blend" src="/img/dracula_cyan.jpg" alt="Dracula" decoding="async" />
               </picture>
-
             </div>
 
             <div class="story-inner">
@@ -190,9 +189,8 @@
 
           <div class="story-block" data-index="3">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-
-
-              <picture>
+            
+                <picture>
                 <source srcset="/img/webp/twin_red.webp" type="image/webp">
                 <source srcset="/img/twin_red.jpg" type="image/jpeg">
                 <img src="/img/twin_red.jpg" alt="11 September 2001" loading="lazy" decoding="async" />
@@ -203,6 +201,7 @@
                 <source srcset="/img/twin_cyan.jpg" type="image/jpeg">
                 <img class="box_img_blend" src="/img/twin_cyan.jpg" alt="11 September 2001" loading="lazy" decoding="async" />
               </picture>
+
 
             </div>
 
@@ -231,18 +230,20 @@ The genre shifted away from monsters and the supernatural, embracing more realis
         
           <div class="story-block" data-index="4">
             <div class="story-media element_filter" :class="{ good: good, evil: evil, neutral:neutral }">
-
+              
+              
               <picture>
                 <source srcset="/img/webp/tv_red.webp" type="image/webp">
                 <source srcset="/img/tv_red.jpg" type="image/jpeg">
-                <img src="/img/tv_red.jpg" alt="Future of horror film" loading="lazy" decoding="async" />
+                <img src="/img/tv_red.jpg" alt="Future of horror film" decoding="async" />
               </picture>
 
               <picture>
                 <source srcset="/img/webp/tv_cyan.webp" type="image/webp">
                 <source srcset="/img/tv_cyan.jpg" type="image/jpeg">
-                <img class="box_img_blend" src="/img/tv_cyan.jpg" alt="Future of horror film" loading="lazy" decoding="async" />
+                <img class="box_img_blend" src="/img/tv_cyan.jpg" alt="Future of horror film" decoding="async" />
               </picture>
+           
            
             </div>
 
@@ -266,7 +267,7 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
       </div>
     </section>
 
-    <!-- SEZIONE ISPIRAZIONE -->
+   <!-- SEZIONE ISPIRAZIONE -->
     <section id="ispiration-section">
       <div class="pin-wrapper">
 
@@ -775,9 +776,10 @@ function initInspirationSection() {
       trigger: '#ispiration-section',
       scroller: '#main',
       start: 'top top',
-      end: '+=800%',
+      endTrigger: '#stefan',
       scrub: true,
       pin: true,
+      pinSpacing: true,
       onUpdate: (self) => {
         if (saulTextRef.value) {
           $gsap.to(saulTextRef.value, {
@@ -945,27 +947,34 @@ function initHomePostersSection() {
 
 /******** END - Poster schede section *********/
 
-onMounted(() => {
-  requestIdleCallback(async () => {
-    const config = useRuntimeConfig();
-    const base = config.app.baseURL || '/';
+onMounted(async () => {
 
-    blurHero([".hero_title", "#firma"]);
-    initHeroSplitOnPreload();
-    await loadMovies();
+   requestIdleCallback(async () => {
 
-    nextTick(() => {
-      $splitTextAnimation(splitRefs.value);
-      pinKnifeScroll();
-      initKnifeScene(knifeCanvas.value, base);
-      initSnakeShaderEffect(base);
-      animateDogScroll();
-      initDogSectionDrag({ dragEl: dragBallRef.value, labelEl: dragLabelRef.value });
-      initStorySection();
-      initInspirationSection();
-      initStefanSection();
-      initHomePostersSection();
-    });
+  const config = useRuntimeConfig();
+  const base = config.app.baseURL || '/';
+
+  blurHero([".hero_title", "#firma"]);
+  initHeroSplitOnPreload();
+  await loadMovies(); 
+
+  nextTick(() => {
+    $splitTextAnimation(splitRefs.value);
+    pinKnifeScroll();
+    initKnifeScene(knifeCanvas.value, base);
+    initSnakeShaderEffect(base);
+    animateDogScroll();
+    initDogSectionDrag({ dragEl: dragBallRef.value, labelEl: dragLabelRef.value });
+    initStorySection();
+    initInspirationSection();
+    initStefanSection();
+    initHomePostersSection();
+
+    setTimeout(() => $gsap.ScrollTrigger.refresh(), 1000);
   });
+
+      
+  });
+  
 });
 </script>
