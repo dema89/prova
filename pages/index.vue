@@ -971,6 +971,8 @@ onMounted(async () => {
     initInspirationSection();
     initStefanSection();
     initHomePostersSection();
+
+    
   }, 3000);
 
  
