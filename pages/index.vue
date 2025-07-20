@@ -21,7 +21,7 @@
       <picture>
         <source srcset="/img/webp/tv.webp" type="image/webp">
         <source srcset="/img/tv.png" type="image/jpeg">
-        <img id="tv" src="/img/tv.png" alt="TV horror" fetchpriority="high" decoding="async" />
+        <img id="tv" src="/img/tv.png" alt="TV horror" width="1920" height="1080" fetchpriority="high" decoding="async" />
       </picture>
 
       
@@ -949,8 +949,6 @@ onMounted(() => {
   requestIdleCallback(async () => {
     const config = useRuntimeConfig();
     const base = config.app.baseURL || '/';
-
-    alert('prova');
 
     blurHero([".hero_title", "#firma"]);
     initHeroSplitOnPreload();
