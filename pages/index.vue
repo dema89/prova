@@ -25,10 +25,10 @@
       </picture>
 
       
-      <video poster="/img/preview.jpg" width="864" height="1168" autoplay muted loop playsinline preload="metadata">
+      <video poster="/img/preview.jpg" autoplay muted loop playsinline loading="lazy">
         <source src="/img/video/red.mp4" type="video/mp4" />
       </video>
-      <video autoplay muted loop playsinline width="864" height="1168" reload="metadata" loading="lazy">
+      <video autoplay muted loop playsinline reload="metadata" loading="lazy">
         <source src="/img/video/azzurro.mp4" type="video/mp4" />
       </video>
     </div>
@@ -949,6 +949,8 @@ onMounted(() => {
   requestIdleCallback(async () => {
     const config = useRuntimeConfig();
     const base = config.app.baseURL || '/';
+
+    alert('prova');
 
     blurHero([".hero_title", "#firma"]);
     initHeroSplitOnPreload();
