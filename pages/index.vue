@@ -776,7 +776,8 @@ function initInspirationSection() {
       trigger: '#ispiration-section',
       scroller: '#main',
       start: 'top top',
-      endTrigger: '#stefan',
+   
+    end:"+=12000",
       scrub: true,
       pin: true,
       pinSpacing: true,
@@ -797,6 +798,7 @@ function initInspirationSection() {
     scale: 10,
     x: '-55vw',
     y: '20vw',
+    
     ease: 'power2.out'
   }, 0);
 
@@ -804,25 +806,25 @@ function initInspirationSection() {
     backgroundColor: '#222222',
     duration: 0.2,
     ease: 'power2.out'
-  }, 0.3);
+  }, 0.5);
 
   timeline.to(textLayerRef.value, {
     opacity: 0,
     duration: 0.2,
     ease: 'power2.out'
-  }, 0.3);
+  }, 0.5);
 
   timeline.to(bgRef.value, {
     opacity: 1,
     scale: 1.03,
     ease: 'power2.out'
-  }, 0.7);
+  }, 0.8);
 
   timeline.to(saulRef.value, {
     opacity: 1,
     scale: 1.1,
     ease: 'power2.out'
-  }, 0.7);
+  }, 0.8);
 
   nextTick(() => {
     if (insTextRef.value) {
