@@ -100,7 +100,6 @@
 <script setup>
 useHead({
   link: [
-    // Preload immagine LCP (TV)
     {
       rel: 'preload',
       as: 'image',
@@ -108,21 +107,12 @@ useHead({
       imagesrcset: '/img/webp/tv.webp',
       type: 'image/webp'
     },
-    // Preload poster video (opzionale se vuoi il poster come LCP)
     {
       rel: 'preload',
       as: 'image',
       href: '/img/preview.jpg',
       type: 'image/jpeg'
     },
-    // Preload del file video
-    {
-      rel: 'preload',
-      as: 'video',
-      href: '/img/video/red.mp4',
-      type: 'video/mp4'
-    },
-    // Preload font drukbold
     {
       rel: 'preload',
       as: 'font',
@@ -130,7 +120,6 @@ useHead({
       type: 'font/woff',
       crossorigin: ''
     },
-    // Preload font adaptive
     {
       rel: 'preload',
       as: 'font',
@@ -140,7 +129,6 @@ useHead({
     }
   ]
 })
-
 
 const { $gsap, $lenis } = useNuxtApp()
 
@@ -216,7 +204,7 @@ function moveFollower(x, y) {
 }
 
 function updateFollowerState(elements) {
-  const isPoster = elements.some(el => el.classList?.contains('click_poster') || el.closest('.carousel-container'))
+  const isPoster = elements.some(el => el.classList?.contains('click_poster') || el.closest?.('.carousel-container'))
   const isFilter = elements.some(el => el.classList?.contains('element_filter'))
   const isLink = elements.some(el => el.tagName === 'A' || pulseLinksRef.value.includes(el))
 
@@ -245,10 +233,6 @@ function updateFollowerState(elements) {
 // === Preload ===
 function handlePreloadDone() {
   preloadCompleted.value = true
-  // Rimuovi questo blocco per evitare attesa dopo preload
-  // if (!hasMouseMoved && isDesktop.value && followerRef.value) {
-  //   resetFollower()
-  // }
 }
 
 // === Filters ===
@@ -289,13 +273,10 @@ function handleNavClose() {
 
 function handleMouseMove(e) {
   if (!isDesktop.value) return
-
   hasMouseMoved = true
   moveFollower(e.clientX, e.clientY)
 
-  // Solo dopo il preload aggiorna stato follower
   if (!preloadCompleted.value) return
-
   const elements = document.elementsFromPoint(e.clientX, e.clientY)
   updateFollowerState(elements)
 }
@@ -323,8 +304,17 @@ onMounted(() => {
 
   resetFollower()
 
-  let resizeTimeout2 = null
+  // === Fade-in immagini lazy con GSAP ===
+  const lazyImages = document.querySelectorAll('img[loading="lazy"]')
+  lazyImages.forEach((img) => {
+    if (!img.complete) $gsap.set(img, { opacity: 0 })
+    img.addEventListener('load', () => {
+      $gsap.to(img, { opacity: 1, duration: 0.6, ease: 'power2.out' })
+    })
+  })
+  // === Fine fade-in immagini ===
 
+  let resizeTimeout2 = null
   window.addEventListener('resize', () => {
     const nowDesktop = window.innerWidth >= 1024
     windowHeight = window.innerHeight
@@ -360,5 +350,3 @@ onUnmounted(() => {
   }
 })
 </script>
-
-
