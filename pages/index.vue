@@ -959,7 +959,9 @@ onMounted(async () => {
   await loadMovies(); 
 
   nextTick(() => {
-    $splitTextAnimation(splitRefs.value);
+
+  setTimeout(() => {
+     $splitTextAnimation(splitRefs.value);
     pinKnifeScroll();
     initKnifeScene(knifeCanvas.value, base);
     initSnakeShaderEffect(base);
@@ -969,8 +971,11 @@ onMounted(async () => {
     initInspirationSection();
     initStefanSection();
     initHomePostersSection();
+  }, 3000);
 
-    setTimeout(() => $gsap.ScrollTrigger.refresh(), 1000);
+ 
+
+
   });
 
       
