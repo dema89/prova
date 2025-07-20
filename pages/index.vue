@@ -875,64 +875,7 @@ function initStefanSection() {
 /******** 07 - Poster schede section *********/
 
 function initHomePostersSection() {
-  // Precalcolo variabili fuori dal loop
-  const blocks = schedeRefs.value;
-  const total = blocks.length;
-  if (total === 0) return;
 
-  const minScale = 0.5;
-  const maxScale = 1;
-  const step = (maxScale - minScale) / (total - 1);
-
-  // Precalcola le scale per ogni scheda (evita calcoli ripetuti in GSAP)
-  const scales = blocks.map((_, index) => 
-    Math.max(minScale, maxScale - (total - 1 - index) * step)
-  );
-
-  // Timeline unica per i movimenti di Y
-  const yTimeline = $gsap.timeline({
-    scrollTrigger: {
-      trigger: '#home_posters',
-      scroller: '#main',
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: 1
-    }
-  });
-
-  blocks.forEach((block, index) => {
-    // Batch y transformations
-    yTimeline.to(block, { y: 0, perspective: '0px', rotateX: '0deg' }, 0);
-
-    // Batch scale transformations
-    $gsap.to(block, {
-      scale: scales[index],
-      scrollTrigger: {
-        trigger: '#home_posters',
-        scroller: '#main',
-        start: `${(index * 8)}% top`,
-        end: index === total - 1 ? 'bottom bottom' : '100% top',
-        scrub: 1
-      }
-    });
-
-    // Animazione immagini (usando un batch se possibile)
-    const images = imageRefsByScheda.value[index] || [];
-    if (images.length > 0) {
-      $gsap.to(images, {
-        scale: 1,
-        scrollTrigger: {
-          trigger: '#home_posters',
-          scroller: '#main',
-          start: `${(index * 8)}% top`,
-          end: `${(index * 8) + 10}% top`,
-          scrub: 1
-        }
-      });
-    }
-  });
-
-  // Animazione titolo secondario (fuori dal loop)
   $gsap.to('#titolo_secondario_film', {
     y: '-30%',
     ease: 'power2.out',
@@ -944,6 +887,60 @@ function initHomePostersSection() {
       scrub: true
     }
   });
+
+  const setupAnimations = () => {
+    const total = schedeRefs.value.length;
+    const minScale = 0.5;
+    const maxScale = 1;
+    const step = (maxScale - minScale) / (total - 1);
+    let perc = 0;
+
+    const createTimeline = (trigger, start, end) =>
+      $gsap.timeline({
+        scrollTrigger: {
+          trigger,
+          scroller: '#main',
+          start,
+          end,
+          scrub: 1
+        }
+      });
+
+    schedeRefs.value.forEach((block, index) => {
+
+      createTimeline('#home_posters', `${perc}% top`, `${perc + 8}% top`)
+        .to(block, {
+          y: 0,
+          perspective: '0px',
+          rotateX: '0deg'
+        });
+
+      const reversedIndex = total - 1 - index;
+      const scaleValue = Math.max(minScale, maxScale - reversedIndex * step);
+
+      $gsap.timeline({
+        scrollTrigger: {
+          trigger: '#home_posters',
+          scroller: '#main',
+          start: `${perc}% top`,
+          end: index === total - 1 ? 'bottom bottom' : '100% top',
+          scrub: 1
+        }
+      }).to(block, {
+        scale: scaleValue
+      });
+
+      const images = imageRefsByScheda.value[index] || [];
+      images.forEach((img) => {
+        createTimeline('#home_posters', `${perc}% top`, `${perc + 10}% top`)
+          .to(img, { scale: 1 });
+      });
+
+      perc += 8;
+    });
+  };
+
+  setupAnimations();
 }
 
 /******** END - Poster schede section *********/
