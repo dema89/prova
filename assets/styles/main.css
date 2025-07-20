@@ -1969,18 +1969,7 @@ width:100%;
 position: relative;
 }
 
-.about-image:after
-{
-content: "";
-display: block;
-width:90%;
-height:90%;
-top:50%;
-left:50%;
-transform: translate(-50%, -50%);
-position: absolute;
-z-index: 2;
-}
+
 
 .about-image.good:after
 {
@@ -2749,7 +2738,18 @@ display:none;
   	padding: 0px;
 	}
 
-
+	.about-image:after
+	{
+	content: "";
+	display: block;
+	width:90%;
+	height:90%;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	z-index: 2;
+	}
 }
 
 /* Tablet orizzontale (es. iPad landscape) */
