@@ -26,10 +26,14 @@
 
       
       <video poster="/img/preview.jpg" autoplay muted loop playsinline loading="lazy">
-        <source src="/img/video/red.mp4" type="video/mp4" />
+         <source src="/img/video/hero_rossa.webm" type="video/webm" />
+        <source src="/img/video/hero_rossa.mp4" type="video/mp4" />
+         <source src="/img/video/hero_rossa.ogv" type="video/ogg" />
       </video>
       <video autoplay muted loop playsinline reload="metadata" loading="lazy">
-        <source src="/img/video/azzurro.mp4" type="video/mp4" />
+        <source src="/img/video/hero_azzurra.webm" type="video/webm" />
+        <source src="/img/video/hero_azzurra.mp4" type="video/mp4" />
+         <source src="/img/video/hero_azzurra.ogv" type="video/ogg" />
       </video>
     </div>
   </section>
