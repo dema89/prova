@@ -370,7 +370,7 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
       <div id="cont_schede">
         
         <div v-for="(movie, index) in movies" :key="movie.id" :ref="addSchedaRef" class="scheda sl">
-          <NuxtLink :href="`/${movie.nome}`" class="link_poster click_poster" @click="clickmenu(index)" :ref="addlink"><span>VIEW POSTER</span></NuxtLink>
+          <NuxtLink :href="`/film/${movie.nome}`" class="link_poster click_poster" @click="clickmenu(index)" :ref="addlink"><span>VIEW POSTER</span></NuxtLink>
           <div>
             <div class="immagine_film" :data-color-good="movie.datacolor" :data-color-evil="movie.datacolor2" :class="{ good: good, evil: evil, neutral:neutral }">
               
