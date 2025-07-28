@@ -12,7 +12,7 @@ export function useCarouselController({ containerR, carouselR, schedeRefs, movie
   const activePosterIndex = ref(-1)
   const hoveredPosterIndex = ref(null)
   const currentPagePosterIndex = ref(-1)
-  const mobileHighlightIndex = ref(0)
+  const mobileHighlightIndex = ref(-1)
   const draggedOnce = ref(false)
 
   const route = useRoute()
@@ -213,6 +213,24 @@ export function useCarouselController({ containerR, carouselR, schedeRefs, movie
     })
   }
 
+  /** Reset al primo poster (solo mobile + drag) */
+const resetToFirstPoster = () => {
+  if (!isMobile.value || !carouselR.value || !schedeRefs.value.length) return
+
+  // Prendi il primo poster
+  const firstPoster = schedeRefs.value[0]
+  const containerWidth = containerR.value.clientWidth
+  const shift = firstPoster.offsetLeft + firstPoster.offsetWidth / 2 - containerWidth / 2
+
+  // Centra il primo poster
+  $gsap.set(carouselR.value, { x: -shift })
+
+  activePosterIndex.value = 0
+  mobileHighlightIndex.value = 0
+  draggedOnce.value = false
+  attivaTitolo(movies.value[0]?.nome || 'other')
+}
+
   /** Gestione hover */
   const setHoveredPoster = (index) => { hoveredPosterIndex.value = index }
   const resetHoveredPoster = () => { hoveredPosterIndex.value = null }
@@ -242,7 +260,9 @@ export function useCarouselController({ containerR, carouselR, schedeRefs, movie
       }
     }
 
-    if (isMobile.value && !draggedOnce.value) mobileHighlightIndex.value = 0
+    if (carouselId === 'carousel2' && isMobile.value && !draggedOnce.value) {
+      resetToFirstPoster()
+    }
 
     useEventListener(window, 'resize', () => {
       clearTimeout(resizeTimeout)
@@ -253,8 +273,12 @@ export function useCarouselController({ containerR, carouselR, schedeRefs, movie
         if (wasMobile && !isMobile.value) {
           draggableInstance?.kill?.()
           draggedOnce.value = false
-          mobileHighlightIndex.value = -1
-          activePosterIndex.value = -1
+          if (carouselId === 'carousel2') {
+            resetToFirstPoster()
+          } else {
+            mobileHighlightIndex.value = -1
+            activePosterIndex.value = -1
+          }
           hoveredPosterIndex.value = null
           $gsap.set(carouselR.value, { x: 0 })
           attivaTitolo('other')
@@ -298,6 +322,7 @@ export function useCarouselController({ containerR, carouselR, schedeRefs, movie
     setHoveredPoster,
     resetHoveredPoster,
     draggedOnce,
-    mobileHighlightIndex
+    mobileHighlightIndex,
+    resetToFirstPoster
   }
 }

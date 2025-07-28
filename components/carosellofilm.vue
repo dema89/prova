@@ -2,7 +2,7 @@
   <section :id="'carousel1'" class="carous" ref="containerR" @mousemove="handleMouseMove" >
     <div class="carousel-container">
       <div @mouseleave="reseTileposter">
-        <div class="carousel" ref="carouselR" @mouseleave="attivaTitolo('other')">
+        <div class="carousel sl" ref="carouselR" @mouseleave="attivaTitolo('other')">
 
           <div class="carousel-spacer"></div>
 
@@ -40,7 +40,7 @@ dimmed:
             >
               <span>VIEW POSTER</span>
             </NuxtLink>
-            <div class="immagine_film" data-color-good="yellow" data-color-evil="magenta" :class="{ good: good, evil: evil, neutral:neutral }">
+            <div class="immagine_film" :class="movie.datacolor, movie.datacolor2,  { good: good, evil: evil, neutral: neutral }" :data-color-good="movie.datacolor" :data-color-evil="movie.datacolor2">
                  <img loading="lazy" decoding="async"  :alt="movie.nome" :src="movie.prev" />
                 <img loading="lazy" decoding="async"  :alt="movie.nome" :src="movie.prev2" class="poster_sovrapposto" />
             </div>

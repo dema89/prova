@@ -315,7 +315,7 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
       <div class="info_stefan">
         <div class="text">
           <h2 :ref="addSplitRef">Stefan Segmanster</h2>
-          <p>L’approccio di Saul Bass alle intro cinematografiche ha ispirato il mio progetto, guidandomi nella creazione di un linguaggio visivo che fonde grafica e cinema. La sua capacità di sintetizzare l’essenza di un film in pochi elementi mi ha influenzato, spingendomi a usare forme e colori per evocare atmosfere potenti, rendendo la semplicità uno strumento narrativo d’impatto.</p>
+          <p>Stefan Sagmeister’s experimental approach, evident in the Mountains of Madness album cover for H.P. Zinker (1994) and later in his book Made You Look (2001), has profoundly influenced this project. His use of colored filters to hide and reveal overlapping images inspired me to explore a layered visual language, expanding the concept with a second filter and sharper color contrasts. This technique allowed me to play with perception and duality, leveraging digital interaction to capture the unsettling ambiguity that defines horror films.</p>
         </div>    
 
         <div class="image">
@@ -352,19 +352,27 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
         <div>
           <h2 :ref="addSplitRef">10 posters tribute</h2>
           <h2 class="mob" :ref="addSplitRef">to horror film</h2>
-          <p>L’approccio di Saul Bass alle intro cinematografiche ha ispirato il mio progetto, guidandomi nella creazione di un linguaggio visivo che fonde grafica e cinema. La sua capacità di sintetizzare l’essenza di un film in pochi elementi mi ha influenzato, spingendomi a usare forme e colori per evocare atmosfere potenti, rendendo la semplicità uno strumento narrativo d’impatto.</p>
-        </div>
-        <div>
+          <p>This series of 10 posters expands the visual narrative of Light in the Darkness, turning it into a gallery of layered subjects that explore the fragile boundary between perception and reality. Each poster is the result of a dialogue between human creativity and AI-generated imagery, merging technology and design to reinterpret the unsettling language of horror cinema.
+            </p><p>
+              The project exists in two dimensions: a printed version, where the images come alive through colored filters applied to custom-made glasses, and a digital version, brought to life through this website. 
+            </p>
+           
+          </div>
+        <div id="title_h2_scroll">
           <h2 id="titolo_secondario_film" class="right" :ref="addSplitRef">to horror film</h2>
+          <p> Both formats share the same intent, not to provide answers, but to create an interactive experience where the viewer decides what to reveal and what to hide.</p>
+           <p>
+              This is a fan-made project, with no commercial purpose, born purely out of passion for the genre and visual experimentation. Every image is a story layered in color and meaning, designed to challenge perception and to honor the cinematic atmospheres that continue to shape our imagination.
+            </p>
         </div>
       </div>
 
       <div id="cont_schede">
         
-        <div v-for="(movie, index) in movies" :key="movie.id" :ref="addSchedaRef" class="scheda">
+        <div v-for="(movie, index) in movies" :key="movie.id" :ref="addSchedaRef" class="scheda sl">
           <NuxtLink :href="`/${movie.nome}`" class="link_poster click_poster" @click="clickmenu(index)" :ref="addlink"><span>VIEW POSTER</span></NuxtLink>
           <div>
-            <div class="immagine_film" data-color-good="yellow" data-color-evil="magenta" :class="{ good: good, evil: evil, neutral:neutral }">
+            <div class="immagine_film" :data-color-good="movie.datacolor" :data-color-evil="movie.datacolor2" :class="{ good: good, evil: evil, neutral:neutral }">
               
               <img :src="movie.cover" :alt="movie.nome" :ref="el => addImageRef(index, el)">
               <img :src="movie.cover2" :alt="movie.nome" :ref="el => addImageRef(index, el)">
@@ -487,6 +495,15 @@ useCustomSeoMeta({
     "url": "https://yourwebsite.com"
   }
 }) 
+
+
+useHead({
+  link: [
+    { rel: 'preload', as: 'image', href: '/img/webp/tv.webp', imagesrcset: '/img/webp/tv.webp', type: 'image/webp' },
+    { rel: 'preload', as: 'image', href: '/img/preview.jpg', type: 'image/jpeg' },
+
+  ]
+})
 
 /******** Blur elemento in the Hero *********/
 function blurHero(selector) 
@@ -884,7 +901,7 @@ function initStefanSection() {
 
 function initHomePostersSection() {
 
-  $gsap.to('#titolo_secondario_film', {
+  $gsap.to('#title_h2_scroll', {
     y: '-30%',
     ease: 'power2.out',
     scrollTrigger: {
@@ -923,8 +940,8 @@ function initHomePostersSection() {
           rotateX: '0deg'
         });
 
-      const reversedIndex = total - 1 - index;
-      const scaleValue = Math.max(minScale, maxScale - reversedIndex * step);
+    
+     
 
       $gsap.timeline({
         scrollTrigger: {
@@ -935,7 +952,7 @@ function initHomePostersSection() {
           scrub: 1
         }
       }).to(block, {
-        scale: scaleValue
+        scale: 0.8
       });
 
       const images = imageRefsByScheda.value[index] || [];

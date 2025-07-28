@@ -1,17 +1,9 @@
 <template>
 
-    <div id="mouse-follower" ref="followerRef" :class="{ good: good, evil: evil, neutral: neutral }">
+    <div id="mouse-follower" ref="followerRef">
     <div id="discover_poster" ref="discoverPosterRef">Discover Poster</div>
     <div id="filter_instruction" ref="filterInstructionRef">
-      <div class="neutral-text">Active</div>
-      <div class="mini-switch">
-        <div class="choseText">Good</div>
-        <div class="switch simulated">
-          <span class="slider_sm round_sim"></span>
-        </div>
-        <div class="choseText">Evil</div>
-      </div>
-      <div class="neutral-text">filter</div>
+      <div class="neutral-text"><span>Active</span> <span>Good / Evil</span> filter</div>
     </div>
   </div>
 
@@ -72,24 +64,27 @@
     </NuxtLink>
     </div>
 
-    <div id="menu" :class="{ active: active }" :ref="registerPulseRef">
-      <div id="text_menu">
-        <div>menu</div>
-        <div>close</div>
-      </div>
+    <div id="cont_menu">
+      <a role="button" id="menu" :class="{ active: active }" :ref="registerPulseRef" @click="active = !active">
+        <div id="text_menu">
+          <div>menu</div>
+          <div>close</div>
+        </div>
 
-      <div id="burger" :class="{ active: active }" @click="active = !active">
-        <span></span>
-        <span></span>
-      </div>
+        <div id="burger" :class="{ active: active }">
+          <span></span>
+          <span></span>
+        </div>
+      </a>
     </div>
+    
   </header>
 
   <div class="navigation" :class="{ active: active }">
     <carosellofilm_nav />
   </div>
 
-  <div id="main">
+  <div id="main" class="lenis" :class="{ active: active }">
     <!-- opzionale wrapper interno per .scroll-content -->
     <div class="scroll-content">
     <NuxtPage />
@@ -100,40 +95,12 @@
 <script setup>
 useHead({
   link: [
-    // Preload immagine LCP (TV)
-    {
-      rel: 'preload',
-      as: 'image',
-      href: '/img/webp/tv.webp',
-      imagesrcset: '/img/webp/tv.webp',
-      type: 'image/webp'
-    },
-    // Preload poster video (opzionale se vuoi il poster come LCP)
-    {
-      rel: 'preload',
-      as: 'image',
-      href: '/img/preview.jpg',
-      type: 'image/jpeg'
-    },
-   
-    // Preload font drukbold
-    {
-      rel: 'preload',
-      as: 'font',
-      href: '/fonts/drukbold.woff',
-      type: 'font/woff',
-      crossorigin: ''
-    },
-    // Preload font adaptive
-    {
-      rel: 'preload',
-      as: 'font',
-      href: '/fonts/adaptive.woff2',
-      type: 'font/woff2',
-      crossorigin: ''
-    }
+
+    { rel: 'preload', as: 'font', href: '/fonts/drukbold.woff', type: 'font/woff', crossorigin: '' },
+    { rel: 'preload', as: 'font', href: '/fonts/adaptive.woff2', type: 'font/woff2', crossorigin: '' }
   ]
 })
+
 
 
 const { $gsap, $lenis } = useNuxtApp()
@@ -204,35 +171,102 @@ function moveFollower(x, y) {
   $gsap.to(followerRef.value, {
     x,
     y,
-    duration: 0.6,
-    ease: 'power3.out',
+    duration: 0.8,
+    ease: 'power2.out',
   })
 }
 
 function updateFollowerState(elements) {
-  const isPoster = elements.some(el => el.classList?.contains('click_poster') || el.closest('.carousel-container'))
-  const isFilter = elements.some(el => el.classList?.contains('element_filter'))
-  const isLink = elements.some(el => el.tagName === 'A' || pulseLinksRef.value.includes(el))
+  const follower = followerRef.value;
+  if (!follower) return;
 
-  const isInteractive = isPoster || isFilter || isLink
-  followerRef.value.classList.toggle('blend-active', isInteractive)
+  // Reset delle classi dinamiche, ma lascia eventuali classi base
+  follower.className = 'mouse-follower-base';
 
-  if (isPoster) {
-    resizeFollower(200)
-    discoverPosterRef.value?.classList?.add('attivo')
-    filterInstructionRef.value?.classList?.remove('attivo')
-  } else if (isFilter) {
-    resizeFollower(300)
-    filterInstructionRef.value?.classList?.add('attivo')
-    discoverPosterRef.value?.classList?.remove('attivo')
-  } else if (isLink) {
-    resizeFollower(40)
-    discoverPosterRef.value?.classList?.remove('attivo')
-    filterInstructionRef.value?.classList?.remove('attivo')
+  // Imposta stato base (good / evil / neutral)
+  if (good.value) {
+    follower.classList.add('good');
+  } else if (evil.value) {
+    follower.classList.add('evil');
   } else {
-    resizeFollower(20)
-    discoverPosterRef.value?.classList?.remove('attivo')
-    filterInstructionRef.value?.classList?.remove('attivo')
+    follower.classList.add('neutral');
+  }
+
+  // Controllo se siamo su un poster (immagine con data-color)
+  let isPoster = false;
+  let goodClass = null;
+  let evilClass = null;
+
+  for (const el of elements) {
+    // 1. Poster nel carosello
+    const posterEl = el.closest('.immagine_film');
+    if (posterEl) {
+      isPoster = true;
+      goodClass = posterEl.dataset.colorGood || null;
+      evilClass = posterEl.dataset.colorEvil || null;
+      break;
+    }
+
+    // 2. Poster nella pagina [nome].vue
+    const posterFullEl = el.closest('#cont_poster_full');
+    if (posterFullEl) {
+      isPoster = true;
+      goodClass = posterFullEl.dataset.colorGood || null;
+      evilClass = posterFullEl.dataset.colorEvil || null;
+      break;
+    }
+  }
+
+  // Applica eventuali classi colore
+  if (isPoster) {
+    if (good.value && goodClass) {
+      follower.classList.add(goodClass);
+    } else if (evil.value && evilClass) {
+      follower.classList.add(evilClass);
+    }
+  }
+
+  // Controllo se siamo dentro uno slider (solo per grandezza)
+  const insideSlider = elements.some(el => el.closest('.sl'));
+
+  // Altri stati (filter, header, menu)
+  const isFilter = elements.some(el => el.classList?.contains('element_filter'));
+  const insideHeader = elements.some(el => el.closest?.('header'));
+  const insideLogoOrMenu = elements.some(
+    el => el.closest?.('.logo') || el.closest?.('#menu') || el.closest?.('.filters')
+  );
+
+  // Logica dimensioni e "blend-active"
+  if (insideHeader && !insideLogoOrMenu && !isPoster && !isFilter) {
+    follower.classList.remove('blend-active');
+    resizeFollower(20);
+    discoverPosterRef.value?.classList.remove('attivo');
+    filterInstructionRef.value?.classList.remove('attivo');
+    return;
+  }
+
+  if (insideSlider || isPoster) {
+    follower.classList.add('blend-active');
+    resizeFollower(300);
+    if (isPoster) {
+      discoverPosterRef.value?.classList.add('attivo');
+      filterInstructionRef.value?.classList.remove('attivo');
+    }
+  } else if (isFilter) {
+    follower.classList.add('blend-active');
+    resizeFollower(300);
+    filterInstructionRef.value?.classList.add('attivo');
+    discoverPosterRef.value?.classList.remove('attivo');
+  } else if (insideLogoOrMenu) {
+    follower.classList.add('blend-active');
+    resizeFollower(40);
+    discoverPosterRef.value?.classList.remove('attivo');
+    filterInstructionRef.value?.classList.remove('attivo');
+  } else {
+    follower.classList.remove('blend-active');
+    resizeFollower(20);
+    discoverPosterRef.value?.classList.remove('attivo');
+    filterInstructionRef.value?.classList.remove('attivo');
   }
 }
 
@@ -297,6 +331,13 @@ function handleMouseMove(e) {
 // === Watchers ===
 watch(active, (val) => {
   val ? $lenis?.stop() : $lenis?.start()
+
+  if (val && window.innerWidth <= 1280) {
+    const navComp = document.querySelector('.carous_nav_comp')
+    if (navComp && navComp.__vueParentComponent) {
+      navComp.__vueParentComponent.exposed?.resetToFirstPoster?.()
+    }
+  }
 })
 
 function fadeInLazyImages() {

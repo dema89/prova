@@ -2,19 +2,31 @@
   <div id="page">
     <section id="cont_schede" class="schede_page" ref="heroRef">
       <div class="scheda fix page">
-        <div class="immagine_film_page"  :class="{ good: good, evil: evil, neutral:neutral }">
-           <h1 id="titolo_p_film" v-html="movieDetails.titolo"  class="split-text" :ref="addHeroSplitRef"></h1>
-          
-           <a href="#" id="scroll_down" ref="scrollDownRef">
+        <div
+          class="immagine_film_page"
+          :class="movieDetails.datacolor, movieDetails.datacolor2, { good: good, evil: evil, neutral: neutral }"
+          ref="filmPageRef"
+        >
+          <h1
+            id="titolo_p_film"
+            v-html="movieDetails.titolo"
+            class="split-text"
+            :ref="addHeroSplitRef"
+          ></h1>
+
+          <a href="#" id="scroll_down" ref="scrollDownRef">
             <svg width="10" height="27" viewBox="0 0 10 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd"
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
                 d="M3.92449 -4.83788e-08L3.86728 19.3292L-1.14844e-06 19.3732L4.81693 27L10 19.3181L5.85812 19.3402L5.91533 0.0110229L3.92449 -4.83788e-08Z"
-                fill="white" />
+                fill="white"
+              />
             </svg>
           </a>
-          <img id="cover_img" fetchpriority="high" :src="movieDetails.cover" />
-           <img id="cover_img_blend" fetchpriority="high" :src="movieDetails.cover2" />
-         
+
+          <img id="cover_img" fetchpriority="high" :src="movieDetails.cover" ref="coverImgRef" />
+          <img id="cover_img_blend" fetchpriority="high" :src="movieDetails.cover2" ref="coverImgBlendRef" />
         </div>
       </div>
     </section>
@@ -26,7 +38,7 @@
             <h2 :ref="addSplitRef">{{ movieDetails.sottotitolo }}</h2>
             <div v-html="movieDetails.descrizione_1"></div>
           </div>
-          
+
           <ul>
             <li><label>Director</label> {{ movieDetails.regista }}</li>
             <li><label>Year</label> {{ movieDetails.anno }}</li>
@@ -35,23 +47,35 @@
         </div>
       </div>
 
-     <div id="cont_poster" class="element_filter" ref="container" @mouseenter="onMouseEnterHandler" @mouseleave="onMouseLeaveHandler" @mousemove="onMouseMoveHandler">
-        <div id="cont_poster_full" ref="posterWrapper" class="immagine_film" data-color-good="yellow" data-color-evil="magenta">
+      <div
+        id="cont_poster"
+        class="element_filter"
+        ref="container"
+        @mouseenter="onMouseEnterHandler"
+        @mouseleave="onMouseLeaveHandler"
+        @mousemove="onMouseMoveHandler"
+      >
+        <div
+          id="cont_poster_full"
+          ref="posterWrapper"
+          class="immagine_film" :class="movieDetails.datacolor, movieDetails.datacolor2,  { good: good, evil: evil, neutral: neutral }"
+          :data-color-good="movieDetails.datacolor"
+          :data-color-evil="movieDetails.datacolor2"
+        >
           <img :alt="movieDetails.titolo" loading="lazy" :src="movieDetails.poster" />
           <img :alt="movieDetails.titolo" loading="lazy" :src="movieDetails.poster2" />
         </div>
         <div id="light-spot" ref="lightSpot"></div>
       </div>
     </section>
-  
 
     <Carosellofilm />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick, watch, onUnmounted, inject, computed } from 'vue'
-import { useRoute, useHead } from '#app'
+import { ref, onMounted, nextTick, watch, watchEffect, onUnmounted, inject } from 'vue'
+import { useRoute } from '#app'
 
 const { $gsap, $movies, $splitTextAnimation, $splitTextAnimationImmediate, $lenis } = useNuxtApp()
 const { params } = useRoute()
@@ -73,9 +97,12 @@ const lightSpot = ref()
 const posterWrapper = ref()
 const scrollDownRef = ref(null)
 const textFilmRef = ref(null)
+const filmPageRef = ref(null)
+const coverImgRef = ref(null)
+const coverImgBlendRef = ref(null)
+
 const splitRefs = ref([])
 const heroRefs = ref([])
-
 
 const addSplitRef = (el) => el && !splitRefs.value.includes(el) && splitRefs.value.push(el)
 const addHeroSplitRef = (el) => el && !heroRefs.value.includes(el) && heroRefs.value.push(el)
@@ -184,18 +211,32 @@ let scrollTriggers = []
 const initScrollAnimations = () => {
   if (!$gsap) return
 
-  scrollTriggers.push(
-    $gsap.ScrollTrigger.create({
+  // Scroll Down Button
+  if (scrollDownRef.value) {
+    const trigger1 = $gsap.ScrollTrigger.create({
       trigger: "#page",
       scroller: "#main",
       start: "10% top",
       end: "bottom top",
       scrub: true,
-      onEnter: () => $gsap.to(scrollDownRef.value, { opacity: 0, duration: 1, filter: "blur(10px)" }),
-      onLeaveBack: () => $gsap.to(scrollDownRef.value, { opacity: 1, duration: 1, filter: "blur(0px)" })
-    }),
+      onEnter: () => {
+        if (scrollDownRef.value) {
+          $gsap.to(scrollDownRef.value, { opacity: 0, duration: 1, filter: "blur(10px)" })
+        }
+      },
+      onLeaveBack: () => {
+        if (scrollDownRef.value) {
+          $gsap.to(scrollDownRef.value, { opacity: 1, duration: 1, filter: "blur(0px)" })
+        }
+      }
+    })
+    scrollTriggers.push(trigger1)
+  }
 
-    $gsap.to(".immagine_film_page img", {
+  // Images
+  const filmImgs = [coverImgRef.value, coverImgBlendRef.value].filter(Boolean)
+  if (filmImgs.length) {
+    const trigger2 = $gsap.to(filmImgs, {
       y: "100px",
       scrollTrigger: {
         trigger: "#page",
@@ -204,9 +245,13 @@ const initScrollAnimations = () => {
         scroller: '#main',
         scrub: 1,
       },
-    }),
+    })
+    scrollTriggers.push(trigger2)
+  }
 
-    $gsap.fromTo("#titolo_p_film",
+  // Title
+  if (heroRefs.value.length) {
+    const trigger3 = $gsap.fromTo(heroRefs.value[0],
       { opacity: 1, filter: "blur(0px)" },
       {
         opacity: 0,
@@ -220,7 +265,8 @@ const initScrollAnimations = () => {
         },
       }
     )
-  )
+    scrollTriggers.push(trigger3)
+  }
 }
 
 const tryShowScrollDown = () => {
@@ -247,13 +293,12 @@ watch([preloadCompleted, transitionActive], async ([preload, transizione]) => {
   }
 }, { immediate: true })
 
-
 onMounted(() => {
   if (process.client) {
     movies.value = $movies
     movieDetails.value = movies.value.find((m) => m.nome === nome) || {}
 
-    mouse.setOrigin(container.value)
+    if (container.value) mouse.setOrigin(container.value)
 
     watch(showScrollDown, (val) => {
       if (val && scrollDownRef.value) {
@@ -270,7 +315,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  scrollTriggers.forEach(t => t.scrollTrigger?.kill())
+  scrollTriggers.forEach((t) => t?.kill && t.kill())
   scrollTriggers = []
 })
 </script>
