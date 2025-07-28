@@ -11,14 +11,14 @@ try {
   if (Array.isArray(json)) {
     filmRoutes = json
       .filter((item): item is { nome: string } => typeof item.nome === 'string')
-      .map((film) => `/${film.nome}`)
+      .map((film) => `/film/${film.nome}`)
   }
 } catch (error) {
   console.warn('⚠️ Impossibile leggere public/data/data.json. Nessuna route dinamica generata.')
 }
 
 export default defineNuxtConfig({
-  ssr: true, // Attiva la generazione SSR (necessaria per SSG)
+  
 
   css: ['~/assets/styles/main.css'],
 
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
     }
   },
 
-
+  ssr: true, 
   nitro: {
     prerender: {
       crawlLinks: true,
