@@ -25,8 +25,8 @@
             </svg>
           </a>
 
-          <img id="cover_img" fetchpriority="high" :src="movieDetails.cover" ref="coverImgRef" />
-          <img id="cover_img_blend" fetchpriority="high" :src="movieDetails.cover2" ref="coverImgBlendRef" />
+          <img id="cover_img" fetchpriority="high" :src="`/${movieDetails.cover}`" ref="coverImgRef" />
+          <img id="cover_img_blend" fetchpriority="high" :src="`/${movieDetails.cover2}`" ref="coverImgBlendRef" />
         </div>
       </div>
     </section>
@@ -62,8 +62,8 @@
           :data-color-good="movieDetails.datacolor"
           :data-color-evil="movieDetails.datacolor2"
         >
-          <img :alt="movieDetails.titolo" loading="lazy" :src="movieDetails.poster" />
-          <img :alt="movieDetails.titolo" loading="lazy" :src="movieDetails.poster2" />
+          <img :alt="movieDetails.titolo" loading="lazy" :src="`../${movieDetails.poster}`" />
+          <img :alt="movieDetails.titolo" loading="lazy" :src="`../${movieDetails.poster2}`" />
         </div>
         <div id="light-spot" ref="lightSpot"></div>
       </div>
