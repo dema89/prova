@@ -35,7 +35,6 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en'
       },
-      title: 'Light in the Darkness - A project by Studio K95',
       
     }
   },
