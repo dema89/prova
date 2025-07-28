@@ -839,13 +839,13 @@ function initInspirationSection() {
     opacity: 1,
     scale: 1.03,
     ease: 'power2.out'
-  }, 0.8);
+  }, 0.9);
 
   timeline.to(saulRef.value, {
     opacity: 1,
     scale: 1.1,
     ease: 'power2.out'
-  }, 0.8);
+  }, 0.9);
 
   nextTick(() => {
     if (insTextRef.value) {
