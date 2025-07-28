@@ -3491,10 +3491,6 @@ and (-webkit-min-device-pixel-ratio: 1)
 	width: clamp(200px, 15vw,250px);
 	}
 
-	.title_others {
-	top: 14vh;
-	}
-
 	.carousel-container>div {
     bottom: 16vh;
     }
@@ -3748,7 +3744,7 @@ and (-webkit-min-device-pixel-ratio: 1)
 
 	.title_others 
 	{
-    font-size:17vw;
+    font-size:14vw;
 	}
 
 	#burger 
