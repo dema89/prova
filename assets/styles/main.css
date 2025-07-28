@@ -3476,6 +3476,11 @@ and (-webkit-min-device-pixel-ratio: 1)
 	gap:20px;
 	}
 
+	.navigation .carousel>div.cont_poster_car.is-current-page::before
+	{
+	display: none;
+	}
+
 	.preload-text > div
 	{
 	transform:scale(.9);
