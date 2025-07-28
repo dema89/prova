@@ -3666,13 +3666,15 @@ and (-webkit-min-device-pixel-ratio: 1)
 	font-size:3.125rem;
 	}
 
+	
 	#stefan
 	{
 	padding-left:30px;
 	padding-right:30px;
-	height:100dvh !important;
+	height: auto !important;
 	padding-top:14vh;
 	}
+
 
 	.info_stefan 
 	{
