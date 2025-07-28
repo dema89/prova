@@ -14,7 +14,7 @@ export function useCustomSeoMeta({
   title = 'Light in the Darkness - A Visual Exploration of Horror Cinema',
   description = 'Light in the Darkness explores the thin line between good and evil through 10 unique posters inspired by horror cinema.',
   url = 'https://yourwebsite.com',
-  image = 'https://yourwebsite.com/img/share-image.jpg',
+  image = 'https://yourwebsite.com/share-image.jpg',
   type = 'website',
   jsonLd = null
 } = {}) {

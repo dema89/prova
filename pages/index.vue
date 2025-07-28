@@ -374,8 +374,8 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
           <div>
             <div class="immagine_film" :data-color-good="movie.datacolor" :data-color-evil="movie.datacolor2" :class="{ good: good, evil: evil, neutral:neutral }">
               
-              <img :src="movie.cover" :alt="movie.nome" :ref="el => addImageRef(index, el)">
-              <img :src="movie.cover2" :alt="movie.nome" :ref="el => addImageRef(index, el)">
+              <img :src="`/img/${movie.cover}`" :alt="movie.nome" :ref="el => addImageRef(index, el)">
+              <img :src="`/img/${movie.cover2}`" :alt="movie.nome" :ref="el => addImageRef(index, el)">
             </div>
 
             <div class="data_film">
