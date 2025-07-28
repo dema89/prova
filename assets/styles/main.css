@@ -3794,6 +3794,11 @@ and (-webkit-min-device-pixel-ratio: 1)
 	{
 	font-size:.7rem;	
 	}
+
+	div.scheda {
+        height: calc(80vh - 80px);
+     
+    }
 }
 	  
 @media only screen and (max-width: 389px)
