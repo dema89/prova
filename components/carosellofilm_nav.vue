@@ -58,7 +58,7 @@ dimmed:
             >
               <NuxtLink
                 :ref="setRef(movie.nome)"
-                :href="`/${movie.nome}`"
+                :href="`/film/${movie.nome}`"
                 class="click_poster"
                 :data-title="movie.titolo.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()"
               >
