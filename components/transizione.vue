@@ -21,7 +21,7 @@ const delays = ref([])
 
 onMounted(async () => 
 {
-delays.value = Array.from({ length: 9 }, () => Math.floor(Math.random() * 700))
+delays.value = Array.from({ length: 10 }, () => Math.floor(Math.random() * 700))
 });
 
 const { $isActive } = useNuxtApp();

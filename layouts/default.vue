@@ -35,7 +35,7 @@
   <header id="header" ref="headerRef" :class="[{ header_blend: headerBlend }, { active: active }]">
     <div></div>
     <div class="logo" :ref="registerPulseRef" :class="{ active: active }">
-    <NuxtLink class="link_nav" to="/">
+    <NuxtLink class="link_nav" to="/"  data-title="Home">
        
       <svg  xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 149 96">
  
@@ -394,13 +394,7 @@ onMounted(() => {
     wasDesktop = nowDesktop
   })
 
-  $gsap.ticker.add(() => {
-    if (!preloadCompleted.value) return
-    const scrollTop = $lenis?.targetScroll ?? 0
-    headerBlend.value = isDesktop.value
-      ? scrollTop > windowHeight
-      : scrollTop > 200
-  })
+  
 })
 
 // === Cleanup ===

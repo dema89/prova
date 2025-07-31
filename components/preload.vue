@@ -87,7 +87,7 @@ onMounted(async () => {
 
    $lenis?.stop()
 
-  delays.value = Array.from({ length: 9 }, () => Math.floor(Math.random() * 700))
+  delays.value = Array.from({ length: 10 }, () => Math.floor(Math.random() * 700))
 
 
   await wait(500)
@@ -106,7 +106,7 @@ onMounted(async () => {
   step.value = 3
   
   dropped.value = true
-  await wait(1500)
+  await wait(1700)
 
    // ✅ stato globale aggiornato
   emit('done')                    // ✅ evento per default.vue

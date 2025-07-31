@@ -71,6 +71,7 @@
               <p>It is the viewer who chooses what to see, which side to bring forward. Light in the Darkness does not offer answers. It invites a deeper gaze into the image and into oneself.
                The concept is simple but unsettling: good and evil are not alternating forces, they are simultaneous. They are layered, present at once, and the idea of separating them is as fragile as a reflection.</p>
                <p>Horror is not only an aesthetic here. It is the perfect setting for this tension to unfold, where light is rare and every choice reveals something uncomfortable.</p>
+              <p class="small">This is an independent, non-commercial artistic project created as a fan tribute to the history of horror cinema. The characters and visual elements were entirely generated using artificial intelligence and are original creations, not reproductions of actors, scenes, or official materials from the films. This work is not associated with, endorsed by, or licensed by any copyright or trademark holders. It is intended solely as an artistic homage.</p>
             </div>
           </div>
         </div>
@@ -345,6 +346,17 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
       </div>
     </section>
 
+    <section id="clip-section" ref="clipSectionRef">
+      <div class="clip-bg">
+        <video autoplay muted loop playsinline loading="lazy">
+          <source src="/img/video/exibition.webm" type="video/webm" />
+          <source src="/img/video/exibition.mp4" type="video/mp4" />
+          <source src="/img/video/exibition.ogv" type="video/ogg" />
+        </video>
+      </div>
+    </section>
+
+
     <!-- SEZIONE FILM -->
     <section id="home_posters" >
 
@@ -395,12 +407,42 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
      
       </div>
     </section>
+
     
     <div class="space"></div>
 
   </div>
 
 </template>
+
+<style>
+#clip-section {
+  position: relative;
+  height: calc(100dvh * 1.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.clip-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(18% 15%, 80% 0%, 100% 100%, 0% 100%);
+  will-change: clip-path;
+}
+
+.clip-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.2);
+  will-change: transform;
+}
+</style>
 
 <script setup>
 import SplitType from 'split-type';
@@ -970,6 +1012,64 @@ function initHomePostersSection() {
 
 /******** END - Poster schede section *********/
 
+const clipSectionRef = ref(null);
+
+function initClipSection() {
+  if (!clipSectionRef.value) return;
+
+  const bg = clipSectionRef.value.querySelector('.clip-bg');
+  const img = bg.querySelector('img');
+
+  // Stato iniziale
+  $gsap.set(bg, {
+    clipPath: "polygon(18% 15%, 80% 0%, 100% 100%, 0% 100%)"
+  });
+
+  // Timeline per entrata e uscita solo via clip-path
+  const tl = $gsap.timeline({
+    scrollTrigger: {
+      trigger: clipSectionRef.value,
+      scroller: "#main",
+      start: "top bottom",
+      end: "bottom+=10% top",
+      scrub: true
+    }
+  });
+
+  // Entrata: trapezio stretto -> rettangolo
+  tl.to(bg, {
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    ease: "power2.out",
+    duration: 0.6
+  });
+
+  // Uscita: rettangolo -> trapezio stretto (inverso)
+  tl.to(bg, {
+    clipPath: "polygon(20% 0%, 84% 17%, 80% 100%, 17% 90%)",
+    ease: "power2.in",
+    duration: 0.6
+  });
+
+  // Movimento verticale (parallax)
+  $gsap.fromTo(
+    img,
+    { y: "0%" },
+    {
+      y: "10%",
+      ease: "none",
+      scrollTrigger: {
+        trigger: clipSectionRef.value,
+        scroller: "#main",
+        start: "top bottom",
+        end: "bottom+=40% top",
+        scrub: true
+      }
+    }
+  );
+}
+
+
+
 onMounted(async () => {
 
    requestIdleCallback(async () => {
@@ -994,6 +1094,7 @@ onMounted(async () => {
     initInspirationSection();
     initStefanSection();
     initHomePostersSection();
+    initClipSection();
 
     
   }, 3000);

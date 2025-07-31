@@ -279,7 +279,7 @@ z-index: 1;
 
 .fondo_columns .column 
 {
-flex: 1;
+width:10%;
 background: var(--red);
 height: 100%;
 transform: translateY(120%);
@@ -436,8 +436,9 @@ to   { opacity:0;  }
 
 .preload-columns .column 
 {
-  flex: 1;
+flex:1;
   background: red;
+
   height: 100%;
   transform: translateY(0);
   transition: transform 1s ease-out;
@@ -728,6 +729,7 @@ position: fixed;
 min-height:122px;
 opacity:1;
 animation: op_change_hreader 1s forwards;
+	mix-blend-mode: difference;
 }
 
 #header.header_blend
@@ -867,6 +869,7 @@ transition-delay:.7s;
 {
 display: flex;
 justify-content: end;
+	mix-blend-mode: difference;
 }
 
 #menu {
@@ -880,6 +883,8 @@ justify-content: end;
 	right:55px;
 
 	
+
+	
 }
 
 #text_menu
@@ -888,10 +893,7 @@ height:22px;
 overflow: hidden;
 }
 
-#burger>span
-{
-box-shadow: rgba(0, 0, 0, 0.80) 0px 5px 15px;
-}
+
 
 #menu div
 {
@@ -2038,13 +2040,20 @@ padding-right:var(--col-5);
 margin-bottom:40px;
 }
   
-.column 
+#about .column 
 {
 flex: 1;
 font-size: var(--fontsize);
 line-height: var(--lineheight);
 padding-left:var(--col-4);
 padding-right:var(--col-2);
+}
+
+#about .column .small
+{
+font-size: 0.8rem;
+line-height:130%;
+width:80%;
 }
   
   
@@ -2571,7 +2580,7 @@ position: absolute;
 top: 50%;
 left: 50%;
 width: 18vw;
-transform: translate(-50%, -20%) rotate(-45deg);
+transform: translate(-30%, -20%) rotate(-45deg);
 pointer-events: none;
 }
 
@@ -2867,7 +2876,7 @@ and (-webkit-min-device-pixel-ratio: 1)
   	padding-right:0px;
 	}
 
-	.column 
+	#about .column 
 	{
   	padding-left: var(--col-2);
   	padding-right: 0px;
@@ -3597,7 +3606,7 @@ and (-webkit-min-device-pixel-ratio: 1)
     margin-bottom: 40px;
 	}
 
-	.column 
+	#about .column 
 	{
     padding:0px;
 	}
