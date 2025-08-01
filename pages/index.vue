@@ -1,12 +1,12 @@
 <template>
 
   <section id="hero">
-    <h1 :ref="addHeroSplitRef" class="split-text hero_title">
-      <div>
+    <h1 :ref="addHeroSplitRef"  class="split-text hero_title">
+      <div :ref="addHerDou">
         <div>Light</div>
         <div class="small">in the</div>
       </div>
-      <div class="block">Darkness</div>
+      <div :ref="addHerDou" class="block">Darkness</div>
     </h1>
 
     <div id="firma" :ref="addHeroSplitRef" class="split-text">
@@ -71,7 +71,7 @@
               <p>It is the viewer who chooses what to see, which side to bring forward. Light in the Darkness does not offer answers. It invites a deeper gaze into the image and into oneself.
                The concept is simple but unsettling: good and evil are not alternating forces, they are simultaneous. They are layered, present at once, and the idea of separating them is as fragile as a reflection.</p>
                <p>Horror is not only an aesthetic here. It is the perfect setting for this tension to unfold, where light is rare and every choice reveals something uncomfortable.</p>
-              <p class="small">This is an independent, non-commercial artistic project created as a fan tribute to the history of horror cinema. The characters and visual elements were entirely generated using artificial intelligence and are original creations, not reproductions of actors, scenes, or official materials from the films. This work is not associated with, endorsed by, or licensed by any copyright or trademark holders. It is intended solely as an artistic homage.</p>
+              
             </div>
           </div>
         </div>
@@ -346,7 +346,18 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
       </div>
     </section>
 
-    <section id="clip-section" ref="clipSectionRef">
+    <section id="exhibition" ref="clipSectionRef">
+      
+      <div id="testi_exhibition">
+
+        <h2 ref="exhiTextRef">
+          <span class="small">the</span> Exhibitions
+        </h2>
+
+        <div id="exhibition_p"><p>We are planning a series of free, non-commercial exhibitions to present the project in 2026. If you are interested in hosting an exhibition at your venue, feel free to contact us at <span v-html="emailLink"></span></p></div>
+        
+      </div>
+      
       <div class="clip-bg">
         <video autoplay muted loop playsinline loading="lazy">
           <source src="/img/video/exibition.webm" type="video/webm" />
@@ -354,6 +365,7 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
           <source src="/img/video/exibition.ogv" type="video/ogg" />
         </video>
       </div>
+
     </section>
 
 
@@ -384,8 +396,8 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
         <div v-for="(movie, index) in movies" :key="movie.id" :ref="addSchedaRef" class="scheda sl">
           <NuxtLink :href="`/film/${movie.nome}`" class="link_poster click_poster" @click="clickmenu(index)" :ref="addlink"><span>VIEW POSTER</span></NuxtLink>
           <div>
+            
             <div class="immagine_film" :data-color-good="movie.datacolor" :data-color-evil="movie.datacolor2" :class="{ good: good, evil: evil, neutral:neutral }">
-              
               <img :src="`/img/${movie.cover}`" :alt="movie.nome" :ref="el => addImageRef(index, el)">
               <img :src="`/img/${movie.cover2}`" :alt="movie.nome" :ref="el => addImageRef(index, el)">
             </div>
@@ -409,14 +421,16 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
     </section>
 
     
-    <div class="space"></div>
+    <div class="space">
+      <p class="small">This is an independent, non-commercial artistic project created as a fan tribute to the history of horror cinema. The characters and visual elements were entirely generated using artificial intelligence and are original creations, not reproductions of actors, scenes, or official materials from the films. This work is not associated with, endorsed by, or licensed by any copyright or trademark holders. It is intended solely as an artistic homage.</p>
+    </div>
 
   </div>
 
 </template>
 
 <style>
-#clip-section {
+#exhibition {
   position: relative;
   height: calc(100dvh * 1.6);
   display: flex;
@@ -425,14 +439,58 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
   overflow: hidden;
 }
 
-.clip-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  clip-path: polygon(18% 15%, 80% 0%, 100% 100%, 0% 100%);
-  will-change: clip-path;
+#testi_exhibition
+{
+position: absolute;
+width:100%;
+height:100%;
+z-index:2;
+padding-top:100px;
+}
+
+#exhibition_p
+{
+max-width:533px;
+font-size:1rem;
+line-height:var(--lineheight);
+position: absolute;
+left:50%;
+bottom:100px;
+text-align: center;
+color:var(--white);
+transform:translateX(-50%);
+}
+
+#exhibition_p a
+{
+color:var(--white);
+}
+
+#testi_exhibition h2
+{
+font-size:6rem;
+line-height:100%;
+font-family: 'druk', sans-serif;
+text-align: center;
+color:var(--white);
+text-transform: uppercase;
+}
+
+#testi_exhibition h2 span.small
+{
+font-size:4rem;
+line-height:109%;
+}
+
+.clip-bg 
+{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+clip-path: polygon(18% 15%, 80% 0%, 100% 100%, 0% 100%);
+will-change: clip-path;
 }
 
 .clip-bg video {
@@ -442,6 +500,59 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
   transform: scale(1.2);
   will-change: transform;
 }
+
+/* Tablet verticale (es. iPad portrait) */
+@media only screen and (max-width: 920px) 
+{
+  #exhibition 
+  {
+  bottom:10dvh;
+  height:100dvh;
+  }
+  
+ #exhibition_p 
+  {
+  bottom:60px;
+  }
+
+
+}
+
+@media only screen and (max-width: 576px) 
+{
+    #testi_exhibition h2
+  {
+  font-size:clamp(2rem, 20vw, 4rem);
+
+  }
+
+   #testi_exhibition h2 span.small
+  {
+  font-size:clamp(1rem, 20vw, 2.8rem);
+
+  }
+
+    #testi_exhibition
+{
+
+padding-top:60px;
+}
+
+  #exhibition_p 
+  {
+  width:80%;
+  bottom:auto;
+  top:160px;
+  }
+
+  #exhibition 
+  {
+  
+  height:120dvh;
+  }
+}
+
+
 </style>
 
 <script setup>
@@ -467,6 +578,7 @@ const good = inject('good');
 const evil = inject('evil');
 const neutral = inject('neutral');
 const themeClass = computed(() => ({ good: good.value, evil: evil.value, neutral: neutral.value }));
+const emailLink = `<a href="mailto:${'webservices' + '@' + 'k95.it'}">webservices@k95.it</a>`
 
 const movies = ref([]);
 const loadMovies = async () => {
@@ -516,6 +628,8 @@ const textLayerRef = ref(null);
 const bookBlackRef = ref(null);
 const bookRedRef = ref(null);
 
+const exhiTextRef = ref(null);
+
 
 import { useCustomSeoMeta } from '~/composables/useCustomSeoMeta'
 
@@ -547,33 +661,7 @@ useHead({
   ]
 })
 
-/******** Blur elemento in the Hero *********/
-function blurHero(selector) 
-{
-  const targets = $gsap.utils.toArray(selector);
-  if (!targets.length) return;
 
-  $gsap.fromTo(targets,
-    {
-      opacity: 1,
-      filter: "blur(0px)",
-    },
-    {
-      opacity: 0,
-      filter: "blur(15px)",
-      stagger: { amount: 0.5 },
-      scrollTrigger: {
-        trigger: "#hero",
-        scroller: "#main",
-        start: "top top",
-        end: "bottom top",
-        scrub: 1,
-      },
-    }
-  );
-}
-
-/******** END Blur elemento in the Hero *********/
 
 function initHeroSplitOnPreload() {
   if (preloadCompleted.value) {
@@ -734,6 +822,47 @@ function initSnakeShaderEffect(base, canvasId = 'image-canvas') {
   }
 }
 /******** END - Immagine intro ondulata *********/
+
+/******** 02 - Hero titotlo  *********/
+const her_dou = ref([])
+
+function addHerDou(el) {
+  if (el && !her_dou.value.includes(el)) {
+    her_dou.value.push(el)
+  }
+}
+
+
+function hero_p() {
+  nextTick(() => {
+    her_dou.value.forEach((el) => {
+      const split_t = new SplitType(el, { types: 'words, chars' });
+
+      $gsap.fromTo(
+        split_t.chars,
+        {
+          opacity: 1,
+         
+          filter: "blur(0px)"
+        },
+        {
+          opacity: 0,
+          filter: "blur(5px)",
+          ease: 'power2.out',
+          stagger: { amount: 0.5 },
+          scrollTrigger: {
+            trigger: '#hero',
+            scroller: '#main',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        }
+      );
+    });
+  });
+}
+/******** END Hero titotlo  *********/
 
 /******** 03 - DOG SECTION  *********/
 
@@ -1012,13 +1141,16 @@ function initHomePostersSection() {
 
 /******** END - Poster schede section *********/
 
+/******** 08 - Exhibition SECTION  *********/
+
+/* Parte polygono */
 const clipSectionRef = ref(null);
 
 function initClipSection() {
   if (!clipSectionRef.value) return;
 
   const bg = clipSectionRef.value.querySelector('.clip-bg');
-  const img = bg.querySelector('img');
+  const img = bg.querySelector('video');
 
   // Stato iniziale
   $gsap.set(bg, {
@@ -1047,7 +1179,7 @@ function initClipSection() {
   tl.to(bg, {
     clipPath: "polygon(20% 0%, 84% 17%, 80% 100%, 17% 90%)",
     ease: "power2.in",
-    duration: 0.6
+    duration: 0.8
   });
 
   // Movimento verticale (parallax)
@@ -1068,6 +1200,37 @@ function initClipSection() {
   );
 }
 
+/* Parte titolo */
+function exhibition() {
+  nextTick(() => {
+    if (exhiTextRef.value) {
+      const split_t = new SplitType(exhiTextRef.value, { types: 'words, chars' });
+
+      $gsap.fromTo(
+        split_t.chars,
+        {
+          y: '120%',
+        
+        },
+        {
+          y: '0%',
+          ease: 'power2.out',
+          stagger: { amount: 0.5 },
+          scrollTrigger: {
+            trigger: '#exhibition',
+            scroller: '#main',
+            start: 'top+=-40% top',
+            end: 'top top',
+            
+            scrub: true
+          }
+        }
+      );
+    }
+  });
+}
+
+/******** END Exhibition SECTION  *********/
 
 
 onMounted(async () => {
@@ -1077,7 +1240,7 @@ onMounted(async () => {
   const config = useRuntimeConfig();
   const base = config.app.baseURL || '/';
 
-  blurHero([".hero_title", "#firma"]);
+
   initHeroSplitOnPreload();
   await loadMovies(); 
 
@@ -1095,6 +1258,8 @@ onMounted(async () => {
     initStefanSection();
     initHomePostersSection();
     initClipSection();
+    exhibition();
+    hero_p();
 
     
   }, 3000);

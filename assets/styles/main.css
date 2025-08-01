@@ -979,7 +979,7 @@ font-size: clamp(14.7rem, 16vw + 1rem, 26.625rem);
 line-height:82%;
 }
 
-#hero h1 div.small>div>div
+#hero h1 div.small .char
 {
 font-size: clamp(7.375rem, 10vw + 1rem, 10.875rem);
 display: inline-block;
@@ -1358,7 +1358,7 @@ div.scheda.fix .data_film {
 	bottom: 50px;
 	left: var(--col-1);
 	text-transform: uppercase;
-	font-size: clamp(9rem, 13vw + 1rem, 13.188rem);
+	font-size: clamp(9rem, 13vw + 1rem, 10rem);
 	line-height: 82%;
 	max-width:60%;
 }
@@ -1442,7 +1442,6 @@ line-height: 85%;
 	align-items: flex-start;
 	background: var(--black);
 	justify-content: space-between;
-	height:100vh;
 	padding-top:229px;
 }
 
@@ -2510,7 +2509,7 @@ opacity: 0;
 
 .saul_text h3, .info_stefan h2
 {
-font-size:85px;
+font-size:5.31rem;
 line-height:100%;
 text-transform:uppercase;
 font-family: 'druk', sans-serif;
@@ -3495,7 +3494,13 @@ and (-webkit-min-device-pixel-ratio: 1)
 	transform:scale(.9);
 	}
 
-	.column:nth-child(5), .column:nth-child(6), .column:nth-child(7), .column:nth-child(8), .column:nth-child(9)
+	.fondo_columns .column
+	{
+	width:25%;
+	}
+
+
+	.column:nth-child(5), .column:nth-child(6), .column:nth-child(7), .column:nth-child(8), .column:nth-child(9), .column:nth-child(10)
 	{
 	display: none;
 	}
@@ -3589,7 +3594,7 @@ and (-webkit-min-device-pixel-ratio: 1)
 	font-size: clamp(6.4rem, 25vw + 1rem, 24.625rem);
 	}
 
-	#hero h1 div.small>div>div
+	#hero h1 div.small .char
 	{
 	font-size: clamp(2.375rem, 10vw + 1rem, 11.875rem);
 	}
@@ -3756,9 +3761,12 @@ and (-webkit-min-device-pixel-ratio: 1)
     width: 80%;
     }
 
-	.title_others 
+	.car_n.title_others 
 	{
-    font-size:14vw;
+    font-size:15vw;
+	width:90%;
+	left:50%;
+	transform:translate(-50%, 0%);
 	}
 
 	#burger 

@@ -9,12 +9,12 @@
         >
           <h1
             id="titolo_p_film"
-            v-html="movieDetails.titolo"
+          
             class="split-text"
             :ref="addHeroSplitRef"
-          ></h1>
+          ><div v-html="movieDetails.titolo" :ref="addHerDou" ></div></h1>
 
-          <a href="#" id="scroll_down" ref="scrollDownRef">
+          <a href="#" id="scroll_down" ref="scrollDownRef" @click.prevent="scrollToTextFilm">
             <svg width="10" height="27" viewBox="0 0 10 27" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 fill-rule="evenodd"
@@ -99,6 +99,7 @@
 <script setup>
 import { ref, onMounted, nextTick, watch, watchEffect, onUnmounted, inject } from 'vue'
 import { useRoute, navigateTo } from '#app'
+import SplitType from 'split-type';
 
 const { $gsap, $movies, $splitTextAnimation, $splitTextAnimationImmediate, $lenis } = useNuxtApp()
 const { params } = useRoute()
@@ -139,6 +140,15 @@ const stripHtml = (htmlString) => {
 }
 
 import { useCustomSeoMeta } from '~/composables/useCustomSeoMeta'
+
+const scrollToTextFilm = () => {
+  if (textFilmRef.value && $lenis) {
+    $lenis.scrollTo(textFilmRef.value, {
+      duration: 1.4,
+      easing: (t) => 1 - Math.pow(1 - t, 3), // easeOutCubic
+    })
+  }
+}
 
 // === SEO WATCH ===
 watchEffect(() => {
@@ -222,43 +232,77 @@ const onMouseMoveHandler = (event) => {
   if (isTimeToUpdate()) update(event)
 }
 
-// === SCROLL ===
-const scrollToTextFilm = () => {
-  if (textFilmRef.value && $lenis) {
-    $lenis.scrollTo(textFilmRef.value, {
-      duration: 1.4,
-      easing: (t) => 1 - Math.pow(1 - t, 3),
-    })
+
+/******** 02 - Hero titotlo  *********/
+const her_dou = ref([])
+
+function addHerDou(el) {
+  if (el && !her_dou.value.includes(el)) {
+    her_dou.value.push(el)
   }
 }
 
+function hero_p() {
+  nextTick(() => {
+    her_dou.value.forEach((el) => {
+      const split_t = new SplitType(el, { types: 'words, chars' });
+
+      $gsap.fromTo(
+        split_t.chars,
+        {
+          opacity: 1,
+         
+          filter: "blur(0px)"
+        },
+        {
+          opacity: 0,
+          filter: "blur(5px)",
+          ease: 'power2.out',
+          stagger: { amount: 0.5 },
+          scrollTrigger: {
+            trigger: '#cont_schede',
+            scroller: '#main',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        }
+      );
+    });
+  });
+}
+/******** END Hero titotlo  *********/
+
 let scrollTriggers = []
-const initScrollAnimations = () => {
+
+function initScrollAnimations() {
   if (!$gsap) return
 
   // Scroll Down Button
   if (scrollDownRef.value) {
-    const trigger1 = $gsap.ScrollTrigger.create({
-      trigger: "#page",
-      scroller: "#main",
-      start: "10% top",
-      end: "bottom top",
-      scrub: true,
-      onEnter: () => {
-        if (scrollDownRef.value) {
-          $gsap.to(scrollDownRef.value, { opacity: 0, duration: 1, filter: "blur(10px)" })
-        }
+    const trigger1 = $gsap.fromTo(
+      scrollDownRef.value,
+      {
+        opacity: 1,
+        filter: "blur(0px)"
       },
-      onLeaveBack: () => {
-        if (scrollDownRef.value) {
-          $gsap.to(scrollDownRef.value, { opacity: 1, duration: 1, filter: "blur(0px)" })
+      {
+        opacity: 0,
+        filter: "blur(5px)",
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#cont_schede',
+          scroller: '#main',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
         }
       }
-    })
+    )
     scrollTriggers.push(trigger1)
   }
 
-  // Images
+  // Immagini
   const filmImgs = [coverImgRef.value, coverImgBlendRef.value].filter(Boolean)
   if (filmImgs.length) {
     const trigger2 = $gsap.to(filmImgs, {
@@ -273,26 +317,8 @@ const initScrollAnimations = () => {
     })
     scrollTriggers.push(trigger2)
   }
-
-  // Title
-  if (heroRefs.value.length) {
-    const trigger3 = $gsap.fromTo(heroRefs.value[0],
-      { opacity: 1, filter: "blur(0px)" },
-      {
-        opacity: 0,
-        filter: "blur(100px)",
-        scrollTrigger: {
-          trigger: "#page",
-          start: "10% top",
-          end: "bottom top",
-          scroller: '#main',
-          scrub: 1,
-        },
-      }
-    )
-    scrollTriggers.push(trigger3)
-  }
 }
+
 
 // === WATCH ===
 const tryShowScrollDown = () => {
@@ -330,16 +356,21 @@ onMounted(() => {
       }
     })
 
-    initScrollAnimations()
+ 
     nextTick(() => {
       $splitTextAnimation(splitRefs.value)
+       initScrollAnimations()
+   hero_p();
     })
   }
+
+
 })
 
 // === UNMOUNT ===
 onUnmounted(() => {
   scrollTriggers.forEach((t) => t?.kill && t.kill())
   scrollTriggers = []
+ 
 })
 </script>

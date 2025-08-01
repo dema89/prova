@@ -51,7 +51,7 @@ dimmed:
       </div>
     </div>
 
-    <div class="title_others">
+    <div class="title_others car_n">
       <div class="split_2 default attivo" :ref="titleSchede('other')">
         <span>ALL</span><span>Posters</span>
       </div>
