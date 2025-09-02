@@ -575,6 +575,14 @@ transition: opacity .3s ease-out;
 width:100%;
 text-align: center;
 min-width: 300px;
+text-transform: uppercase;
+font-size: var(--fontsize_label);
+letter-spacing:1px;
+}
+
+#discover_poster span
+{
+display: block;
 }
 
 #filter_instruction.attivo,
@@ -869,7 +877,13 @@ transition-delay:.7s;
 {
 display: flex;
 justify-content: end;
-	mix-blend-mode: difference;
+mix-blend-mode: difference;
+}
+
+#cont_menu.no_blend,
+#header.no_blend
+{
+mix-blend-mode:normal;
 }
 
 #menu {
@@ -1383,7 +1397,6 @@ line-height: 85%;
 }
 
 
-
 #page {
 	position: sticky;
 	position: -webkit-sticky;
@@ -1691,10 +1704,6 @@ display: none;
 opacity: 0.3 !important;
 }
 
-
-
-
-
 #load_page {
 	width: 300px;
 	height: 200px;
@@ -1910,10 +1919,6 @@ display: inline !important;
 }
 
 
-
-
-
-
 /***** Home - About: About section e Dog section ******/
 
 #about_cont 
@@ -2003,8 +2008,6 @@ width:100%;
 position: relative;
 }
 
-
-
 .about-image.good:after
 {
 background:var(--blu);
@@ -2044,7 +2047,7 @@ margin-bottom:40px;
 flex: 1;
 font-size: var(--fontsize);
 line-height: var(--lineheight);
-padding-left:var(--col-4);
+padding-left:var(--col-3);
 padding-right:var(--col-2);
 }
 
@@ -2055,90 +2058,89 @@ line-height:130%;
 width:80%;
 }
   
+#dog_section 
+{
+position: relative;
+height: 100dvh;
+height: calc(var(--vh) * 100);
+width: 100%;
+overflow: hidden;
+background-color: var(--white);
+display: flex;
+align-items: flex-end;
+min-height:750px;  
+}
   
-  #dog_section {
-  position: relative;
-  height: 100dvh;
-  height: calc(var(--vh) * 100);
-  width: 100%;
-  overflow: hidden;
-  background-color: var(--white);
-  display: flex;
-  align-items: flex-end;
-  }
+.dog-image 
+{
+position: relative;
+height: 100dvh;
+height: calc(var(--vh) * 100);
+width: 100%
+}
+
+.dog-image img 
+{
+width:clamp(700px, 38vw, 9999px);
+position: absolute;
+LEFT:50%;
+transform: translateX(-50%);
+bottom: 0PX;
+mix-blend-mode: darken;
+height:auto;
+}
+
+/* Sfera mobile draggabile */
+.drag-ball 
+{
+width: 140px;
+height: 140px;
+background-color:var(--red);
+mix-blend-mode: darken;
+border-radius: 50%;
+position: absolute;
+top: 10%;
+left: 50%;
+transform: translateX(-50%);
+z-index: 10;
+touch-action: none;
+pointer-events: auto;
+z-index: 20;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: var(--fontsize);
+line-height: var(--lineheight);
+color: var(--white);
+text-transform: uppercase;
+letter-spacing: 1px;
+}
   
-  .dog-image {
-	
-	position: relative;
-	 height: 100dvh;
-  height: calc(var(--vh) * 100);
-  width: 100%;
-	
-  }
+.drag-label 
+{
+display: block;
+pointer-events: none;
+user-select: none;
+}
+  
+/* Visibilità adattiva */
+.mobile-only 
+{
+display: none;
+}
+  
+.desktop-only 
+{
+display: block;
+}
+
+.drag-ball.good   .drag-label
+{
+color:var(--black);
+}
 
 
-  
-  .dog-image img {
-
-	width:clamp(700px, 38vw, 9999px);
-	position: absolute;
-	LEFT:50%;
-	transform: translateX(-50%);
-	bottom: 0PX;
-	mix-blend-mode: darken;
-	height:auto;
-	
-  }
-
-  
-  
-  /* Sfera mobile draggabile */
-  .drag-ball {
-	width: 140px;
-	height: 140px;
-	background-color:var(--red);
-	mix-blend-mode: darken;
-	border-radius: 50%;
-	position: absolute;
-	top: 10%;
-	left: 50%;
-	transform: translateX(-50%);
-	z-index: 10;
-	touch-action: none;
-	pointer-events: auto;
-	z-index: 20;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: var(--fontsize);
-	line-height: var(--lineheight);
-	color: var(--white);
-	text-transform: uppercase;
-	letter-spacing: 1px;
-  }
-  
-  .drag-label {
-	display: block;
-	pointer-events: none;
-	user-select: none;
-  }
-  
-  /* Visibilità adattiva */
-  .mobile-only {
-	display: none;
-  }
-  
-  .desktop-only {
-	display: block;
-  }
-
-  .drag-ball.good   .drag-label
-  {
-	color:var(--black);
-  }
-
-
-/***** Home - story section ******/
+/****** Home - story section ******/
 
 #story-section
 {
@@ -2174,6 +2176,7 @@ display: flex;
 justify-content: space-between;
 padding: 60px;
 box-sizing: border-box;
+min-height: 750px;
 }
 
 #knife-pin 
@@ -2318,7 +2321,6 @@ position:relative;
 overflow: hidden;
 }
   
-  
 .story-media img
 {
 width:100%;
@@ -2333,7 +2335,6 @@ z-index:2;
 top:0px;
 left:0px;
 }
-  
 
 .story-inner 
 {
@@ -2377,8 +2378,7 @@ font-size: var(--fontsize);
 line-height: var(--lineheight);
 }
 
-
-/* Ispiration */
+/****** home - Ispiration section ******/
 .ispiration-text 
 {
 width:100%;
@@ -2427,21 +2427,22 @@ pointer-events: none;
 .text-layer 
 {
 position: absolute;
-  width: 100%;
-  height: 100%;
-  font-weight: 900;
-  font-size: clamp(7rem, 8vw, 12rem);
-  color: var(--white);
-  text-transform: uppercase;
-  pointer-events: none;
-  text-transform:uppercase;
- font-family: 'druk', sans-serif;
+width: 100%;
+height: 100%;
+font-weight: 900;
+font-size: clamp(7rem, 8vw, 12rem);
+color: var(--white);
+text-transform: uppercase;
+pointer-events: none;
+text-transform:uppercase;
+font-family: 'druk', sans-serif;
 }
 
-.anatomy {
-  position: absolute;
-  top: 10vh;
-  left: 5%;
+.anatomy 
+{
+position: absolute;
+top: 10vh;
+left: 5%;
 }
 
 .of-a 
@@ -2532,7 +2533,7 @@ margin-top: 20px;
 overflow: hidden;
 }
 
-/* Stefan Segmaster */
+/******* Home - Stefan Segmaster section ******/
 #stefan
 {
 width:100%;
@@ -2540,7 +2541,7 @@ padding:120px 55px 0px 55px;
 background: var(--white);
 height: 100dvh;
 height: calc(var(--vh) * 100);
-min-height:700px;
+min-height:750px;
 position: relative;
 overflow: hidden;
 }
@@ -2559,8 +2560,6 @@ padding-top: 5vh;
 width:30vw;
 max-width:590px;
 }
-
-
 
 .info_stefan .image
 {
@@ -2612,8 +2611,6 @@ font-size:var(--fontsize);
 line-height:var(--lineheight);
 }
 
-
-
 #index_film > div
 {
 width:37vw;
@@ -2639,6 +2636,81 @@ padding-top:42vh;
 display:none;
 }
 
+/****** Home - Exhibition section ******/
+
+#exhibition 
+{
+position: relative;
+height: calc(100dvh * 1.6);
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+min-height:900px;
+}
+
+#testi_exhibition
+{
+position: absolute;
+width:100%;
+height:100%;
+z-index:2;
+padding-top:100px;
+}
+
+#exhibition_p
+{
+max-width:533px;
+font-size:1rem;
+line-height:var(--lineheight);
+position: absolute;
+left:50%;
+bottom:100px;
+text-align: center;
+color:var(--white);
+transform:translateX(-50%);
+}
+
+#exhibition_p a
+{
+color:var(--white);
+}
+
+#testi_exhibition h2
+{
+font-size:6rem;
+line-height:100%;
+font-family: 'druk', sans-serif;
+text-align: center;
+color:var(--white);
+text-transform: uppercase;
+}
+
+#testi_exhibition h2 span.small
+{
+font-size:4rem;
+line-height:109%;
+}
+
+.clip-bg 
+{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+clip-path: polygon(18% 15%, 80% 0%, 100% 100%, 0% 100%);
+will-change: clip-path;
+}
+
+.clip-bg video 
+{
+width: 100%;
+height: 100%;
+object-fit: cover;
+transform: scale(1.2);
+will-change: transform;
+}
 
 @media only screen and (max-width: 1366px) 
 {	
@@ -2649,32 +2721,34 @@ display:none;
  	display: none;
 	}
 
-#cont_poster_full
-{
-transform: none !important;
-}
+	#cont_poster_full
+	{
+	transform: none !important;
+	}
 
-  #firma
+  	#firma
 	{
 	display: inline-block;
-  }
+  	}
 
 	.immagine_film.good::before 
-  {
+  	{
 	background: var(--blu);
 	}
 
-	.immagine_film.good.green::before {
+	.immagine_film.good.green::before 
+	{
     background: var(--green);
     }
 
 	.immagine_film.evil::before 
-  {
+  	{
 	background: var(--red);
 	}
 
-	.immagine_film.evil.magenta::before {
-        background: var(--magenta);
+	.immagine_film.evil.magenta::before 
+	{
+    background: var(--magenta);
     }
 
   	.carousel>div.cont_poster_car  a
@@ -2696,13 +2770,13 @@ transform: none !important;
 	transform: translate(-50%, 10px);
 	transition: opacity 0.5s ease, transform .5s ease;
 	}
-
-  .carousel>div.cont_poster_car.highlight  a
+	
+	.carousel>div.cont_poster_car.highlight  a
 	{
 	opacity: 1;
-  }
+ 	}
 
-  .carousel>div.cont_poster_car a span
+	.carousel>div.cont_poster_car a span
 	{
 	display: block;
 	}
@@ -2942,18 +3016,16 @@ and (-webkit-min-device-pixel-ratio: 1)
 	max-width: 600px;
 	}
 
-    #scroll_down {
-        width: var(--col-3);
-        height: var(--col-3);
+    #scroll_down 
+	{
+    width: var(--col-3);
+    height: var(--col-3);
 	}
-
-	
 }
   
 /* Tablet verticale (es. iPad portrait) */
 @media only screen and (max-width: 920px) 
 {			
-	
 	.text_loading 
 	{
 	font-size: clamp(4rem, 10vw, 9999px);
@@ -3173,6 +3245,7 @@ and (-webkit-min-device-pixel-ratio: 1)
 	{
 	height:40vh;
 	aspect-ratio: 644 / 435;
+	min-height:450px;
 	}
 
 	.intro-left, .intro-right 
@@ -3273,6 +3346,17 @@ and (-webkit-min-device-pixel-ratio: 1)
 	.saul_text
 	{
 	bottom:15vh;
+	}
+
+	#exhibition 
+	{
+	bottom:10dvh;
+	height:100dvh;
+	}
+		
+	#exhibition_p 
+	{
+	bottom:60px;
 	}
 	
 	#index_film
@@ -3688,6 +3772,7 @@ and (-webkit-min-device-pixel-ratio: 1)
 	padding-right:30px;
 	height: auto !important;
 	padding-top:14vh;
+	padding-bottom:10dvh;
 	}
 
 
@@ -3714,6 +3799,37 @@ and (-webkit-min-device-pixel-ratio: 1)
 	{
 	width:100%;
 	max-width:auto;
+	}
+
+	#testi_exhibition h2
+	{
+	font-size:clamp(2rem, 20vw, 4rem);
+	}
+
+	#testi_exhibition h2 span.small
+	{
+	font-size:clamp(1rem, 20vw, 2.8rem);
+	}
+
+	#testi_exhibition
+	{
+	padding-top:60px;
+	}
+
+	#exhibition_p 
+	{
+	width:80%;
+	bottom:auto;
+	top:160px;
+	}
+
+	#exhibition 
+	{
+	height:120dvh;
+	}
+
+	#index_film {
+    padding-top: 0px;
 	}
 
 	.book-container 
@@ -3817,9 +3933,9 @@ and (-webkit-min-device-pixel-ratio: 1)
 	font-size:.7rem;	
 	}
 
-	div.scheda {
-        height: calc(80vh - 80px);
-     
+	div.scheda 
+	{
+    height: calc(80vh - 80px); 
     }
 }
 	  
@@ -3908,6 +4024,117 @@ and (-webkit-min-device-pixel-ratio: 1)
 	{
 	display: none;
 	}
+
+	div.scheda {
+    width: 95vw;
+	}
 }
+
+@media screen and (max-width: 900px) and (max-height: 420px) and (orientation: landscape) {
+
+	.ispiration-text 
+	{
+	display: none;
+	}
+
+	#stefan
+	{
+	height:auto;
+	}
+
+	.info_stefan 
+	{
+	transform: translateY(0px);
+	}
+
+	.book-container 
+	{
+	position: static;
+	transform: translate(0%, 0%) rotate(0deg);
+	margin: auto;
+	}
+
+	.saul_text 
+	{
+	bottom: 30dvh;
+	}
+
+	.saul 
+	{
+	width: 60vw;
+	}
+
+	.not-found 
+	{
+	min-height: auto;
+	}
+
+	#mex_404
+	{
+	display: none;
+	}
+
+	.logo a 
+	{
+	width:120px;
+	}
+
+	#navigation_total > div .link_nav 
+	{
+	font-size: 4rem !important;
+	}
+
+	#navigation_total 
+	{ 
+	padding-top: 10vh;
+	}
+
+	.carous 
+	{
+	min-height: auto;
+	}
+
+	#navigation_total
+	{
+	display: none;
+	} 
+
+	.carousel>div.cont_poster_car 
+	{
+	width: 170px;
+	}
+	
+	.carous.carous_nav_comp .title_others 
+	{  
+	margin-bottom: 30px;
+	}
+
+	#cont_slider_nav 
+	{
+	bottom: auto;
+	top:13dvh;
+	}
+
+	.filters 
+	{
+	padding: 10px 20px;
+	}
+
+	.carousel>div.cont_poster_car a 
+	{
+	font-size:0.8rem;
+	min-width: 120px;
+	padding: 10px 10px;
+	}
+
+	.choseText 
+	{     
+	font-size: 0.7rem;
+	}
+
+}
+
+
+
 
 

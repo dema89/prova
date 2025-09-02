@@ -3,7 +3,7 @@
     <div id="mouse-follower" ref="followerRef">
     <div id="discover_poster" ref="discoverPosterRef">Discover Poster</div>
     <div id="filter_instruction" ref="filterInstructionRef">
-      <div class="neutral-text"><span>Active</span> <span>Good / Evil</span> filter</div>
+      <div class="neutral-text"><span>Active</span> <span>the Good / Evil</span> filter</div>
     </div>
   </div>
 
@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <header id="header" ref="headerRef" :class="[{ header_blend: headerBlend }, { active: active }]">
+  <header id="header" ref="headerRef" :class="[{ header_blend: headerBlend }, { active: active }, navClass]">
     <div></div>
     <div class="logo" :ref="registerPulseRef" :class="{ active: active }">
     <NuxtLink class="link_nav" to="/"  data-title="Home">
@@ -64,7 +64,7 @@
     </NuxtLink>
     </div>
 
-    <div id="cont_menu">
+    <div id="cont_menu" :class="navClass">
       <a role="button" id="menu" :class="{ active: active }" :ref="registerPulseRef" @click="active = !active">
         <div id="text_menu">
           <div>menu</div>
@@ -87,28 +87,319 @@
   <div id="main" class="lenis" :class="{ active: active }">
     <!-- opzionale wrapper interno per .scroll-content -->
     <div class="scroll-content">
-    <NuxtPage />
+      <NuxtPage />
     </div>
+
+    <footer id="footer">
+      <div id="footer_centro">
+        <div>
+          <svg viewBox="0 0 445 258" fill="none" >
+            <path d="M35.3456 3.37695V215.672H78.4904V254.391H0V3.37695H35.4009H35.3456Z" fill="white"/>
+            <path d="M124.346 254.391H88.9447V3.37695H124.346V254.391Z" fill="white"/>
+            <path d="M171.362 257.706C150.343 257.706 137.621 237.793 137.621 211.796V54.7597C137.621 26.5496 147.577 0.607422 181.319 0.607422H187.957C226.123 0.607422 229.995 27.1581 229.995 56.9722V82.4166H195.7V54.2065C195.7 43.1438 192.935 37.0593 184.638 37.0593C177.447 37.0593 173.575 42.5906 173.575 54.2065V200.733C173.575 212.349 177.447 218.433 185.191 218.433C194.041 218.433 198.466 211.796 198.466 202.392V139.943H182.425V101.223H232.208V253.834H212.295C212.295 252.728 208.976 240.006 206.21 228.943C203.444 237.24 191.828 257.153 174.128 257.153H171.916L171.362 257.706Z" fill="white"/>
+            <path d="M445 3.37695V39.8841H415.13V254.391H379.73V39.8841H349.86V3.37695H444.945H445Z" fill="white"/>
+            <path d="M283.428 194.597C278.671 191.278 278.284 187.019 278.284 187.019C275.795 180.049 273.693 176.233 272.144 173.965C272.089 173.854 270.595 172.14 269.876 170.923C269.323 170.038 269.378 169.484 269.876 168.378C271.37 165.336 277.399 170.148 278.395 173.633C279.39 177.284 280.497 178.003 281.216 177.284C283.483 175.126 284.203 169.982 283.981 167.438C282.709 153.72 281.105 147.414 284.59 147.248C287.632 147.082 287.964 160.247 289.07 165.778C289.402 167.383 290.73 166.719 290.785 166.166C292.776 149.35 292.278 143.764 296.095 144.538C299.248 145.146 295.818 165.115 295.597 166.995C295.376 168.876 296.814 168.489 297.035 167.383C300.741 150.291 301.239 148.355 303.728 149.295C305.83 150.125 302.567 164.119 301.682 168.987C301.35 170.646 302.401 170.812 303.175 170.148C304.447 169.042 305.222 164.949 306.992 160.966C308.375 157.924 311.085 159.805 310.532 161.685C308.928 167.051 305.443 179.386 305.443 179.386C305.222 184.862 302.346 192.163 302.346 192.163C301.682 193.546 300.741 194.929 299.414 196.035V254.889H336.308L336.087 3.43227H298.474V46.0239L295.155 48.7896H305.664C305.664 48.7896 302.346 84.1905 288.517 114.558V3.37695H246.479V254.834H283.373V194.652L283.428 194.597Z" fill="white"/>
+          </svg>
+        </div>
+
+        <div><p>This is an independent, non-commercial artistic project created as a fan tribute to the history of horror cinema. The characters and visual elements were entirely generated using Artificial Intelligence and are original creations, not reproductions of actors, scenes, or official materials from the films.</p>
+        <p>This work is not associated with, endorsed by, or licensed by any copyright or trademark holders. It is intended solely as an artistic homage.</p></div>
+        
+        <div>
+          <svg viewBox="0 0 252 133" fill="none">
+            <path d="M18.5646 131.766H0V0.675781H18.5646V131.766Z" fill="white"/>
+            <path d="M42.519 0.675781L58.0894 71.2813V1.27464H74.8574V132.365H59.8859L42.519 56.9686V132.365H25.751V1.27464H42.519V0.675781Z" fill="white"/>
+            <path d="M146.661 0.675781V19.8393H131.09V131.766H112.526V19.8393H96.9553V0.675781H146.661Z" fill="white"/>
+            <path d="M170.016 131.766H151.451V0.675781H170.016V53.3754H182.592V0.675781H201.157V131.766H182.592V74.2756H170.016C170.016 74.2756 170.016 131.766 170.016 131.706V131.766Z" fill="white"/>
+            <path d="M250.802 0.679599V19.8431H227.447V53.9781H246.011V73.7404H227.447V111.469H252V131.231H208.882V0.140625H250.802V0.739487V0.679599Z" fill="white"/>
+            </svg>
+        </div>
+
+        <div>
+            <div>
+              <h3>project partners</h3>
+            </div>
+        </div>
+
+        <div>
+          <svg viewBox="0 0 828 260" fill="none">
+            <path d="M0 2.75022H54.6255C85.3139 2.75022 94.7995 21.7213 94.7995 51.2938V205.238C94.7995 236.485 84.198 255.456 54.6255 255.456H0V2.24805V2.80601V2.75022ZM35.7102 219.132H44.0798C55.2392 219.132 58.0291 212.994 58.0291 199.603V56.8177C58.0291 42.3104 54.6813 37.2887 45.7537 37.2887H35.7102V219.076V219.132Z" fill="white"/>
+            <path d="M162.258 208.526H136.034L131.57 255.954H99.7655L128.78 2.74609H171.186L201.874 255.954H167.28L162.816 208.526H162.258ZM139.437 170.64H157.85L148.365 76.9564L139.437 170.64Z" fill="white"/>
+            <path d="M243.722 255.954H208.012V2.74609H265.985C289.978 2.74609 301.696 13.3476 301.696 41.8041V86.9999C301.696 108.203 292.768 116.572 286.072 119.362C293.884 123.268 301.696 129.406 301.696 146.703V235.365C301.696 245.966 303.369 250.43 305.043 254.336V256.01H269.891C268.217 253.22 266.543 248.756 266.543 235.365V158.978C266.543 147.819 264.869 142.797 253.152 142.797H244.224V256.01H243.666L243.722 255.954ZM243.722 107.031H253.208C263.251 107.031 266.041 100.335 266.041 89.176V54.0237C266.041 42.8643 264.367 37.8425 253.208 37.8425H243.722V107.533V106.975V107.031Z" fill="white"/>
+            <path d="M350.797 255.954H315.087V2.74609H350.797V104.241L378.696 2.74609H413.29L379.812 120.422L416.638 255.954H379.812L350.239 146.089V255.954H350.797Z" fill="white"/>
+            <path d="M504.686 39.5723H458.932V105.915H494.642V144.415H458.932V217.454H506.36V255.954H423.278V2.74609H504.686V39.5723Z" fill="white"/>
+            <path d="M548.766 2.74609L579.454 138.278V2.74609H611.817V255.954H582.802L548.766 110.379V255.954H516.403V2.74609H548.766Z" fill="white"/>
+            <path d="M676.486 0.514772C706.058 0.514772 717.217 14.4641 717.217 44.5946V85.8845H682.623V49.6163C682.623 41.2467 680.949 34.5511 672.58 34.5511C664.21 34.5511 661.978 40.1308 661.978 52.4062V57.4279C661.978 71.9352 664.768 79.7468 676.486 96.486L699.362 128.29C715.544 150.609 720.565 163.443 720.565 192.401V200.771C720.565 238.155 706.058 259.86 674.254 259.86H667.558C638.543 259.86 624.036 243.121 624.036 211.875V161.099H659.188V205.179C659.188 216.896 663.094 223.034 670.906 223.034C678.717 223.034 682.623 217.454 682.623 201.273V195.693C682.623 177.28 680.949 171.701 668.116 153.288L645.239 122.041C630.174 100.838 625.71 84.657 625.71 59.604V51.2345C625.71 17.1981 641.333 0.458984 669.79 0.458984H676.486V0.514772Z" fill="white"/>
+            <path d="M783.002 0.514772C812.575 0.514772 823.734 14.4641 823.734 44.5946V85.8845H789.14V49.6163C789.14 41.2467 787.466 34.5511 779.097 34.5511C770.727 34.5511 768.495 40.1308 768.495 52.4062V57.4279C768.495 71.9352 771.285 79.7468 783.002 96.486L805.879 128.29C822.06 150.609 827.082 163.443 827.082 192.401V200.771C827.082 238.155 812.575 259.86 780.77 259.86H774.075C745.06 259.86 730.553 243.121 730.553 211.875V161.099H765.705V205.179C765.705 216.896 769.611 223.034 777.423 223.034C785.234 223.034 789.14 217.454 789.14 201.273V195.693C789.14 177.28 787.466 171.701 774.633 153.288L751.756 122.041C736.691 100.838 732.227 84.657 732.227 59.604V51.2345C732.227 17.1981 747.85 0.458984 776.307 0.458984H783.002V0.514772Z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+
+      <div id="header_footer">
+        <div><img alt="Studio K95 logo" src="/img/k95_logo.png" loading="lazy" decoding="async"></div>
+        <div><h3>A PROJECT BY <a target="_blank" href="https://www.k95.it">STUDIO K95</a></h3></div>
+        <div><a target="_blank" href="https://www.instagram.com/k95.studio/@K95.studio">INSTAGRAM</a></div>
+        <div><a target="_blank" href="https://www.linkedin.com/company/studio-k95">LINKEDIN</a></div>
+        <div>@2025</div>
+      </div>
+    </footer>
   </div>
+
+ 
 </template>
+
+
+<style>
+#footer
+{
+background: var(--black);
+padding:0px 60px;
+padding-bottom: 30px;
+font-size:0.875rem;
+line-height:140%;
+display: flex;
+flex-direction:column;
+justify-content: space-between;
+gap:50px;
+min-height:100dvh;
+
+}
+
+#footer h3
+{
+text-transform: uppercase;
+font-size:0.875rem;
+line-height:140%;
+}
+
+#header_footer, 
+#footer_centro
+{
+width:100%;
+display: flex;
+}
+
+#footer_centro
+{
+padding-top:160px;
+flex-wrap: wrap;
+}
+
+#header_footer img
+{
+width:70px;
+}
+
+#footer, #header_footer a
+{
+color:var(--white);
+}
+
+#header_footer a
+{
+text-decoration: underline;
+}
+
+#header_footer div:first-child,
+#footer_centro div:first-child
+{
+width:33vw
+}
+
+#header_footer div:nth-child(2)
+{
+width:27vw;
+}
+
+#header_footer div:nth-child(3),
+#header_footer div:nth-child(4)
+{
+width:13vw;
+}
+
+#header_footer div:last-child
+{
+width:7vw;
+text-align: right;
+}
+
+#footer_centro div:nth-child(2)
+{
+width:46vw;
+}
+
+#footer_centro div:nth-child(3)
+{
+width:14vw;
+}
+
+#footer_centro div:nth-child(4)
+{
+width:var(--col-15);
+}
+
+#footer_centro div:last-child
+{
+width:var(--col-13);
+margin-top:200px;
+}
+
+#footer_centro div:last-child svg
+{
+width:100%;
+}
+
+#footer_centro p
+{
+margin-top:0px;
+width:clamp(100px, var(--col-9), 600px);
+}
+
+#footer_centro div:first-child svg
+{
+width:clamp(100px, var(--col-7), 9999px);
+}
+
+#footer_centro div:nth-child(3) svg
+{
+width:clamp(100px, var(--col-4), 9999px);
+}
+
+/* Tablet verticale (es. iPad portrait) */
+@media only screen and (max-width: 920px) 
+{
+  	
+  #footer
+  {
+  padding-bottom:150px;
+  }
+
+  #footer_centro
+  {
+  row-gap: 40px; 
+  }  
+  
+  #footer_centro div:first-child
+    {
+    width:60%;
+    padding-right:30px;
+    }
+
+    #footer_centro div:first-child svg,
+    #footer_centro div:nth-child(2),
+    #footer_centro div:nth-child(4),
+    #footer_centro div:last-child
+    {
+    width:100%;
+    }
+
+    #footer_centro div:nth-child(3)
+    {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    }
+
+    #footer_centro div:nth-child(3) svg
+    {
+    width:50%;
+    }
+
+    #footer_centro div:nth-child(3)
+    {
+    width:40%;
+    order:2;
+    }
+
+    #footer_centro div:nth-child(2)
+    {
+    order:4;
+    }
+
+    #footer_centro div:nth-child(4)
+    {
+    order:5;
+    }
+
+    #footer_centro div:last-child
+    {
+    margin:0px;
+    order:3;
+    }
+
+    #footer_centro p 
+    {
+    width: clamp(300px, 100%, 500px);
+    }
+
+    #header_footer div:first-child
+    {
+    width:20%;
+    }
+
+    #header_footer
+    {
+    justify-content: space-between;
+    flex-wrap: wrap;
+  
+    }
+
+}
+
+@media only screen and (max-width: 576px) 
+{
+   #header_footer
+    {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap:10%;
+    }
+
+    #header_footer>div
+    {
+    width:25% !important;
+    margin-bottom:20px;
+    }
+
+    #header_footer>div:nth-child(2)
+     {
+    width:63% !important;
+     }
+
+  #footer
+  {
+  padding-left:30px;
+  padding-right:30px;
+  }
+
+  #footer_centro {
+    padding-top: 120px;
+  }
+}
+
+
+</style>
 
 <script setup>
 useHead({
   link: [
-
     { rel: 'preload', as: 'font', href: '/fonts/drukbold.woff', type: 'font/woff', crossorigin: '' },
     { rel: 'preload', as: 'font', href: '/fonts/adaptive.woff2', type: 'font/woff2', crossorigin: '' }
   ]
 })
 
-
+const route = useRoute()
+const navClass = computed(() => route.meta.navClass || '')
 
 const { $gsap, $lenis } = useNuxtApp()
+
+// === Sizes centralizzate ===
+const SIZE = { base: 20, link: 40, poster: 300 }
 
 // Reactive states
 const good = ref(false)
 const evil = ref(false)
-const status = ref(true)
+const status = ref(false)
 const neutral = ref(true)
 
 const active = useState('active', () => false)
@@ -118,38 +409,34 @@ const headerBlend = ref(false)
 const isDesktop = ref(true)
 let wasDesktop = true
 let windowHeight = 0
-let baseSize = 20
+let baseSize = SIZE.base
 let hasMouseMoved = false
 let prevStatus = null
 
-// Refs
 const followerRef = ref(null)
 const filterInstructionRef = ref(null)
 const discoverPosterRef = ref(null)
 const headerRef = ref(null)
 const pulseLinksRef = ref([])
 
-// Provide
 provide('good', good)
 provide('evil', evil)
 provide('neutral', neutral)
 
-// === Register dynamic elements ===
 function registerPulseRef(el) {
   if (el && !pulseLinksRef.value.includes(el)) {
     pulseLinksRef.value.push(el)
   }
 }
 
-// === Follower control ===
 function resetFollower() {
   if (!followerRef.value) return
   $gsap.set(followerRef.value, {
     x: window.innerWidth / 2,
     y: window.innerHeight / 2,
     opacity: 0.9,
-    width: baseSize,
-    height: baseSize,
+    width: SIZE.base,
+    height: SIZE.base,
     scale: 1,
     transform: 'translate(-50%, -50%)',
     force3D: true
@@ -177,106 +464,94 @@ function moveFollower(x, y) {
 }
 
 function updateFollowerState(elements) {
-  const follower = followerRef.value;
-  if (!follower) return;
+  const follower = followerRef.value
+  if (!follower) return
 
-  // Reset delle classi dinamiche, ma lascia eventuali classi base
-  follower.className = 'mouse-follower-base';
 
-  // Imposta stato base (good / evil / neutral)
+  follower.className = 'mouse-follower-base'
+
+
   if (good.value) {
-    follower.classList.add('good');
+    follower.classList.add('good')
   } else if (evil.value) {
-    follower.classList.add('evil');
+    follower.classList.add('evil')
   } else {
-    follower.classList.add('neutral');
+    follower.classList.add('neutral')
   }
 
-  // Controllo se siamo su un poster (immagine con data-color)
-  let isPoster = false;
-  let goodClass = null;
-  let evilClass = null;
+  let isPoster = false
+  let goodClass = null
+  let evilClass = null
 
   for (const el of elements) {
-    // 1. Poster nel carosello
-    const posterEl = el.closest('.immagine_film');
+    const posterEl = el.closest?.('.immagine_film')
     if (posterEl) {
-      isPoster = true;
-      goodClass = posterEl.dataset.colorGood || null;
-      evilClass = posterEl.dataset.colorEvil || null;
-      break;
+      isPoster = true
+      goodClass = posterEl.dataset.colorGood || null
+      evilClass = posterEl.dataset.colorEvil || null
+      break
     }
-
-    // 2. Poster nella pagina [nome].vue
-    const posterFullEl = el.closest('#cont_poster_full');
+    const posterFullEl = el.closest?.('#cont_poster_full')
     if (posterFullEl) {
-      isPoster = true;
-      goodClass = posterFullEl.dataset.colorGood || null;
-      evilClass = posterFullEl.dataset.colorEvil || null;
-      break;
+      isPoster = true
+      goodClass = posterFullEl.dataset.colorGood || null
+      evilClass = posterFullEl.dataset.colorEvil || null
+      break
     }
   }
 
-  // Applica eventuali classi colore
   if (isPoster) {
-    if (good.value && goodClass) {
-      follower.classList.add(goodClass);
-    } else if (evil.value && evilClass) {
-      follower.classList.add(evilClass);
-    }
+    if (good.value && goodClass) follower.classList.add(goodClass)
+    else if (evil.value && evilClass) follower.classList.add(evilClass)
   }
 
-  // Controllo se siamo dentro uno slider (solo per grandezza)
-  const insideSlider = elements.some(el => el.closest('.sl'));
 
-  // Altri stati (filter, header, menu)
-  const isFilter = elements.some(el => el.classList?.contains('element_filter'));
-  const insideHeader = elements.some(el => el.closest?.('header'));
-  const insideLogoOrMenu = elements.some(
-    el => el.closest?.('.logo') || el.closest?.('#menu') || el.closest?.('.filters')
-  );
+  const insideSlider = elements.some(el => el.closest?.('.sl'))
+  const isFilter = elements.some(el => el.classList?.contains('element_filter'))
+  const insideHeader = elements.some(el => el.closest?.('header'))
+  const insideLogoOrMenu = elements.some(el => el.closest?.('.logo') || el.closest?.('#menu') || el.closest?.('.filters'))
 
-  // Logica dimensioni e "blend-active"
+ 
+  const onNuxtLink = elements.some(el => el.closest?.('a, .nuxt-link, .link_nav'))
+
+ 
   if (insideHeader && !insideLogoOrMenu && !isPoster && !isFilter) {
-    follower.classList.remove('blend-active');
-    resizeFollower(20);
-    discoverPosterRef.value?.classList.remove('attivo');
-    filterInstructionRef.value?.classList.remove('attivo');
-    return;
+    follower.classList.remove('blend-active')
+    resizeFollower(SIZE.base)
+    discoverPosterRef.value?.classList.remove('attivo')
+    filterInstructionRef.value?.classList.remove('attivo')
+    return
   }
 
   if (insideSlider || isPoster) {
-    follower.classList.add('blend-active');
-    resizeFollower(300);
+    follower.classList.add('blend-active')
+    resizeFollower(SIZE.poster)
     if (isPoster) {
-      discoverPosterRef.value?.classList.add('attivo');
-      filterInstructionRef.value?.classList.remove('attivo');
+      discoverPosterRef.value?.classList.add('attivo')
+      filterInstructionRef.value?.classList.remove('attivo')
     }
   } else if (isFilter) {
-    follower.classList.add('blend-active');
-    resizeFollower(300);
-    filterInstructionRef.value?.classList.add('attivo');
-    discoverPosterRef.value?.classList.remove('attivo');
-  } else if (insideLogoOrMenu) {
-    follower.classList.add('blend-active');
-    resizeFollower(40);
-    discoverPosterRef.value?.classList.remove('attivo');
-    filterInstructionRef.value?.classList.remove('attivo');
+    follower.classList.add('blend-active')
+    resizeFollower(SIZE.poster)
+    filterInstructionRef.value?.classList.add('attivo')
+    discoverPosterRef.value?.classList.remove('attivo')
+  } else if (insideLogoOrMenu || onNuxtLink) {
+    // Burger/Logo/Menu **e** NuxtLink: stesso comportamento
+    follower.classList.add('blend-active')
+    resizeFollower(SIZE.link)
+    discoverPosterRef.value?.classList.remove('attivo')
+    filterInstructionRef.value?.classList.remove('attivo')
   } else {
-    follower.classList.remove('blend-active');
-    resizeFollower(20);
-    discoverPosterRef.value?.classList.remove('attivo');
-    filterInstructionRef.value?.classList.remove('attivo');
+    follower.classList.remove('blend-active')
+    resizeFollower(SIZE.base)
+    discoverPosterRef.value?.classList.remove('attivo')
+    filterInstructionRef.value?.classList.remove('attivo')
   }
 }
 
 // === Preload ===
 function handlePreloadDone() {
   preloadCompleted.value = true
-  // Rimuovi questo blocco per evitare attesa dopo preload
-  // if (!hasMouseMoved && isDesktop.value && followerRef.value) {
-  //   resetFollower()
-  // }
 }
 
 // === Filters ===
@@ -293,11 +568,8 @@ function goodevil() {
 
 function neutralchose() {
   if (!neutral.value) {
-    if (prevStatus === 'good') {
-      good.value = true
-    } else {
-      evil.value = true
-    }
+    if (prevStatus === 'good') good.value = true
+    else evil.value = true
   } else {
     prevStatus = good.value ? 'good' : 'evil'
     good.value = false
@@ -305,7 +577,6 @@ function neutralchose() {
   }
 }
 
-// === Event Handlers ===
 function updateVH() {
   const vh = window.innerHeight * 0.01
   document.documentElement.style.setProperty('--vh', `${vh}px`)
@@ -317,18 +588,14 @@ function handleNavClose() {
 
 function handleMouseMove(e) {
   if (!isDesktop.value) return
-
   hasMouseMoved = true
   moveFollower(e.clientX, e.clientY)
 
-  // Solo dopo il preload aggiorna stato follower
   if (!preloadCompleted.value) return
-
   const elements = document.elementsFromPoint(e.clientX, e.clientY)
   updateFollowerState(elements)
 }
 
-// === Watchers ===
 watch(active, (val) => {
   val ? $lenis?.stop() : $lenis?.start()
 
@@ -342,21 +609,15 @@ watch(active, (val) => {
 
 function fadeInLazyImages() {
   const lazyImages = document.querySelectorAll('img[loading="lazy"]')
-
   lazyImages.forEach((img) => {
-    // Evita di toccare immagini con animazioni personalizzate
-    if (img.closest('#ispiration-section')) return 
-
-    // Set iniziale opacity 0 se non già caricata
+    if (img.closest('#ispiration-section')) return
     if (!img.complete) $gsap.set(img, { opacity: 0 })
-
     img.addEventListener('load', () => {
       $gsap.to(img, { opacity: 1, duration: 0.6, ease: 'power2.out' })
     })
   })
 }
 
-// === Mounted ===
 onMounted(() => {
   if (typeof window === 'undefined') return
 
@@ -393,20 +654,13 @@ onMounted(() => {
     isDesktop.value = nowDesktop
     wasDesktop = nowDesktop
   })
-
-  
 })
 
-// === Cleanup ===
 onUnmounted(() => {
   if (process.client) {
     window.removeEventListener('resize', updateVH)
     window.removeEventListener('nav:close', handleNavClose)
     document.removeEventListener('mousemove', handleMouseMove)
   }
-
-  
 })
 </script>
-
-
