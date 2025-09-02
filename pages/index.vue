@@ -20,17 +20,17 @@
     <div id="cont_tv">
       <picture>
         <source srcset="/img/webp/tv.webp" type="image/webp">
-        <source srcset="/img/tv.png" type="image/jpeg">
+        <source srcset="/img/tv.png" type="image/png">
         <img id="tv" src="/img/tv.png" alt="TV horror" width="1920" height="1080" fetchpriority="high" decoding="async" />
       </picture>
-
       
       <video poster="/img/preview.jpg" autoplay muted loop playsinline loading="lazy">
          <source src="/img/video/hero_rossa.webm" type="video/webm" />
         <source src="/img/video/hero_rossa.mp4" type="video/mp4" />
          <source src="/img/video/hero_rossa.ogv" type="video/ogg" />
       </video>
-      <video autoplay muted loop playsinline reload="metadata" loading="lazy">
+
+      <video autoplay muted loop playsinline loading="lazy">
         <source src="/img/video/hero_azzurra.webm" type="video/webm" />
         <source src="/img/video/hero_azzurra.mp4" type="video/mp4" />
          <source src="/img/video/hero_azzurra.ogv" type="video/ogg" />
@@ -53,8 +53,8 @@
       <div id="about">
         <div class="about-container">
 
-          <h2 class="about-title" :ref="addSplitRef">
-            Light in the Darkness is a visual exploration of moral ambiguity, set within the haunting atmosphere of horror cinema. The project presents the eternal conflict between good and evil, not as separate entities but as coexisting forces.
+          <h2 class="about-title split-words-only" :ref="addSplitRef">
+            Light in the Darkness is a visual exploration of moral ambiguity, set within the haunting atmosphere of horror cinema.
           </h2>
 
           <div class="about-image" :class="{ good: good, evil: evil, neutral:neutral }">
@@ -63,11 +63,11 @@
 
           <div class="about-columns">
            
-              <h3>Ten posters, ten narratives. At the center, two characters: one representing light, the other shadow. There are no clear boundaries. Both exist in the same space, within the same visual form.</h3>
+              <h3>The project presents the eternal conflict between good and evil, not as separate entities but as coexisting forces. Ten posters, ten narratives.</h3>
         
 
             <div class="column">
-  
+              <p>At the center, two characters: one representing light, the other shadow. There are no clear boundaries. Both exist in the same space, within the same visual form.</p>
               <p>It is the viewer who chooses what to see, which side to bring forward. Light in the Darkness does not offer answers. It invites a deeper gaze into the image and into oneself.
                The concept is simple but unsettling: good and evil are not alternating forces, they are simultaneous. They are layered, present at once, and the idea of separating them is as fragile as a reflection.</p>
                <p>Horror is not only an aesthetic here. It is the perfect setting for this tension to unfold, where light is rare and every choice reveals something uncomfortable.</p>
@@ -299,7 +299,7 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
 
           <picture>
               <source srcset="/img/webp/saul.webp" type="image/webp">
-              <source srcset="/img/saul.png" type="image/jpeg">
+              <source srcset="/img/saul.png" type="image/png">
               <img ref="saulRef" class="saul" src="/img/saul.png" alt="Saul Bass" loading="lazy" decoding="async" />
           </picture>
           
@@ -346,7 +346,7 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
       </div>
     </section>
 
-    <section id="exhibition" ref="clipSectionRef">
+     <section id="exhibition" ref="clipSectionRef">
       
       <div id="testi_exhibition">
 
@@ -368,7 +368,6 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
 
     </section>
 
-
     <!-- SEZIONE FILM -->
     <section id="home_posters" >
 
@@ -377,26 +376,24 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
           <h2 :ref="addSplitRef">10 posters tribute</h2>
           <h2 class="mob" :ref="addSplitRef">to horror film</h2>
           <p>This series of 10 posters expands the visual narrative of Light in the Darkness, turning it into a gallery of layered subjects that explore the fragile boundary between perception and reality. Each poster is the result of a dialogue between human creativity and AI-generated imagery, merging technology and design to reinterpret the unsettling language of horror cinema.
-            </p><p>
-              The project exists in two dimensions: a printed version, where the images come alive through colored filters applied to custom-made glasses, and a digital version, brought to life through this website. 
-            </p>
-           
-          </div>
+          </p>
+          <p>
+          The project exists in two dimensions: a printed version, where the images come alive through colored filters applied to custom-made glasses, and a digital version, brought to life through this website. 
+          </p> 
+        </div>
         <div id="title_h2_scroll">
           <h2 id="titolo_secondario_film" class="right" :ref="addSplitRef">to horror film</h2>
           <p> Both formats share the same intent, not to provide answers, but to create an interactive experience where the viewer decides what to reveal and what to hide.</p>
-           <p>
-              This is a fan-made project, with no commercial purpose, born purely out of passion for the genre and visual experimentation. Every image is a story layered in color and meaning, designed to challenge perception and to honor the cinematic atmospheres that continue to shape our imagination.
-            </p>
+          <p>This is a fan-made project, with no commercial purpose, born purely out of passion for the genre and visual experimentation. Every image is a story layered in color and meaning, designed to challenge perception and to honor the cinematic atmospheres that continue to shape our imagination.</p>
         </div>
       </div>
 
       <div id="cont_schede">
         
         <div v-for="(movie, index) in movies" :key="movie.id" :ref="addSchedaRef" class="scheda sl">
-          <NuxtLink :href="`/film/${movie.nome}`" class="link_poster click_poster" @click="clickmenu(index)" :ref="addlink"><span>VIEW POSTER</span></NuxtLink>
-          <div>
-            
+          <NuxtLink :href="`/film/${movie.nome}`" class="link_poster click_poster" @click="clickmenu(index)" :ref="addLink"><span>VIEW POSTER</span></NuxtLink>
+          
+          <div>  
             <div class="immagine_film" :data-color-good="movie.datacolor" :data-color-evil="movie.datacolor2" :class="{ good: good, evil: evil, neutral:neutral }">
               <img :src="`/img/${movie.cover}`" :alt="movie.nome" :ref="el => addImageRef(index, el)">
               <img :src="`/img/${movie.cover2}`" :alt="movie.nome" :ref="el => addImageRef(index, el)">
@@ -405,7 +402,6 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
             <div class="data_film">
               <div>
                   <h3 v-html="movie.titolo"></h3>
-
                   <div class="info_secondarie">
                     <h4>DIRECTOR: {{ movie.regista }} / Year: {{ movie.anno }} <br> Product House: {{ movie.casa }}</h4>                  
                   </div>
@@ -416,160 +412,27 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
 
         <div></div>
 
-     
       </div>
     </section>
-
-    
-    <div class="space">
-      <p class="small">This is an independent, non-commercial artistic project created as a fan tribute to the history of horror cinema. The characters and visual elements were entirely generated using artificial intelligence and are original creations, not reproductions of actors, scenes, or official materials from the films. This work is not associated with, endorsed by, or licensed by any copyright or trademark holders. It is intended solely as an artistic homage.</p>
-    </div>
-
   </div>
-
 </template>
-
-<style>
-#exhibition {
-  position: relative;
-  height: calc(100dvh * 1.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-#testi_exhibition
-{
-position: absolute;
-width:100%;
-height:100%;
-z-index:2;
-padding-top:100px;
-}
-
-#exhibition_p
-{
-max-width:533px;
-font-size:1rem;
-line-height:var(--lineheight);
-position: absolute;
-left:50%;
-bottom:100px;
-text-align: center;
-color:var(--white);
-transform:translateX(-50%);
-}
-
-#exhibition_p a
-{
-color:var(--white);
-}
-
-#testi_exhibition h2
-{
-font-size:6rem;
-line-height:100%;
-font-family: 'druk', sans-serif;
-text-align: center;
-color:var(--white);
-text-transform: uppercase;
-}
-
-#testi_exhibition h2 span.small
-{
-font-size:4rem;
-line-height:109%;
-}
-
-.clip-bg 
-{
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-clip-path: polygon(18% 15%, 80% 0%, 100% 100%, 0% 100%);
-will-change: clip-path;
-}
-
-.clip-bg video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.2);
-  will-change: transform;
-}
-
-/* Tablet verticale (es. iPad portrait) */
-@media only screen and (max-width: 920px) 
-{
-  #exhibition 
-  {
-  bottom:10dvh;
-  height:100dvh;
-  }
-  
- #exhibition_p 
-  {
-  bottom:60px;
-  }
-
-
-}
-
-@media only screen and (max-width: 576px) 
-{
-    #testi_exhibition h2
-  {
-  font-size:clamp(2rem, 20vw, 4rem);
-
-  }
-
-   #testi_exhibition h2 span.small
-  {
-  font-size:clamp(1rem, 20vw, 2.8rem);
-
-  }
-
-    #testi_exhibition
-{
-
-padding-top:60px;
-}
-
-  #exhibition_p 
-  {
-  width:80%;
-  bottom:auto;
-  top:160px;
-  }
-
-  #exhibition 
-  {
-  
-  height:120dvh;
-  }
-}
-
-
-</style>
 
 <script setup>
 import SplitType from 'split-type';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
+
+
 import { ref, computed, onMounted, nextTick, watch } from 'vue';
 
-const 
-{ 
-  $splitTextAnimation, 
-  $splitTextAnimationImmediate, 
-  $gsap, 
-  $Draggable, 
-  $movies, 
-  $lenis 
+const {
+  $splitTextAnimation,
+  $splitTextAnimationImmediate,
+  $gsap,
+  $Draggable,
+  $movies,
+  $lenis
 } = useNuxtApp();
 
 const preloadCompleted = useState('preload-completed');
@@ -578,45 +441,24 @@ const good = inject('good');
 const evil = inject('evil');
 const neutral = inject('neutral');
 const themeClass = computed(() => ({ good: good.value, evil: evil.value, neutral: neutral.value }));
-const emailLink = `<a href="mailto:${'webservices' + '@' + 'k95.it'}">webservices@k95.it</a>`
+const emailLink = `<a href="mailto:${'webservices' + '@' + 'k95.it'}">webservices@k95.it</a>`;
 
 const movies = ref([]);
 const loadMovies = async () => {
   movies.value = $movies;
 };
 
+// ✅ Refs
 const heroRefs = ref([]);
 const dogRef = ref([]);
 const splitRefs = ref([]);
 const schedeRefs = ref([]);
 const linkRefs = ref([]);
 const imageRefsByScheda = ref([]);
-
-const addHeroSplitRef = (el) => {
-  if (el && !heroRefs.value.includes(el)) heroRefs.value.push(el);
-};
-const addSplitRef = (el) => {
-  if (el) splitRefs.value.push(el);
-};
-const addSchedaRef = (el) => {
-  if (el) schedeRefs.value.push(el);
-};
-const addlink = (el) => {
-  if (el) linkRefs.value.push(el);
-};
-const addImageRef = (index, el) => {
-  if (!el) return;
-  if (!imageRefsByScheda.value[index]) {
-    imageRefsByScheda.value[index] = [];
-  }
-  imageRefsByScheda.value[index].push(el);
-};
-
+const her_dou = ref([]);
 const dragBallRef = ref(null);
 const dragLabelRef = ref(null);
-
 const knifeCanvas = ref(null);
-
 const figureRef = ref(null);
 const bgRef = ref(null);
 const saulRef = ref(null);
@@ -624,14 +466,39 @@ const insTextRef = ref(null);
 const saulTextRef = ref(null);
 const figureContainerRef = ref(null);
 const textLayerRef = ref(null);
-
 const bookBlackRef = ref(null);
 const bookRedRef = ref(null);
-
 const exhiTextRef = ref(null);
+const clipSectionRef = ref(null);
 
+// ✅ Funzioni ref generiche
+function createRefCollector(targetArray) {
+  return (el) => {
+    if (el && !targetArray.value.includes(el)) {
+      targetArray.value.push(el);
+    }
+  };
+}
 
-import { useCustomSeoMeta } from '~/composables/useCustomSeoMeta'
+const addHeroSplitRef = createRefCollector(heroRefs);
+const addSplitRef = createRefCollector(splitRefs);
+const addSchedaRef = createRefCollector(schedeRefs);
+const addLink = createRefCollector(linkRefs);
+const addHerDou = createRefCollector(her_dou);
+
+let scrollTimelines = []
+
+const addImageRef = (index, el) => {
+  if (!el) return;
+  if (!imageRefsByScheda.value[index]) {
+    imageRefsByScheda.value[index] = [];
+  }
+  if (!imageRefsByScheda.value[index].includes(el)) {
+    imageRefsByScheda.value[index].push(el);
+  }
+};
+
+import { useCustomSeoMeta } from '~/composables/useCustomSeoMeta';
 
 useCustomSeoMeta({
   title: 'Light in the Darkness - A Visual Exploration of Horror Cinema',
@@ -650,35 +517,46 @@ useCustomSeoMeta({
     "image": "https://yourwebsite.com/img/cover_sito_meta.jpg",
     "url": "https://yourwebsite.com"
   }
-}) 
-
+});
 
 useHead({
   link: [
     { rel: 'preload', as: 'image', href: '/img/webp/tv.webp', imagesrcset: '/img/webp/tv.webp', type: 'image/webp' },
-    { rel: 'preload', as: 'image', href: '/img/preview.jpg', type: 'image/jpeg' },
-
+    { rel: 'preload', as: 'image', href: '/img/preview.jpg', type: 'image/jpeg' }
   ]
-})
-
-
+});
 
 function initHeroSplitOnPreload() {
   if (preloadCompleted.value) {
-
     window.addEventListener('transition:end', () => {
       if (heroRefs.value.length) {
         $splitTextAnimationImmediate([...heroRefs.value]);
       }
     }, { once: true });
   } else {
-  
     watch(preloadCompleted, (val) => {
       if (val && heroRefs.value.length) {
         $splitTextAnimationImmediate([...heroRefs.value]);
       }
     });
   }
+}
+
+// ✅ Inizializzazione di tutte le sezioni
+async function initAllSections(base) {
+  $splitTextAnimation(splitRefs.value);
+  pinKnifeScroll();
+  initKnifeScene(knifeCanvas.value, base);
+  initSnakeShaderEffect(base);
+  animateDogScroll();
+  initDogSectionDrag({ dragEl: dragBallRef.value, labelEl: dragLabelRef.value });
+  initStorySection(); // <--- ✅ qui
+  initInspirationSection();
+  initStefanSection();
+  initHomePostersSection();
+  initClipSection();
+  exhibition();
+  hero_p();
 }
 
 /******** 01 - coltello 3D *********/
@@ -824,44 +702,40 @@ function initSnakeShaderEffect(base, canvasId = 'image-canvas') {
 /******** END - Immagine intro ondulata *********/
 
 /******** 02 - Hero titotlo  *********/
-const her_dou = ref([])
-
-function addHerDou(el) {
-  if (el && !her_dou.value.includes(el)) {
-    her_dou.value.push(el)
-  }
-}
-
-
 function hero_p() {
   nextTick(() => {
     her_dou.value.forEach((el) => {
-      const split_t = new SplitType(el, { types: 'words, chars' });
+      const split = new SplitType(el, { types: 'words, chars' })
 
-      $gsap.fromTo(
-        split_t.chars,
+      const tl = $gsap.timeline({
+        scrollTrigger: {
+          trigger: '#hero',
+          scroller: '#main',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      })
+
+      tl.fromTo(
+        split.chars,
         {
           opacity: 1,
-         
           filter: "blur(0px)"
         },
         {
           opacity: 0,
           filter: "blur(5px)",
           ease: 'power2.out',
-          stagger: { amount: 0.5 },
-          scrollTrigger: {
-            trigger: '#hero',
-            scroller: '#main',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true
-          }
+          stagger: { amount: 0.5 }
         }
-      );
-    });
-  });
+      )
+
+      scrollTimelines.push(tl)
+    })
+  })
 }
+
 /******** END Hero titotlo  *********/
 
 /******** 03 - DOG SECTION  *********/
@@ -926,25 +800,20 @@ function animateDogScroll() {
 /******** END - DOG SECTION *********/
 
 /******** 04 - STORY SECTION *********/
-function initStorySection() 
-{
+function initStorySection() {
   $gsap.utils.toArray('.story-block').forEach((block) => {
-    $gsap.fromTo(
-      block,
-      { scale: 0.9, y: '35%' },
-      {
-        scale: 1,
-        y: 0,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: block,
-          scroller: '#main',
-          start: 'top bottom',
-          end: 'bottom center',
-          scrub: true,
-        }
+    $gsap.from(block, {
+      opacity: 0,
+      y: 50,
+      scrollTrigger: {
+        trigger: block,
+        scroller: '#main',
+        start: 'top bottom',
+        end: 'bottom center',
+        scrub: true,
+        once: true,
       }
-    );
+    });
   });
 
   $gsap.to('#used-filter-labels>div', {
@@ -958,6 +827,7 @@ function initStorySection()
     }
   });
 }
+
 /******** END - STORY SECTION *********/
 
 /******** 05 - INSPIRATION + OMINO Seciton *********/
@@ -998,27 +868,30 @@ function initInspirationSection() {
     backgroundColor: '#222222',
     duration: 0.2,
     ease: 'power2.out'
-  }, 0.5);
+  }, 0.3);
 
   timeline.to(textLayerRef.value, {
     opacity: 0,
     duration: 0.2,
     ease: 'power2.out'
-  }, 0.5);
+  }, 0.3);
 
-  timeline.to(bgRef.value, {
+  timeline.to(bgRef.value, 
+  {
     opacity: 1,
     scale: 1.03,
     ease: 'power2.out'
   }, 0.9);
 
-  timeline.to(saulRef.value, {
+  timeline.to(saulRef.value, 
+  {
     opacity: 1,
     scale: 1.1,
     ease: 'power2.out'
   }, 0.9);
 
-  nextTick(() => {
+  nextTick(() => 
+  {
     if (insTextRef.value) {
       const split = new SplitType(insTextRef.value, { types: 'words, chars' });
 
@@ -1037,13 +910,12 @@ function initInspirationSection() {
     }
   });
 }
-
 /******** END - INSPIRATION + OMINO Seciton *********/
 
 /******** 06 - Stefan *********/
 
-function initStefanSection() {
-
+function initStefanSection() 
+{
   $gsap.set(bookBlackRef.value, { x: '-10vw' });
   $gsap.set(bookRedRef.value, { x: '10vw' });
 
@@ -1068,10 +940,8 @@ function initStefanSection() {
   }, 0);
 }
 
-/******** 07 - Poster schede section *********/
-
-function initHomePostersSection() {
-
+/******** 07 - Poster schede section *********/function initHomePostersSection() {
+  // Anima il titolo H2 durante lo scroll della sezione
   $gsap.to('#title_h2_scroll', {
     y: '-30%',
     ease: 'power2.out',
@@ -1080,73 +950,72 @@ function initHomePostersSection() {
       scroller: '#main',
       start: 'top bottom',
       end: 'bottom+=20% top',
-      scrub: true
-    }
+      scrub: true,
+    },
   });
 
   const setupAnimations = () => {
     const total = schedeRefs.value.length;
-    const minScale = 0.5;
-    const maxScale = 1;
-    const step = (maxScale - minScale) / (total - 1);
+    if (!total) return;
+
+    const baseStep = 8; // % per ogni blocco
     let perc = 0;
 
-    const createTimeline = (trigger, start, end) =>
-      $gsap.timeline({
-        scrollTrigger: {
-          trigger,
-          scroller: '#main',
-          start,
-          end,
-          scrub: 1
-        }
-      });
-
     schedeRefs.value.forEach((block, index) => {
-
-      createTimeline('#home_posters', `${perc}% top`, `${perc + 8}% top`)
-        .to(block, {
-          y: 0,
-          perspective: '0px',
-          rotateX: '0deg'
-        });
-
-    
-     
-
-      $gsap.timeline({
+      // Anima y, perspective, rotateX
+      $gsap.to(block, {
+        y: 0,
+        perspective: '0px',
+        rotateX: '0deg',
         scrollTrigger: {
           trigger: '#home_posters',
           scroller: '#main',
           start: `${perc}% top`,
-          end: index === total - 1 ? 'bottom bottom' : '100% top',
-          scrub: 1
-        }
-      }).to(block, {
-        scale: 0.8
+          end: `${perc + baseStep}% top`,
+          scrub: 1,
+        },
       });
 
+      // Anima scala al passaggio
+      $gsap.to(block, {
+        scale: 0.8,
+        scrollTrigger: {
+          trigger: '#home_posters',
+          scroller: '#main',
+          start: `${perc}% top`,
+          end: index === total - 1 ? 'bottom bottom' : `${perc + baseStep * 2}% top`,
+          scrub: 1,
+        },
+      });
+
+      // Anima immagini interne alla scheda
       const images = imageRefsByScheda.value[index] || [];
       images.forEach((img) => {
-        createTimeline('#home_posters', `${perc}% top`, `${perc + 10}% top`)
-          .to(img, { scale: 1 });
+        $gsap.to(img, {
+          scale: 1,
+          scrollTrigger: {
+            trigger: '#home_posters',
+            scroller: '#main',
+            start: `${perc}% top`,
+            end: `${perc + baseStep + 2}% top`,
+            scrub: 1,
+          },
+        });
       });
 
-      perc += 8;
+      perc += baseStep;
     });
   };
 
   setupAnimations();
 }
-
 /******** END - Poster schede section *********/
 
 /******** 08 - Exhibition SECTION  *********/
 
 /* Parte polygono */
-const clipSectionRef = ref(null);
-
-function initClipSection() {
+function initClipSection() 
+{
   if (!clipSectionRef.value) return;
 
   const bg = clipSectionRef.value.querySelector('.clip-bg');
@@ -1163,7 +1032,7 @@ function initClipSection() {
       trigger: clipSectionRef.value,
       scroller: "#main",
       start: "top bottom",
-      end: "bottom+=10% top",
+      end: "bottom+=30% top",
       scrub: true
     }
   });
@@ -1231,46 +1100,19 @@ function exhibition() {
 }
 
 /******** END Exhibition SECTION  *********/
-
-
 onMounted(async () => {
-
-   requestIdleCallback(async () => {
-
-  const config = useRuntimeConfig();
-  const base = config.app.baseURL || '/';
-
-
+  const base = useRuntimeConfig().app.baseURL || '/';
   initHeroSplitOnPreload();
-  await loadMovies(); 
-
-  nextTick(() => {
+  await loadMovies();
+  await nextTick();
 
   setTimeout(() => {
-     $splitTextAnimation(splitRefs.value);
-    pinKnifeScroll();
-    initKnifeScene(knifeCanvas.value, base);
-    initSnakeShaderEffect(base);
-    animateDogScroll();
-    initDogSectionDrag({ dragEl: dragBallRef.value, labelEl: dragLabelRef.value });
-    initStorySection();
-    initInspirationSection();
-    initStefanSection();
-    initHomePostersSection();
-    initClipSection();
-    exhibition();
-    hero_p();
-
-    
+    initAllSections(base);
   }, 3000);
-
- 
-
-
-  });
-
-      
-  });
-  
 });
+
+onUnmounted(() => {
+  scrollTimelines.forEach(t => t.kill())
+  scrollTimelines = []
+})
 </script>

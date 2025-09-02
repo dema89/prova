@@ -12,6 +12,13 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.provide('hide', hide)
   nuxtApp.provide('isprep_transition', isprep_transition)
 
+  function toggleMainDisable(active) {
+  const main = document.querySelector('#main')
+  if (main) {
+    main.classList.toggle('active', active)
+  }
+}
+
   nuxtApp.hook('app:mounted', () => {
     const router = useRouter()
 
@@ -61,6 +68,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
 
     isActive.value = true
+    toggleMainDisable(true)
 
      setTimeout(() => {
     active.value = false
@@ -89,6 +97,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     setTimeout(() => {
      
       isActive.value = false
+      toggleMainDisable(false)
       isprep_transition.value = false
        hide.value = false
       window.dispatchEvent(new CustomEvent('transition:end'))
