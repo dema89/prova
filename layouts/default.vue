@@ -102,8 +102,7 @@
           </svg>
         </div>
 
-        <div><p>This is an independent, non-commercial artistic project created as a fan tribute to the history of horror cinema. The characters and visual elements were entirely generated using Artificial Intelligence and are original creations, not reproductions of actors, scenes, or official materials from the films.</p>
-        <p>This work is not associated with, endorsed by, or licensed by any copyright or trademark holders. It is intended solely as an artistic homage.</p></div>
+        <div><p>This is an independent, non-commercial artistic project created as a fan tribute to the history of horror cinema. The characters and visual elements were entirely generated using Artificial Intelligence and are original creations, not reproductions of actors, scenes, or official materials from the films. This work is not associated with, endorsed by, or licensed by any copyright or trademark holders. It is intended solely as an artistic homage.</p></div>
         
         <div>
           <svg viewBox="0 0 252 133" fill="none">
@@ -160,12 +159,13 @@
 background: var(--black);
 padding:0px 60px;
 padding-bottom: 30px;
-font-size:0.875rem;
 line-height:140%;
 display: flex;
 flex-direction:column;
 justify-content: space-between;
+font-size:0.9rem;
 gap:50px;
+color:var(--white);
 }
 
 #footer h3
@@ -201,10 +201,9 @@ flex-wrap: wrap;
 width:70px;
 }
 
-#footer, #header_footer a
+#header_footer a
 {
 color:var(--white);
-font-size:0.7rem;
 }
 
 #header_footer a
