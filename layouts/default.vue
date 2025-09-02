@@ -118,6 +118,11 @@
         <div>
             <div>
               <h3>project partners</h3>
+              <ul id="partner">
+                <li><img alt="Kartì - Tipografia Modica" src="/img/karti.png"></li>
+                <li><img alt="Studio Irregolare - Agenzia di comunicazione Catania" src="/img/irregolare.png"></li>
+                <li><img alt="Adaptive - AI Design Research by Studio K95" src="/img/adaptive.png"></li>
+              </ul>
             </div>
         </div>
 
@@ -136,7 +141,7 @@
       </div>
 
       <div id="header_footer">
-        <div><img alt="Studio K95 logo" src="/img/k95_logo.png" loading="lazy" decoding="async"></div>
+        <div><img alt="Studio K95 - Deisgn di comunicazione e grafica Catania" src="/img/k95_logo.png" loading="lazy" decoding="async"></div>
         <div><h3>A PROJECT BY <a target="_blank" href="https://www.k95.it">STUDIO K95</a></h3></div>
         <div><a target="_blank" href="https://www.instagram.com/k95.studio/@K95.studio">INSTAGRAM</a></div>
         <div><a target="_blank" href="https://www.linkedin.com/company/studio-k95">LINKEDIN</a></div>
@@ -161,15 +166,21 @@ display: flex;
 flex-direction:column;
 justify-content: space-between;
 gap:50px;
-min-height:100dvh;
-
 }
 
 #footer h3
 {
 text-transform: uppercase;
-font-size:0.875rem;
+font-size:0.7rem;
 line-height:140%;
+}
+
+#header_footer
+{
+border-top:1px solid rgba(255, 255, 255, 0.4);
+padding-top:10px;
+margin-top: 30px;
+font-size:0.7rem;
 }
 
 #header_footer, 
@@ -193,6 +204,7 @@ width:70px;
 #footer, #header_footer a
 {
 color:var(--white);
+font-size:0.7rem;
 }
 
 #header_footer a
@@ -200,8 +212,7 @@ color:var(--white);
 text-decoration: underline;
 }
 
-#header_footer div:first-child,
-#footer_centro div:first-child
+#header_footer div:first-child
 {
 width:33vw
 }
@@ -223,25 +234,32 @@ width:7vw;
 text-align: right;
 }
 
+#footer_centro div:first-child
+{
+width:35%
+}
+
 #footer_centro div:nth-child(2)
 {
-width:46vw;
+width:51%;
 }
 
 #footer_centro div:nth-child(3)
 {
-width:14vw;
+width:14%;
 }
 
 #footer_centro div:nth-child(4)
 {
-width:var(--col-15);
+width:52%;
+display: flex;
+align-items: flex-end;
 }
 
 #footer_centro div:last-child
 {
-width:var(--col-13);
-margin-top:200px;
+width:48%;
+margin-top:160px;
 }
 
 #footer_centro div:last-child svg
@@ -263,6 +281,19 @@ width:clamp(100px, var(--col-7), 9999px);
 #footer_centro div:nth-child(3) svg
 {
 width:clamp(100px, var(--col-4), 9999px);
+}
+
+#partner
+{
+display: flex;
+gap:40px;
+align-items: center;
+margin-top: 20px;
+}
+
+#partner img
+{
+height:6dvh;
 }
 
 /* Tablet verticale (es. iPad portrait) */
@@ -296,13 +327,14 @@ width:clamp(100px, var(--col-4), 9999px);
     #footer_centro div:nth-child(3)
     {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
+ 
+    align-items: flex-end;
     }
 
     #footer_centro div:nth-child(3) svg
     {
-    width:50%;
+    width:65%;
+    margin-bottom:8px;
     }
 
     #footer_centro div:nth-child(3)
@@ -361,20 +393,28 @@ width:clamp(100px, var(--col-4), 9999px);
     margin-bottom:20px;
     }
 
-    #header_footer>div:nth-child(2)
-     {
-    width:63% !important;
-     }
+  #header_footer>div:nth-child(2)
+  {
+  width:63% !important;
+  }
 
   #footer
   {
   padding-left:30px;
   padding-right:30px;
+  font-size:1rem;
   }
 
-  #footer_centro {
-    padding-top: 120px;
+  #footer_centro 
+  {
+  padding-top: 120px;
   }
+
+   #footer_centro
+  {
+  row-gap: 30px; 
+  }  
+  
 }
 
 
