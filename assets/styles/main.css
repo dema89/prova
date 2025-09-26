@@ -3847,7 +3847,7 @@ and (-webkit-min-device-pixel-ratio: 1)
 
 	#cont_schede .immagine_film 
 	{
-    height: 50vh;
+    height: 50dvh;
 	}
 
 	.data_film .info_secondarie
@@ -3937,7 +3937,7 @@ and (-webkit-min-device-pixel-ratio: 1)
 
 	div.scheda 
 	{
-    height: calc(80dvh - 80px); 
+    height: calc(80vh - 80px); 
     }
 }
 	  
