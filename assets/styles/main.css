@@ -3243,9 +3243,10 @@ and (-webkit-min-device-pixel-ratio: 1)
 	
 	.story-media
 	{
-	height:40vh;
+	height:40vh !important;
 	aspect-ratio: 644 / 435;
 	min-height:450px;
+	position: relative;
 	}
 
 	.intro-left, .intro-right 
