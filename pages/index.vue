@@ -972,8 +972,8 @@ function initStefanSection()
         scrollTrigger: {
           trigger: '#home_posters',
           scroller: '#main',
-          start: `${perc}% top`,
-          end: `${perc + baseStep}% top`,
+          start: `${perc+2}% top`,
+          end: `${perc+2 + baseStep}% top`,
           scrub: 1,
         },
       });
@@ -984,7 +984,7 @@ function initStefanSection()
         scrollTrigger: {
           trigger: '#home_posters',
           scroller: '#main',
-          start: `${perc}% top`,
+          start: `${perc+2}% top`,
           end: index === total - 1 ? 'bottom bottom' : `${perc + baseStep * 2}% top`,
           scrub: 1,
         },
