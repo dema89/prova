@@ -1373,7 +1373,7 @@ div.scheda.fix .data_film {
 	left: var(--col-1);
 	text-transform: uppercase;
 	font-size: clamp(9rem, 13vw + 1rem, 10rem);
-	line-height: 82%;
+	line-height: 90%;
 	max-width:60%;
 }
 
@@ -1726,7 +1726,7 @@ opacity: 0.3 !important;
 
 .title_others {
 	font-size: clamp(7.375rem, 14vw + 1rem, 8.625rem);
-	line-height:85%;
+	line-height:90%;
 	text-align: center;
 	width: 100%;
 	position: absolute;
