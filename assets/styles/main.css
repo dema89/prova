@@ -3278,7 +3278,6 @@ and (-webkit-min-device-pixel-ratio: 1)
 	#hero h1 div 
   	{
   	font-size: clamp(13rem, 27vw + 1rem, 14.7rem);
-  	line-height: 82%;
 	}
 
 	.logo
