@@ -3556,7 +3556,7 @@ and (-webkit-min-device-pixel-ratio: 1)
 	div.scheda 
 	{
   	width: 90vw;
-  	height: calc(90vh - 80px);
+  	height: calc(90dvh - 80px);
 	}
 
 	.data_film 
@@ -4184,7 +4184,7 @@ and (-webkit-min-device-pixel-ratio: 1)
 
 	div.scheda 
 	{
-    height: calc(80vh - 80px); 
+    height: calc(80dvh - 80px); 
     }
 
 	#header_footer
