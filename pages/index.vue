@@ -24,13 +24,13 @@
         <img id="tv" src="/img/tv.png" alt="TV horror" width="1920" height="1080" fetchpriority="high" decoding="async" />
       </picture>
       
-      <video poster="/img/preview.jpg" autoplay muted loop playsinline loading="lazy">
+      <video poster="/img/preview.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto">
          <source src="/img/video/hero_rossa.webm" type="video/webm" />
         <source src="/img/video/hero_rossa.mp4" type="video/mp4" />
          <source src="/img/video/hero_rossa.ogv" type="video/ogg" />
       </video>
 
-      <video autoplay muted loop playsinline loading="lazy">
+      <video autoplay muted loop playsinline webkit-playsinline preload="auto">
         <source src="/img/video/hero_azzurra.webm" type="video/webm" />
         <source src="/img/video/hero_azzurra.mp4" type="video/mp4" />
          <source src="/img/video/hero_azzurra.ogv" type="video/ogg" />
