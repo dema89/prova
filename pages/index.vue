@@ -357,10 +357,10 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
       </div>
       
       <div class="clip-bg">
-        <video autoplay muted loop playsinline loading="lazy">
+        <video autoplay muted playsinline preload="auto">
           <source src="/img/video/exibition.webm" type="video/webm" />
           <source src="/img/video/exibition.mp4" type="video/mp4" />
-          <source src="/img/video/exibition.ogv" type="video/ogg" />
+        
         </video>
       </div>
 
@@ -540,7 +540,10 @@ function initHeroSplitOnPreload() {
       }
     });
   }
+
 }
+
+
 
 // ✅ Inizializzazione di tutte le sezioni
 async function initAllSections(base) {
@@ -1098,6 +1101,8 @@ function exhibition() {
     }
   });
 }
+
+
 
 /******** END Exhibition SECTION  *********/
 onMounted(async () => {
