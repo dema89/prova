@@ -141,8 +141,7 @@
 
       <div id="header_footer">
         <div><img alt="Studio K95 - Deisgn di comunicazione e grafica Catania" src="/img/k95_logo.png" loading="lazy" decoding="async"></div>
-        <div><a href="/privacy">PRIVACY & COOKIES POLICY</a></div>
-        <div><h3>A PROJECT BY <a target="_blank" href="https://www.k95.it">STUDIO K95</a></h3></div>
+        <div><NuxtLink class="link_nav" to="/PRIVACY" data-title="Privacy">PRIVACY & COOKIES POLICY</NuxtLink></DIV>
         <div><a target="_blank" href="https://www.instagram.com/k95.studio/@K95.studio">INSTAGRAM</a></div>
         <div><a target="_blank" href="https://www.linkedin.com/company/studio-k95">LINKEDIN</a></div>
         <div>@2025</div>
@@ -158,7 +157,7 @@
 <script setup>
 useHead({
   link: [
-    { rel: 'preload', as: 'font', href: '/fonts/drukbold.woff', type: 'font/woff', crossorigin: '' },
+    { rel: 'preload', as: 'font', href: '/fonts/drukbold.woff2', type: 'font/woff2', crossorigin: '' },
     { rel: 'preload', as: 'font', href: '/fonts/adaptive.woff2', type: 'font/woff2', crossorigin: '' }
   ]
 })
