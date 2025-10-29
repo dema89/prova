@@ -24,7 +24,7 @@
         <img id="tv" src="/img/tv.png" alt="TV horror" width="1920" height="1080" fetchpriority="high" decoding="async" />
       </picture>
       
-      <video autoplay muted playsinline webkit-playsinline poster="/img/preview.jpg" loop>
+      <video autoplay muted playsinline webkit-playsinline poster="/img/preview.jpg" loop preload="auto">
          <source src="/img/video/hero_rossa.webm" type="video/webm" />
         <source src="/img/video/hero_rossa.mp4" type="video/mp4" /> 
       </video>
