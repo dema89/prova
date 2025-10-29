@@ -156,8 +156,8 @@ watchEffect(() => {
     useCustomSeoMeta({
       title: `${stripHtml(movieDetails.value.titolo)} - Light in the Darkness`,
       description: movieDetails.value.descrizione_short || 'A tribute poster inspired by horror cinema.',
-      url: `https://yourwebsite.com/${movieDetails.value.nome}`,
-      image: movieDetails.value.poster || 'https://yourwebsite.com/img/share-image-default.jpg',
+      url: `https://www.lightinthedarkness.it/${movieDetails.value.nome}`,
+      image: movieDetails.value.poster || 'https://www.lightinthedarkness.it/img/share-image-default.jpg',
       type: 'article',
       jsonLd: {
         "@context": "https://schema.org",
@@ -168,8 +168,8 @@ watchEffect(() => {
           "name": "Studio K95"
         },
         "genre": "Horror",
-        "image": movieDetails.value.poster || '',
-        "url": `https://yourwebsite.com/${movieDetails.value.nome}`,
+        "image": movieDetails.value.poster || 'https://www.lightinthedarkness.it/img/share-image-default.jpg',
+        "url": `https://www.lightinthedarkness.it/${movieDetails.value.nome}`,
         "description": movieDetails.value.descrizione_short || 'A tribute poster inspired by horror cinema.'
       }
     })
