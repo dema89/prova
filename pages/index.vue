@@ -24,12 +24,12 @@
         <img id="tv" src="/img/tv.png" alt="TV horror" width="1920" height="1080" fetchpriority="high" decoding="async" />
       </picture>
       
-      <video autoplay muted playsinline webkit-playsinline poster="/img/preview.jpg" loop preload="auto">
+      <video autoplay muted playsinline webkit-playsinline poster="/img/preview.jpg" loop loading="lazy">
          <source src="/img/video/hero_rossa.webm" type="video/webm" />
         <source src="/img/video/hero_rossa.mp4" type="video/mp4" /> 
       </video>
 
-      <video autoplay muted playsinline webkit-playsinline preload="auto" loop>
+      <video autoplay muted playsinline webkit-playsinline loop loading="lazy">
         <source src="/img/video/hero_azzurra.webm" type="video/webm" />
         <source src="/img/video/hero_azzurra.mp4" type="video/mp4" />
       </video>
@@ -357,7 +357,7 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
       </div>
       
       <div class="clip-bg">
-        <video autoplay muted playsinline preload="auto">
+        <video autoplay muted playsinline loading="lazy">
           <source src="/img/video/exibition.webm" type="video/webm" />
           <source src="/img/video/exibition.mp4" type="video/mp4" />
         
