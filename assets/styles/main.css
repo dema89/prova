@@ -9,9 +9,7 @@
 
 @font-face {
   font-family: 'adaptive';
-  src: url('/fonts/adaptive.woff2') format("woff2"),
-       url('/fonts/adaptive.woff') format("woff"),
-       url('/fonts/adaptive.ttf') format("truetype");
+  src: url('/fonts/adaptive.woff2') format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -2027,6 +2025,15 @@ height: auto;
 display: block;
 margin: 0 auto;
 }
+
+.arrow_hover
+{
+position: absolute;
+width:265px;
+top:0px;
+left:-15%;
+z-index:10;
+}
   
 .about-columns 
 {
@@ -3193,6 +3200,11 @@ and (-webkit-min-device-pixel-ratio: 1)
     width: var(--col-3);
     height: var(--col-3);
 	}
+
+	.arrow_hover
+	{
+	display:none !important;
+	}
 }
   
 /* Tablet verticale (es. iPad portrait) */
@@ -3220,6 +3232,12 @@ and (-webkit-min-device-pixel-ratio: 1)
     text-align: center;
 	bottom:60px;
 	top:auto;
+	}
+
+	
+	.arrow_hover
+	{
+	display:none !important;
 	}
 
 	#header > div:first-child,
