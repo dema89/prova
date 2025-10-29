@@ -509,8 +509,8 @@ import { useCustomSeoMeta } from '~/composables/useCustomSeoMeta';
 useCustomSeoMeta({
   title: 'Light in the Darkness - A Visual Exploration of Horror Cinema',
   description: 'An immersive visual project exploring the eternal conflict between good and evil in horror cinema through ten unique posters.',
-  url: 'https://yourwebsite.com',
-  image: 'https://yourwebsite.com/img/cover_sito_meta.jpg',
+  url: 'https://www.lightinthedarkness.it/',
+  image: 'https://www.lightinthedarkness.it/img/cover_sito_meta.jpg',
   jsonLd: {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -520,8 +520,8 @@ useCustomSeoMeta({
       "@type": "Organization",
       "name": "Studio K95"
     },
-    "image": "https://yourwebsite.com/img/cover_sito_meta.jpg",
-    "url": "https://yourwebsite.com"
+    "image": "ttps://www.lightinthedarkness.it/img/cover_sito_meta.jpg",
+    "url": "https://www.lightinthedarkness.it/"
   }
 });
 
