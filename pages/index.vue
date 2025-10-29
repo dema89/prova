@@ -43,8 +43,8 @@
 
       <div id="used-filter-labels">
         <div>
-        <span class="left">USED GOOD / EVIL FILTER</span>
-        <span class="right">USED GOOD / EVIL FILTER</span>
+        <span class="left">USE THE GOOD / EVIL FILTER</span>
+        <span class="right">USE THE GOOD / EVIL FILTER</span>
         </div>
       </div>
 
@@ -56,6 +56,12 @@
           </h2>
 
           <div class="about-image" :class="{ good: good, evil: evil, neutral:neutral }">
+            <picture>
+              <source srcset="/img/webp/mouse_hover.webp" type="image/webp">
+              <source srcset="/img/mouse_hover.png" type="image/png">
+              <img class="arrow_hover" src="/img/mouse_hover.png" alt="" width="265" height="216" loading="lazy" decoding="async" />
+            </picture>
+
             <canvas id="image-canvas"  class="element_filter"></canvas>
           </div>
 
