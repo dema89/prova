@@ -363,7 +363,7 @@ Today, it’s not monsters or ghosts that frighten us most—but humanity, power
       </div>
       
       <div class="clip-bg">
-        <video autoplay muted playsinline loading="lazy">
+        <video autoplay muted playsinline loop loading="lazy">
           <source src="/img/video/exibition.webm" type="video/webm" />
           <source src="/img/video/exibition.mp4" type="video/mp4" />
         
